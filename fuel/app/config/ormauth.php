@@ -78,7 +78,7 @@ return array(
 	/**
 	 * Salt for the login hash
 	 */
-	'login_hash_salt' => 'sapodeveloper',
+	'login_hash_salt' => 'put_your_salt_here',
 
 	/**
 	 * $_POST key for login username
