@@ -30,7 +30,7 @@ class Controller_Auth extends Controller
             if ($form->validation()->run()) {
                 if ($auth->login(Input::post('username'), Input::post('password'))) {
                     // ログイン成功時
-                    Response::redirect('welcome/index');
+                    Response::redirect('main/index');
                 }
                 $error = 'ログイン失敗に失敗しました';
             } else {
@@ -43,5 +43,11 @@ class Controller_Auth extends Controller
 
         return $view;
 	}
+
+    public function action_logout()
+    {
+        Auth::logout();
+        Response::redirect('/');
+    }
 
 }
