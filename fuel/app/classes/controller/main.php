@@ -1,15 +1,7 @@
 <?php
 
-class Controller_Main extends Controller
+class Controller_Main extends Controller_Application
 {
-	public function before()
-	{
-		if (!Auth::check())
-		{
-		    Response::redirect('/');
-		}
-	}
-
 	public function action_index()
 	{
 		$view = View::forge('layout/application');
@@ -18,5 +10,4 @@ class Controller_Main extends Controller
 		$view->footer = View::forge('layout/footer');
 		return $view;
 	}
-
 }
