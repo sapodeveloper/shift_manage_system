@@ -12,7 +12,11 @@ class Controller_Main extends Controller
 
 	public function action_index()
 	{
-		return View::forge('main/index');
+		$view = View::forge('layout/application');
+		$view->header = View::forge('layout/header');
+		$view->contents = View::forge('main/index');
+		$view->footer = View::forge('layout/footer');
+		return $view;
 	}
 
 }
