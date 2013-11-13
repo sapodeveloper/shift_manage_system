@@ -38,5 +38,5 @@ DB環境構築
 
 ---
 ###ライセンス
-jQuery : MITライセンス
+jQuery : MITライセンス  
 UIKit  : MITライセンス
