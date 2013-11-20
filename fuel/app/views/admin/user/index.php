@@ -38,3 +38,4 @@
 	</tbody>
 	
 </table>
+<?php echo Html::anchor('main', '戻る'); ?>
