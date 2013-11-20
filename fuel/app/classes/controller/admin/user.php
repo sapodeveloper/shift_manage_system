@@ -23,6 +23,55 @@ class Controller_Admin_User extends Controller_Admin
 		return $view;
 	}
 
+	public function action_edit($id = null)
+	{
+		if (Input::method() == 'POST')
+		{
+			$full_name = Input::post('frist_name') . ' ' . Input::post('last_name');
+			$email = Input::post('email');
+			$user = Model_User::find($id);
+			$user->username = Input::post('username');
+			$user->full_name = $full_name;
+			$user->frist_name = Input::post('frist_name');
+			$user->last_name = Input::post('last_name');
+			$user->department_id = Input::post('department_id');
+			$user->cource_id = Input::post('cource_id');
+			if($user->email != $email)
+			{
+				$user->email = $email;
+			}
+			$user->year = Input::post('year');
+			$user->auth_id = Input::post('auth_id');
+			$user->condition = Input::post('coundition');
+			$user->save();
+			Response::redirect('admin/user');
+		}
+		$department_data = Model_Department::find('all', array('where' => array('condition' => 1)));
+		if($department_data){
+			foreach($department_data as $row):
+				$data['department_data'][$row->id]=$row->department_name;
+			endforeach;
+		}
+		$cource_data = Model_Cource::find('all', array('where' => array('condition' => 1)));
+		if($cource_data){
+			foreach($cource_data as $row):
+				$data['cource_data'][$row->id]=$row->cource_name;
+			endforeach;
+		}
+		$auth_data = Model_Auth::find('all', array('where' => array('condition' => 1)));
+		if($auth_data){
+			foreach($auth_data as $row):
+				$data['auth_data'][$row->id]=$row->auth_type;
+			endforeach;
+		}
+		$data['user'] = Model_User::find($id);
+		$view = View::forge('layout/application');
+		$view->header = View::forge('layout/header');
+		$view->contents = View::forge('admin/user/edit', $data);
+		$view->footer = View::forge('layout/footer');
+		return $view;
+	}
+
 	public function action_create()
 	{
 		if (Input::method() == 'POST')
@@ -61,6 +110,12 @@ class Controller_Admin_User extends Controller_Admin
 			endforeach;
 		}
 
+		$auth_data = Model_Auth::find('all', array('where' => array('condition' => 1)));
+		if($auth_data){
+			foreach($auth_data as $row):
+				$select_data['auth_data'][$row->id]=$row->auth_type;
+			endforeach;
+		}
 
 		$view = View::forge('layout/application');
 		$view->header = View::forge('layout/header');

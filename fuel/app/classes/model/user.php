@@ -12,6 +12,7 @@ class Model_User extends \Orm\Model
 		'email',
 		'password',
 		'year',
+		'auth_id',
 		'condition',
 		'department_id',
 		'cource_id',
@@ -43,6 +44,13 @@ class Model_User extends \Orm\Model
 		'cource' => array(
 			'model_to' => 'Model_Cource',
 			'key_from' => 'cource_id',
+			'key_to' => 'id',
+			'cascade_save' => false,
+			'cascade_delete' => false
+		),
+		'auth' => array(
+			'model_to' => 'Model_Auth',
+			'key_from' => 'auth_id',
 			'key_to' => 'id',
 			'cascade_save' => false,
 			'cascade_delete' => false

@@ -26,15 +26,7 @@
 	</tr>
 	<tr>
 		<td>権限</td>
-		<td>
-			<?php if($user->group_id == 3): ?>
-				一般スタッフ
-			<?php elseif ($user->group_id == 5):?>
-				リーダ
-			<?php elseif ($user->group_id == 6):?>
-				システム管理者
-			<?php endif; ?>
-		</td>
+		<td><?php echo $user->auth->auth_type; ?></td>
 	</tr>
 	<tr>
 		<td>状態</td>

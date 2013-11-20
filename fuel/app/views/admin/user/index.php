@@ -20,15 +20,7 @@
 				<td><?php echo $user->full_name; ?></td>
 				<td><?php echo $user->department->department_name; ?></td>
 				<td><?php echo $user->cource->cource_name; ?></td>
-				<td>
-					<?php if($user->group_id == 3): ?>
-						一般スタッフ
-					<?php elseif ($user->group_id == 5):?>
-						リーダ
-					<?php elseif ($user->group_id == 6):?>
-						システム管理者
-					<?php endif; ?>
-				</td>
+				<td><?php echo $user->auth->auth_type; ?></td>
 				<td>
 					<?php if($user->condition == 0): ?>
 						not active user

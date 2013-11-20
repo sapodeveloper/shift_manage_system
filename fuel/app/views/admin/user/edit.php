@@ -1,22 +1,11 @@
-<script type="text/javascript">
-	$(function(){
-		$("#department_id").change(list)
-	});
-	function list() {
-		var url = 'department_cource/';
-		url += $("#department_id").val();
-		$.ajax(url, {"complete": function(xhr,status){
-			$("#cource_list").hide();
-			window.xhr = xhr;
-			$("#department").after($(xhr.responseText));
-		}});
-	}
-</script>
+<?php
+	$condition_data = array(0 => '無効', 1 => '有効');
+?>
 <meta charset="utf-8">
-<h2>新規スタッフ登録</h2>
+<h2><?php echo $user->full_name; ?>さんのスタッフ情報編集</h2>
 <div class="uk-grid">
 	<div class="uk-width-1-2">
-		<?php echo Form::open(array("action" => "admin/user/create")); ?>
+		<?php echo Form::open(array("action" => "admin/user/edit/".$user->id)); ?>
 			<table class="uk-table">
 				<tr>
 					<td class="uk-width-1-3">ログイン名(学生番号)</td>
@@ -40,7 +29,13 @@
 				<tr id="department">
 					<td>学部</td>
 					<td>
-						<?php echo Form::select('department_id', null, $department_data, array('class' => '', 'id' => 'department_id')); ?>
+						<?php echo Form::select('department_id', $user->department_id, $department_data, array('class' => '', 'id' => 'department_id')); ?>
+					</td>
+				</tr>
+				<tr id="cource_list">
+					<td>学科</td>
+					<td>
+						<?php echo Form::select('cource_id', $user->cource_id, $cource_data, array('class' => '', 'id' => 'cource_id')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -52,11 +47,17 @@
 				<tr>
 					<td>アクセス権限</td>
 					<td>
-						<?php echo Form::select('auth_id', null, $auth_data, array('class' => '', 'id' => 'auth_id')); ?>
+						<?php echo Form::select('auth_id', $user->auth_id, $auth_data, array('class' => '', 'id' => 'auth_id')); ?>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><?php echo Form::submit('submit', 'Save', array('class' => '')); ?></td>
+					<td>状態</td>
+					<td>
+						<?php echo Form::select('condition', $user->condition, $condition_data, array('class' => '', 'id' => 'auth_id')); ?>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><?php echo Form::submit('submit', 'Update', array('class' => '')); ?></td>
 				</tr>
 			</table>
 		<?php echo Form::close(); ?>	

@@ -23,6 +23,7 @@ return array(
 				14 => '015_create_irregular_user',
 				15 => '016_create_departments',
 				16 => '017_create_cources',
+				17 => '018_create_auths',
 			),
 		),
 		'module' => 
