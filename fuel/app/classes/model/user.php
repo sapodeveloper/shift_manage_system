@@ -17,6 +17,7 @@ class Model_User extends \Orm\Model
 		'cource_id',
 		'created_at',
 		'updated_at',
+		'last_login',
 	);
 
 	protected static $_observers = array(

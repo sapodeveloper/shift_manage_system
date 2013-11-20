@@ -13,6 +13,16 @@ class Controller_Admin_User extends Controller_Admin
 		return $view;
 	}
 
+	public function action_view($id = null)
+	{
+		$data['user'] = Model_User::find($id);
+		$view = View::forge('layout/application');
+		$view->header = View::forge('layout/header');
+		$view->contents = View::forge('admin/user/view', $data);
+		$view->footer = View::forge('layout/footer');
+		return $view;
+	}
+
 	public function action_create()
 	{
 		if (Input::method() == 'POST')
