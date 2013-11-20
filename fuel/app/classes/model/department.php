@@ -22,4 +22,15 @@ class Model_Department extends \Orm\Model
 	);
 	protected static $_table_name = 'departments';
 
+	protected static $_belongs_to = array(
+		'user' => array(
+			'model_to' => 'Model_User',
+			'key_from' => 'id',
+			'key_to' => 'department_id',
+			'cascade_save' => false,
+			'cascade_delete' => false
+		)
+	);
+
+
 }

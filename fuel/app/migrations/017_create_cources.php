@@ -24,9 +24,9 @@ class Create_cources
 		\DB::insert($table)->set(array('cource_name' => '機械システム工学科', 'department_id' => 2, 'condition' => 1))->execute();
 		\DB::insert($table)->set(array('cource_name' => '知能機械工学科', 'department_id' => 2, 'condition' => 1))->execute();
 		\DB::insert($table)->set(array('cource_name' => '都市デザイン工学科', 'department_id' => 2, 'condition' => 1))->execute();
-		\DB::insert($table)->set(array('cource_name' => '建築工学科', 'department_id' => 3, 'condition' => 1))->execute();
+		\DB::insert($table)->set(array('cource_name' => '建築工学科', 'department_id' => 2, 'condition' => 1))->execute();
 		\DB::insert($table)->set(array('cource_name' => '情報工学科', 'department_id' => 3, 'condition' => 1))->execute();
-		\DB::insert($table)->set(array('cource_name' => '知的情報システム学科', 'department_id' => 4, 'condition' => 1))->execute();
+		\DB::insert($table)->set(array('cource_name' => '知的情報システム学科', 'department_id' => 3, 'condition' => 1))->execute();
 		\DB::insert($table)->set(array('cource_name' => '環境デザイン学科', 'department_id' => 4, 'condition' => 1))->execute();
 		\DB::insert($table)->set(array('cource_name' => '地球環境学科', 'department_id' => 4, 'condition' => 1))->execute();
 		\DB::insert($table)->set(array('cource_name' => '生体医工学科', 'department_id' => 5, 'condition' => 1))->execute();

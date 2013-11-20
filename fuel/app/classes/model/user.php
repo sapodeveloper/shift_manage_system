@@ -31,4 +31,22 @@ class Model_User extends \Orm\Model
 	);
 	protected static $_table_name = 'users';
 
+	protected static $_belongs_to = array(
+		'department' => array(
+			'model_to' => 'Model_Department',
+			'key_from' => 'department_id',
+			'key_to' => 'id',
+			'cascade_save' => false,
+			'cascade_delete' => false
+		),
+		'cource' => array(
+			'model_to' => 'Model_Cource',
+			'key_from' => 'cource_id',
+			'key_to' => 'id',
+			'cascade_save' => false,
+			'cascade_delete' => false
+		),
+		
+	);
+
 }
