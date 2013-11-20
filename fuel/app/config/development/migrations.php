@@ -21,6 +21,9 @@ return array(
 				12 => '013_create_irregular',
 				13 => '014_create_irregular_day',
 				14 => '015_create_irregular_user',
+				15 => '016_create_departments',
+				16 => '017_create_cources',
+				17 => '018_create_auths',
 			),
 		),
 		'module' => 
