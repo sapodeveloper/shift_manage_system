@@ -1,8 +1,20 @@
 <?php
-	$department_name = array(1 => "工学部", 2 => "情報学部", 3 => "環境学部", 4 => "生命学部");
-	$cource_name = array(1 => "知的情報システム学科", 2 => "情報工学科");
 	$auth = array(3 => "一般スタッフ", 5 => "リーダ", 6 => "システム管理者");
 ?>
+<script type="text/javascript">
+	$(function(){
+		$("#department_id").change(list)
+	});
+	function list() {
+		var url = 'department_cource/';
+		url += $("#department_id").val();
+		$.ajax(url, {"complete": function(xhr,status){
+			$("#cource_list").hide();
+			window.xhr = xhr;
+			$("#department").after($(xhr.responseText));
+		}});
+	}
+</script>
 <meta charset="utf-8">
 <h2>新規スタッフ登録</h2>
 <div class="uk-grid">
@@ -28,16 +40,10 @@
 						<?php echo Form::input('year', Input::post('year', isset($user) ? $user->year : ''), array('class' => '', 'placeholder'=>'入学年度')); ?>
 					</td>
 				</tr>
-				<tr>
+				<tr id="department">
 					<td>学部</td>
 					<td>
-						<?php echo Form::select('department_id', null, $department_name, array('class' => '', 'id' => 'department_id')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>学科</td>
-					<td>
-						<?php echo Form::select('cource_id', null, $cource_name, array('class' => '', 'id' => 'cource_id')); ?>
+						<?php echo Form::select('department_id', null, $department_data, array('class' => '', 'id' => 'department_id')); ?>
 					</td>
 				</tr>
 				<tr>
