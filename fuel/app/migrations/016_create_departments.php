@@ -17,6 +17,7 @@ class Create_departments
 
 		$table = 'departments';
 
+		\DB::insert($table)->set(array('department_name' => '学部情報無し', 'condition' => 1))->execute();
 		\DB::insert($table)->set(array('department_name' => '工学部', 'condition' => 1))->execute();
 		\DB::insert($table)->set(array('department_name' => '情報学部', 'condition' => 1))->execute();
 		\DB::insert($table)->set(array('department_name' => '環境学部', 'condition' => 1))->execute();

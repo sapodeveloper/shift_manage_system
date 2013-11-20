@@ -45,7 +45,6 @@ class Controller_Admin_User extends Controller_Admin
 
 		$department_data = Model_Department::find('all', array('where' => array('condition' => 1)));
 		if($department_data){
-			$select_data['department_data'][0]="学部を指定してください";
 			foreach($department_data as $row):
 				$select_data['department_data'][$row->id]=$row->department_name;
 			endforeach;
@@ -61,20 +60,12 @@ class Controller_Admin_User extends Controller_Admin
 
 	public function action_department_cource($id = null)
 	{
-		if($id != 0)
-		{
-			$cource_data = Model_Cource::find('all', array('where' => array('department_id' => $id)));
-			if($cource_data){
-				foreach($cource_data as $row):
-					$select_data['cource_data'][$row->id]=$row->cource_name;
-				endforeach;
-			}
+		$cource_data = Model_Cource::find('all', array('where' => array('department_id' => $id)));
+		if($cource_data){
+			foreach($cource_data as $row):
+				$select_data['cource_data'][$row->id]=$row->cource_name;
+			endforeach;
 		}
-		else
-		{
-			$select_data['cource_data'][0]="学部を指定してください";
-		}
-		
  		$view=View::forge('admin/user/cource_list', $select_data);
  		return $view;
 	}
