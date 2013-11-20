@@ -42,7 +42,7 @@ class Controller_Admin_User extends Controller_Admin
 			}
 			$user->year = Input::post('year');
 			$user->auth_id = Input::post('auth_id');
-			$user->condition = Input::post('coundition');
+			$user->condition = Input::post('condition');
 			$user->save();
 			Response::redirect('admin/user');
 		}
