@@ -27,4 +27,21 @@ class Model_Irregular_User extends \Orm\Model
 	);
 	protected static $_table_name = 'irregular_users';
 
+	protected static $_belongs_to = array(
+		'users' => array(
+			'model_to' => 'users',
+			'key_from' => 'user_id',
+			'key_to' => 'id',
+			'cascade_save' => true,
+			'cascade_delete' => false
+		),
+		'irregular_day' => array(
+			'model_to' => 'irregular_day',
+			'key_from' => 'irregular_day_id',
+			'key_to' => 'id',
+			'cascade_save' => true,
+			'cascade_save' => false
+		),
+	);
+
 }

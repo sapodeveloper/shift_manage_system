@@ -28,4 +28,20 @@ class Model_Regular_User extends \Orm\Model
 	);
 	protected static $_table_name = 'regular_users';
 
+	protected static $_belongs_to = array{
+		'users' => array(
+			'model_to' => 'users',
+			'key_from' => 'user_id',
+			'key_to' => 'id',
+			'cascade_save' => true,
+			'cascade_delete' => false
+		),
+		'regular_day' => array(
+			'model_to' => 'regular_day',
+			'key_from' => 'regular_day_id',
+			'key_to' => 'id',
+			'cascade_save' => true,
+			'cascade_delete' => false
+		),
+
 }

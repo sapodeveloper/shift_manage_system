@@ -24,4 +24,14 @@ class Model_Regular extends \Orm\Model
 	);
 	protected static $_table_name = 'regulars';
 
+	protected static $_has_many = array(
+		'regular_day' => array(
+			'model_to' => 'regular_day',
+			'key_from' => 'id',
+			'key_from' => 'regular_id',
+			'cascade_save' => true,
+			'cascade_delete' => false
+		},
+	);
+
 }

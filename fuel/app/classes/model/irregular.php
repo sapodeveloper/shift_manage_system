@@ -23,4 +23,14 @@ class Model_Irregular extends \Orm\Model
 	);
 	protected static $_table_name = 'irregulars';
 
+	protected static $_has_many = array(
+		'irregular_day' => array(
+			'model_to' => 'irregular_day',
+			'key_from' => 'id',
+			'key_to' => 'irregular_id',
+			'cascade_save' => true,
+			'cascade_delete' => false
+		),
+	);
+
 }
