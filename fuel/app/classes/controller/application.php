@@ -6,7 +6,7 @@ class Controller_Application extends Controller
 	{
 		if (!Auth::check())
 		{
-		    Response::redirect('/');
+		  Response::redirect('/');
 		}
 	}
 }
