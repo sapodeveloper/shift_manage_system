@@ -25,7 +25,7 @@ class Model_Irregular extends \Orm\Model
 
 	protected static $_has_many = array(
 		'irregular_day' => array(
-			'model_to' => 'irregular_day',
+			'model_to' => 'Model_Irregular_Day',
 			'key_from' => 'id',
 			'key_to' => 'irregular_id',
 			'cascade_save' => true,

@@ -61,39 +61,67 @@ class Auth_Create_Authdefaults
 			 */
 
 			// create the guest account
-			list($guest_id, $affected) = \DB::insert($table)->set(
-				array(
-					'username' => 'guest',
-					'password' => 'YOU CAN NOT USE THIS TO LOGIN',
-					'email' => '',
-					'group_id' => $group_id_guest,
-					'last_login' => 0,
-					'previous_login' => 0,
-					'login_hash' => '',
-					'user_id' => 0,
-					'created_at' => time(),
-					'updated_at' => 0,
-				)
-			)->execute();
+			//list($guest_id, $affected) = \DB::insert($table)->set(
+			//	array(
+			//		'username' => 'guest',
+			//		'password' => 'YOU CAN NOT USE THIS TO LOGIN',
+			//		'email' => '',
+			//		'group_id' => $group_id_guest,
+			//		'last_login' => 0,
+			//		'previous_login' => 0,
+			//		'login_hash' => '',
+			//		'user_id' => 0,
+			//		'created_at' => time(),
+			//		'updated_at' => 0,
+			//	)
+			//)->execute();
 
 			// adjust the id's, auto_increment doesn't want to create a key with value 0
-			\DB::update($table)->set(array('id' => 0))->where('id', '=', $guest_id)->execute();
+			//\DB::update($table)->set(array('id' => 0))->where('id', '=', $guest_id)->execute();
 
 			// add guests full name to the metadata
-			\DB::insert($table.'_metadata')->set(
-				array(
-					'parent_id' => 0,
-					'key' => 'fullname',
-					'value' => 'Guest',
-				)
-			)->execute();
+			//\DB::insert($table.'_metadata')->set(
+			//	array(
+			//		'parent_id' => 0,
+			//		'key' => 'fullname',
+			//		'value' => 'Guest',
+			//	)
+			//)->execute();
 
 			// create the administrator account if needed, and assign it the superadmin group so it has all access
 			$result = \DB::select('id')->from($table)->where('username','=','admin')->execute();
 			if (count($result) == 0)
 			{
 				\Auth::instance()->create_user('admin', 'admin', 'admin@example.org', $group_id_admin, array('fullname' => 'System administrator'));
+				$values = array('full_name' => 'システム管理者', 'frist_name' => 'システム', 'last_name' => '管理者', 'department_id' => 1, 'cource_id' => 1, 'year' => 2013, 'auth_id' => 3);
+				\DB::update('users')->set($values)->where('username', '=', 'admin')->execute();
 			}
+
+			// テストユーザ追加
+			\Auth::instance()->create_user('nishimoto', 'admin', 'nishimoto@example.org', $group_id_admin);
+			$values = array('full_name' => '西本 岳', 'frist_name' => '西本', 'last_name' => '岳', 'department_id' => 3, 'cource_id' => 8, 'year' => 2011, 'auth_id' => 3);
+			\DB::update('users')->set($values)->where('username', '=', 'nishimoto')->execute();
+
+			\Auth::instance()->create_user('nakaoku', 'admin', 'nakaoku@example.org', $group_id_admin);
+			$values = array('full_name' => '中奥 貴浩', 'frist_name' => '中奥', 'last_name' => '貴浩', 'department_id' => 3, 'cource_id' => 8, 'year' => 2011, 'auth_id' => 3);
+			\DB::update('users')->set($values)->where('username', '=', 'nakaoku')->execute();
+
+			\Auth::instance()->create_user('mizawa', 'admin', 'mizawa@example.org', $group_id_admin);
+			$values = array('full_name' => '三澤 湧樹', 'frist_name' => '三澤', 'last_name' => '湧樹', 'department_id' => 3, 'cource_id' => 8, 'year' => 2013, 'auth_id' => 3);
+			\DB::update('users')->set($values)->where('username', '=', 'mizawa')->execute();
+
+			\Auth::instance()->create_user('toyoshima', 'admin', 'toyoshima@example.org', $group_id_admin);
+			$values = array('full_name' => '豊嶋 駿仁', 'frist_name' => '豊嶋', 'last_name' => '駿仁', 'department_id' => 2, 'cource_id' => 3, 'year' => 2013, 'auth_id' => 3);
+			\DB::update('users')->set($values)->where('username', '=', 'toyoshima')->execute();
+
+			\Auth::instance()->create_user('omori', 'admin', 'omori@example.org', $group_id_admin);
+			$values = array('full_name' => '大盛 将', 'frist_name' => '大盛', 'last_name' => '将', 'department_id' => 3, 'cource_id' => 8, 'year' => 2012, 'auth_id' => 3);
+			\DB::update('users')->set($values)->where('username', '=', 'omori')->execute();
+
+			\Auth::instance()->create_user('morishita', 'admin', 'morishita@example.org', $group_id_admin);
+			$values = array('full_name' => '森下 智裕', 'frist_name' => '森下', 'last_name' => '智裕', 'department_id' => 3, 'cource_id' => 9, 'year' => 2010, 'auth_id' => 3);
+			\DB::update('users')->set($values)->where('username', '=', 'morishita')->execute();
+			 
 		}
 	}
 
