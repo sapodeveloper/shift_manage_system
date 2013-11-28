@@ -22,7 +22,7 @@ class Create_irregular_user
 		$end_time = array(6, 7, 8, 9);
 		for ($irregular_shift = 1; $irregular_shift <= 2; $irregular_shift++){
 			for($loop = 1; $loop <= 10; $loop++){
-				for ($user_id=  1; $user_id <= 6 ; $user_id++) { 
+				for ($user_id=  2; $user_id <= 7; $user_id++) { 
 					\DB::insert($table)->set(array('user_id' => $user_id, 
 																		 'irregular_day_id' => $loop,
 																		 'request_start' => 1,
