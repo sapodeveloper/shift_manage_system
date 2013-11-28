@@ -1,4 +1,3 @@
-<meta charset="utf-8">
 <h2><?php echo $user->full_name; ?>さんのパスワード変更</h2>
 <div class="uk-grid">
 	<div class="uk-width-1-2">

@@ -9,6 +9,7 @@ class Controller_User extends Controller_Application
 		$data['user'] = Model_User::find($user_id);
 		$view = View::forge('layout/application');
 		$view->header = View::forge('layout/header');
+		$view->left_side_menu = View::forge('layout/left_side_menu');
 		$view->contents = View::forge('user/index', $data);
 		$view->footer = View::forge('layout/footer');
 		return $view;
@@ -57,6 +58,7 @@ class Controller_User extends Controller_Application
 		}
 		$view = View::forge('layout/application');
 		$view->header = View::forge('layout/header');
+		$view->left_side_menu = View::forge('layout/left_side_menu');
 		$view->contents = View::forge('user/edit', $data);
 		$view->footer = View::forge('layout/footer');
 		return $view;
@@ -80,6 +82,7 @@ class Controller_User extends Controller_Application
 		}
 		$view = View::forge('layout/application');
 		$view->header = View::forge('layout/header');
+		$view->left_side_menu = View::forge('layout/left_side_menu');
 		$view->contents = View::forge('user/change_password', $data);
 		$view->footer = View::forge('layout/footer');
 		return $view;

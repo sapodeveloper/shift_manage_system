@@ -11,13 +11,13 @@ class Controller_Auth extends Controller
 
         $form = Fieldset::forge();
 
-        $form->add('username', 'アカウント', array('maxlength' => 8))
+        $form->add('username', 'アカウント', array('maxlength' => 12))
             ->add_rule('required')
-            ->add_rule('max_length', 8);
+            ->add_rule('max_length', 12);
 
         $form->add('password', 'パスワード', array('type' => 'password'))
             ->add_rule('required')
-            ->add_rule('max_length', 8);
+            ->add_rule('max_length', 12);
         $form->add('submit', '', array('type' => 'submit', 'value' => 'ログイン'));
 
         $form->repopulate();

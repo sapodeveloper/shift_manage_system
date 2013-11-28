@@ -1,7 +1,6 @@
 <?php
 	$condition_data = array(0 => '無効', 1 => '有効');
 ?>
-<meta charset="utf-8">
 <h2><?php echo $user->full_name; ?>さんのスタッフ情報編集</h2>
 <div class="uk-grid">
 	<div class="uk-width-1-2">

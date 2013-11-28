@@ -12,7 +12,6 @@
 		}});
 	}
 </script>
-<meta charset="utf-8">
 <h2>新規スタッフ登録</h2>
 <div class="uk-grid">
 	<div class="uk-width-1-2">
