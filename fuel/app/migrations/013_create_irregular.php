@@ -18,11 +18,11 @@ class Create_irregular
 		$table = 'irregular';
 		// 今日の日付を取得
 		$dt = new \DateTime();
-		// 1週間後の日付を取得
-		$next_week = $dt->add(new \DateInterval('P7D'))->format('Y-m-d H:i:s:');
 		// 2週間後の日付を取得
-		$next_2week = $dt->add(new \DateInterval('P7D'))->format('Y-m-d H:i:s:');
+		$next_week = $dt->add(new \DateInterval('P14D'))->format('Y-m-d H:i:s:');
 		// 3週間後の日付を取得
+		$next_2week = $dt->add(new \DateInterval('P7D'))->format('Y-m-d H:i:s:');
+		// 4週間後の日付を取得
 		$next_3week = $dt->add(new \DateInterval('P7D'))->format('Y-m-d H:i:s:');
 		\DB::insert($table)->set(array('irregular_name' => 'テストイレギュラーシフト1', 
 																	 'irregular_enabledate' => $next_2week,

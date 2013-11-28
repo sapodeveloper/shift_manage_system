@@ -14,6 +14,23 @@ class Create_irregular_day
 			'irregular_day_condition' => array('type' => 'boolean'),
 
 		), array('id'));
+
+		$table = 'irregular_day';
+		// 今日の日付を取得
+		$dt = new \DateTime();
+		// 1週間後の日付を取得
+		$date = $dt->add(new \DateInterval('P7D'))->format('Y-m-d H:i:s:');
+		$date_info = $dt->format('m月d日');
+		for ($irregular_shift = 1; $irregular_shift <= 2; $irregular_shift++){
+			for($loop = 0; $loop < 5; $loop++){
+			\DB::insert($table)->set(array('irregular_id' => $irregular_shift, 
+																		 'irregular_day_date' => $date,
+																		 'irregular_day_name' => $date_info,
+																		 'irregular_day_condition' => 1))->execute();
+			$date = $dt->add(new \DateInterval('P1D'))->format('Y-m-d H:i:s:');
+			$date_info = $dt->format('m月d日');
+			}
+		}
 	}
 
 	public function down()
