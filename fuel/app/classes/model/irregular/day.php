@@ -26,7 +26,7 @@ class Model_Irregular_Day extends \Orm\Model
 
 	protected static $_belongs_to = array(
 		'irregular' => array(
-			'model_to' => 'irregular',
+			'model_to' => 'Model_Irregular',
 			'key_from' => 'irregular_id',
 			'key_to' => 'id',
 			'cascade_save' => true,
@@ -35,7 +35,7 @@ class Model_Irregular_Day extends \Orm\Model
 	);
 	protected static $_has_many =array(
 		'irregular_user' => array(
-			'model_to' => 'irregular_user',
+			'model_to' => 'Model_Irregular_User',
 			'key_from' => 'id',
 			'key_to' => 'irregular_day_id',
 			'cascade_save' => true,

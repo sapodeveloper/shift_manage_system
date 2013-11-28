@@ -59,14 +59,14 @@ class Model_User extends \Orm\Model
 	);
 	protected static $_has_many = array(
 		'regular_user' => array(
-			'model_to' => 'regular_user',
+			'model_to' => 'Model_Regular_User',
 			'key_from' => 'id',
 			'key_to' => 'user_id',
 			'cascade_save' => true,
 			'cascade_delete' => false
 		),
 		'irregular_user' => array(
-			'model_to' => 'irregular_user',
+			'model_to' => 'Model_Irregular_User',
 			'key_from' => 'id',
 			'key_to' => 'user_id',
 			'cascade_save' => true,

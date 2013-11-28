@@ -26,7 +26,7 @@ class Model_Regular extends \Orm\Model
 
 	protected static $_has_many = array(
 		'regular_day' => array(
-			'model_to' => 'regular_day',
+			'model_to' => 'Model_Regular_Day',
 			'key_from' => 'id',
 			'key_from' => 'regular_id',
 			'cascade_save' => true,
