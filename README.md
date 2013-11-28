@@ -7,7 +7,7 @@ shift_manage_system
 
 DB環境構築
 ```
-	oil refine migrate
+	oil refine migrate:current
 ```
 
 初期ユーザ
