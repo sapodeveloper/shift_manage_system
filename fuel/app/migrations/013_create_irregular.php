@@ -12,6 +12,8 @@ class Create_irregular
 			'irregular_enabledate' => array('type' => 'datetime'),
 			'irregular_limitdate' => array('type' => 'datetime'),
 			'irregular_condition' => array('type' => 'boolean'),
+			'created_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
+			'updated_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
 
 		), array('id'));
 

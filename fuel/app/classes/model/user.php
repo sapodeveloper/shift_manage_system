@@ -19,6 +19,8 @@ class Model_User extends \Orm\Model
 		'created_at',
 		'updated_at',
 		'last_login',
+		'created_at',
+		'updated_at',
 	);
 
 	protected static $_observers = array(

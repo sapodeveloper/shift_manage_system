@@ -10,6 +10,8 @@ class Create_regular_day
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
 			'regular_id' => array('constraint' => 11, 'type' => 'int'),
 			'regular_day_name' => array('constraint' => 45, 'type' => 'varchar'),
+			'created_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
+			'updated_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
 
 		), array('id'));
 	}

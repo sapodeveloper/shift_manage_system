@@ -15,7 +15,8 @@ class Create_irregular_user
 			'edited_start' => array('constraint' => 11, 'type' => 'int'),
 			'edited_end' => array('constraint' => 11, 'type' => 'int'),
 			'user_comment' => array('type' => 'text'),
-
+			'created_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
+			'updated_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
 		), array('id'));
 
 		$table = 'irregular_user';
