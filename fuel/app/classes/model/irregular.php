@@ -21,7 +21,7 @@ class Model_Irregular extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 	);
-	protected static $_table_name = 'irregulars';
+	protected static $_table_name = 'irregular';
 
 	protected static $_has_many = array(
 		'irregular_day' => array(
