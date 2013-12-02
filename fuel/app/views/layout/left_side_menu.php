@@ -10,8 +10,9 @@
 
 <li class="uk-parent"><a href="#"><i class="fa fa-pencil"></i>&nbsp;リーダ関連</a>
 	<ul class="uk-nav-sub">
-		<li><i class="fa fa-sun-o"></i>&nbsp;シフト作成</li>
-		<li><i class="fa fa-inbox"></i>&nbsp;シフト編成</li>
+		<li><?php echo Html::anchor('manage/shift', '<i class="fa fa-list"></i>&nbsp;シフト一覧'); ?></li>
+		<li><?php echo Html::anchor('manage/shift/new', '<i class="fa fa-sun-o"></i>&nbsp;シフト作成'); ?></li>
+		<li><?php echo Html::anchor('manage/shift/editable_list', '<i class="fa fa-inbox"></i>&nbsp;シフト編成'); ?></li>
 	</ul>
 </li>		
 
