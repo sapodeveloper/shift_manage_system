@@ -6,10 +6,8 @@ class Model_Irregular_User extends \Orm\Model
 		'id',
 		'user_id',
 		'irregular_day_id',
-		'request_start',
-		'request_end',
-		'edited_start',
-		'edited_end',
+		'request_shift_type',
+		'edited_shift_type',
 		'user_comment',
 		'created_at',
 		'updated_at',
@@ -40,8 +38,21 @@ class Model_Irregular_User extends \Orm\Model
 			'key_from' => 'irregular_day_id',
 			'key_to' => 'id',
 			'cascade_save' => true,
-			'cascade_save' => false
+			'cascade_delete' => false
+		),
+		'request_irregular_type' => array(
+			'model_to' => 'Model_Irregular_Type',
+			'key_from' => 'request_shift_type',
+			'key_to' => 'id',
+			'cascade_save' => false,
+			'cascade_delete' => false
+		),
+		'edited_irregular_type' => array(
+			'model_to' => 'Model_Irregular_Type',
+			'key_from' => 'edited_shift_type',
+			'key_to' => 'id',
+			'cascade_save' => false,
+			'cascade_delete' => false
 		),
 	);
-
 }

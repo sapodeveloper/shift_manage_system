@@ -1,13 +1,10 @@
 <?php
 
-class Model_Regular extends \Orm\Model
+class Model_Irregular_Type extends \Orm\Model
 {
 	protected static $_properties = array(
 		'id',
-		'regular_id',
-		'regular_name',
-		'regular_limitdate',
-		'regular_condition',
+		'irregular_type_name',
 		'created_at',
 		'updated_at',
 	);
@@ -22,16 +19,16 @@ class Model_Regular extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 	);
-	protected static $_table_name = 'regulars';
+	protected static $_table_name = 'irregular_types';
 
 	protected static $_has_many = array(
-		'regular_day' => array(
-			'model_to' => 'Model_Regular_Day',
+		'irregular_user' => array(
+			'model_to' => 'Model_Irregular_User',
 			'key_from' => 'id',
-			'key_to' => 'regular_id',
+			'key_to' => 'irregular_day_id',
 			'cascade_save' => true,
 			'cascade_delete' => false
-		},
+		),
 	);
 
 }
