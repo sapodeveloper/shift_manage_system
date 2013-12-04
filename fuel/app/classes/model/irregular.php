@@ -5,6 +5,7 @@ class Model_Irregular extends \Orm\Model
 	protected static $_properties = array(
 		'id',
 		'irregular_name',
+		'irregular_enabledate',
 		'irregular_limitdate',
 		'irregular_condition',
 		'created_at',

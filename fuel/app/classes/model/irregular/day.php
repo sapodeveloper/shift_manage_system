@@ -22,7 +22,7 @@ class Model_Irregular_Day extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 	);
-	protected static $_table_name = 'irregular_days';
+	protected static $_table_name = 'irregular_day';
 
 	protected static $_belongs_to = array(
 		'irregular' => array(

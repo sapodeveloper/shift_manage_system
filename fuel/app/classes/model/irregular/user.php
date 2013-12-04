@@ -23,7 +23,7 @@ class Model_Irregular_User extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 	);
-	protected static $_table_name = 'irregular_users';
+	protected static $_table_name = 'irregular_user';
 
 	protected static $_belongs_to = array(
 		'users' => array(
