@@ -10,26 +10,22 @@ class Create_irregular_user
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
 			'user_id' => array('constraint' => 11, 'type' => 'int'),
 			'irregular_day_id' => array('constraint' => 11, 'type' => 'int'),
-			'request_start' => array('constraint' => 11, 'type' => 'int'),
-			'request_end' => array('constraint' => 11, 'type' => 'int'),
-			'edited_start' => array('constraint' => 11, 'type' => 'int'),
-			'edited_end' => array('constraint' => 11, 'type' => 'int'),
+			'request_shift_type' => array('constraint' => 11, 'type' => 'int'),
+			'edited_shift_type' => array('constraint' => 11, 'type' => 'int'),
 			'user_comment' => array('type' => 'text'),
 			'created_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
 			'updated_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
 		), array('id'));
 
 		$table = 'irregular_user';
-		$end_time = array(6, 7, 8, 9);
+		$rand_shift_type = array(1,2,3);
 		for ($irregular_shift = 1; $irregular_shift <= 2; $irregular_shift++){
 			for($loop = 1; $loop <= 10; $loop++){
 				for ($user_id=  2; $user_id <= 7; $user_id++) { 
 					\DB::insert($table)->set(array('user_id' => $user_id, 
 																		 'irregular_day_id' => $loop,
-																		 'request_start' => 1,
-																		 'request_end' => $end_time[array_rand($end_time)],
-																		 'edited_start' => 1,
-																		 'edited_end' => $end_time[array_rand($end_time)],
+																		 'request_shift_type' => $rand_shift_type[array_rand($rand_shift_type)],
+																		 'edited_shift_type' => $rand_shift_type[array_rand($rand_shift_type)],
 																		 'user_comment' => "test data"))->execute();
 				}
 			}

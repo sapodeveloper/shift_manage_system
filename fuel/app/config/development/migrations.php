@@ -24,6 +24,7 @@ return array(
 				15 => '016_create_departments',
 				16 => '017_create_cources',
 				17 => '018_create_auths',
+				18 => '019_create_irregular_types',
 			),
 		),
 		'module' => 
