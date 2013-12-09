@@ -17,7 +17,7 @@
 				<td><?php echo $r_irregular->irregular_name; ?></td>
 				<td><?php echo date( 'Y年m月d日 H時i分', strtotime($r_irregular->irregular_limitdate)); ?></td>
 				<td><a href="#">申請</a></td>
-				<td><a href="#">確認</a></td>
+				<td><?php echo Html::anchor('shift/irregular/detail/'.$r_irregular->id, '確認'); ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>
@@ -40,8 +40,8 @@
 		<?php foreach ($decision_irregulars as $irregular): ?>
 			<tr>
 				<td><?php echo $irregular->irregular_name; ?></td>
-				<td><a href="#">確認</a></td>
-				<td><a href="#">PDF</a></td>
+				<td><?php echo Html::anchor('shift/irregular/detail/'.$irregular->id, '確認'); ?></td>
+				<td><?php echo Html::anchor('shift/irregular/output_pdf/'.$irregular->id, 'PDF'); ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>
