@@ -60,15 +60,15 @@ class Controller_Shift_Irregular extends Controller
 					$html .= $irregular_shift_user->users->full_name;
 					$html .= '</td>';
 					if($irregular_shift_user->edited_shift_type == 1){
-						$html .= '<td>午前勤務</td><td>10:00 ~ 13:00</td><td>3:00</td><td class=bg></td><td></td>';
+						$html .= "<td>午前勤務</td><td>10:00 ~ 13:00</td><td>3:00</td><td class=\"bg\"></td><td></td>";
 						$total_work_time += 3;
 						$morining_work_staff_num++;
 					}elseif($irregular_shift_user->edited_shift_type == 2){
-						$html .= '<td>午後勤務</td><td>13:00 ~ 17:00</td><td>4:00</td><td></td><td class=bg></td>';
+						$html .= "<td>午後勤務</td><td>13:00 ~ 17:00</td><td>4:00</td><td></td><td class=\"bg\"></td>";
 						$total_work_time += 4;
 						$afternoon_work_staff_num++;
 					}elseif($irregular_shift_user->edited_shift_type == 3){
-						$html .= '<td>フル勤務</td><td>10:00 ~ 17:00</td><td>6:00</td><td class=bg></td><td class=bg></td>';
+						$html .= "<td>フル勤務</td><td>10:00 ~ 17:00</td><td>6:00</td><td class=\"bg\"></td><td class=\"bg\"></td>";
 						$total_work_time += 6;
 						$morining_work_staff_num++;
 						$afternoon_work_staff_num++;
@@ -89,7 +89,7 @@ class Controller_Shift_Irregular extends Controller
 		}
 		//return $css . $html;
 		Package::load('pdf');
-    $pdf = Pdf::factory('tcpdf')->init("P", "mm", "A4", true, "UTF-8");
+    $pdf = Pdf::factory('tcpdf')->init("P", "mm", "A3", true, "UTF-8");
     $pdf->setPrintHeader(false);
     $pdf->setPrintFooter(false);
     $pdf->AddPage();
