@@ -4,7 +4,10 @@ class Model_Irregular_Type extends \Orm\Model
 {
 	protected static $_properties = array(
 		'id',
-		'irregular_type_name',
+		'type_name',
+		'type_start_time',
+		'type_end_time',
+		'type_working_time',
 		'created_at',
 		'updated_at',
 	);
