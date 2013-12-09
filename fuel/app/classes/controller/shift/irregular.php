@@ -26,4 +26,15 @@ class Controller_Shift_Irregular extends Controller
 		return $view;
 	}
 
+	public function action_output_pdf($id = null){
+		Package::load('pdf');
+    $pdf = Pdf::factory('tcpdf')->init("L", "mm", "A4", true, "UTF-8");
+    $pdf->setPrintHeader(false);
+    $pdf->setPrintFooter(false);
+    $pdf->AddPage();
+    $pdf->SetFont('kozminproregular', '', 12);
+    $pdf->writeHTML('<h2>火星書</h2>', false, false, false, false, 'C');
+    $pdf->Output("test.pdf", "I");
+	}
+
 }
