@@ -16,7 +16,7 @@ class Controller_Shift extends Controller_Application
 	public function action_request()
 	{
 		$datetime = new \DateTime();
-		$today = $datetime->format('Y-m-d H:i:s:');
+		$today = $datetime->format('Y-m-d');
 		$data['receiving_irregulars'] = Model_Irregular::find('all', array('where' => array(array('irregular_limitdate', '>', $today), array('irregular_condition' => 1))));
 		$view = View::forge('layout/application');
 		$view->header = View::forge('layout/header');
