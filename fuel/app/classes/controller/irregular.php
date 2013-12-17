@@ -18,6 +18,10 @@ class Controller_Irregular extends Controller_Application
 
 	public function action_request($id = null)
 	{
+/*		if(empty($id)){
+			Response::redirect('irregular');
+		}
+/**/
 		$data['id'] = $id;
 		$user_id = Auth::get('id');
 		$data['irregular_days'] = Model_Irregular_Day::find('all', array('where' => array(array('irregular_id', '=', $id), array('irregular_day_condition' => 1))));
@@ -63,18 +67,6 @@ class Controller_Irregular extends Controller_Application
 		$view->header = View::forge('layout/header');
 		$view->left_side_menu = View::forge('layout/left_side_menu');
 		$view->contents = View::forge('irregular/request' ,$data);
-		$view->footer = View::forge('layout/footer');
-		return $view; 
-	}
-
-	public function action_request_edit($id = null)
-	{
-		$user_id = Auth::get('id');
-		$data['irregular_user'] = Model_Irregular_User::find('all', array('where' => array(array('user_id', '=', $user_id),array('irregular_day_id', '=', $id) )));
-		$view = View::forge('layout/application');
-		$view->header = View::forge('layout/header');
-		$view->left_side_menu = View::forge('layout/left_side_menu');
-		$view->contents = View::forge('irregular/request_edit' ,$data);
 		$view->footer = View::forge('layout/footer');
 		return $view; 
 	}
