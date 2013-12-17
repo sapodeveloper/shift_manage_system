@@ -13,7 +13,7 @@ class Create_irregular
 			'irregular_limitdate' => array('type' => 'date'),
 			'irregular_condition' => array('type' => 'boolean'),
 			'created_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-			'updated_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
+			'updated_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0, 'null' => true),
 
 		), array('id'));
 
