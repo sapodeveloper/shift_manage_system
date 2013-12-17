@@ -1,7 +1,19 @@
-<h3>シフト申請</h3>
+<h6 class="uk-article-title">
+	12月イレギュラーシフトの申請
+</h6>
 <?php echo Form::open(array("action" => "irregular/request/".$id)); ?>
 <?php $i=1; ?>
 <table class="uk-table uk-table-striped uk-text-bold uk-text-large">
+	<thead>
+		<tr>
+			<td class="uk-text-center" colspan="2">
+				<blockquote>勤務可能な時間帯をクリックしてください。</blockquote>
+			</td>
+			<td class="uk-text-center">
+				<blockquote>備考</blockquote>
+			</td>
+		</tr>
+	</thead>
 	<tbody>
 <?php foreach($irregular_days as $irregular_day): ?>
 		<tr>
