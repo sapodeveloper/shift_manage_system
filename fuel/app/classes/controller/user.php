@@ -35,7 +35,11 @@ class Controller_User extends Controller_Application
 				$user->email = $email;
 			}
 			$user->year = Input::post('year');
-			$user->save();
+			if($user->save()){
+				Helper_Log::write_log(1, $user->full_name."さんの情報を正常に更新しました。", 1);
+			}else{
+				Helper_Log::write_log(1, $user->full_name."さんの情報の情報更新に失敗しました。", 0);
+			}
 			Response::redirect('user');
 		}
 		$department_data = Model_Department::find('all', array('where' => array('condition' => 1)));
@@ -76,7 +80,11 @@ class Controller_User extends Controller_Application
 			$user = Model_User::find($user_id);
 			if($new_password == $check_new_password)
 			{
-				Auth::change_password($old_password, $new_password, $user->username);
+				if(Auth::change_password($old_password, $new_password, $user->username)){
+					Helper_Log::write_log(1, $user->full_name."さんのパスワードを正常に更新しました。", 1);
+				}else{
+					Helper_Log::write_log(1, $user->full_name."さんのパスワードの更新に失敗しました。", 0);
+				}
 				Response::redirect('user');
 			}
 		}
