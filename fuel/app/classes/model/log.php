@@ -14,11 +14,11 @@ class Model_Log extends \Orm\Model
 	protected static $_observers = array(
 		'Orm\Observer_CreatedAt' => array(
 			'events' => array('before_insert'),
-			'mysql_timestamp' => false,
+			'mysql_timestamp' => true,
 		),
 		'Orm\Observer_UpdatedAt' => array(
 			'events' => array('before_update'),
-			'mysql_timestamp' => false,
+			'mysql_timestamp' => true,
 		),
 	);
 	protected static $_table_name = 'logs';
