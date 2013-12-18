@@ -18,12 +18,12 @@ class Controller_Irregular extends Controller_Application
 
 	public function action_request($id = null)
 	{
-/*		if(empty($id)){
+		if(empty($id)){
 			Response::redirect('irregular');
 		}
-/**/
 		$data['id'] = $id;
 		$user_id = Auth::get('id');
+		$data['irregular_shift'] = Model_Irregular::find('first',array('where'=>array(array('id','=',$id))));
 		$data['irregular_days'] = Model_Irregular_Day::find('all', array('where' => array(array('irregular_id', '=', $id), array('irregular_day_condition' => 1))));
 		if (Input::method() == 'POST')
 		{
@@ -59,6 +59,9 @@ class Controller_Irregular extends Controller_Application
 					'updated_at' => "0",
 				));
 				$irregular_user->save();
+				$data['set'] = "申請";
+			}else{
+				$data['set'] = "更新";
 			}
 			$data['irregular_user'][$i] = Model_Irregular_User::find('last', array('where' => array(array('irregular_day_id', '=', $irregular_day->id),array('user_id', '=', $user_id))));
 			$i++;

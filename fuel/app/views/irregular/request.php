@@ -1,5 +1,5 @@
 <h6 class="uk-article-title">
-	12月イレギュラーシフトの申請
+	<?php echo $irregular_shift->irregular_name; ?>の<?php echo $set; ?>
 </h6>
 <?php echo Form::open(array("action" => "irregular/request/".$id)); ?>
 <?php $i=1; ?>
@@ -68,7 +68,7 @@
 <?php endforeach; ?>
 	</tbody>
 </table>
-<button style="text-align: center;" class="uk-button uk-button-primary uk-h3" type="submit">&nbsp;&nbsp;この内容で申請する&nbsp;<i class="fa fa-share"></i>&nbsp;&nbsp;</button>
+<button style="text-align: center;" class="uk-button uk-button-primary uk-h3" type="submit">&nbsp;&nbsp;この内容で<?php echo $set; ?>する&nbsp;<i class="fa fa-share"></i>&nbsp;&nbsp;</button>
 <?php echo Form::close(); ?>
 <pre>
 <?php //print_r($irregular_user[1]); ?>
