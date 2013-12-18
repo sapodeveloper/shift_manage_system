@@ -45,7 +45,11 @@ class Controller_Admin_User extends Controller_Admin
 			$user->year = Input::post('year');
 			$user->auth_id = Input::post('auth_id');
 			$user->condition = Input::post('condition');
-			$user->save();
+			if($user->save()){
+				Helper_Log::write_log(1, $user->full_name."さんの情報を正常に更新しました。", 1);
+			}else{
+				Helper_Log::write_log(1, $user->full_name."さんの情報の情報更新に失敗しました。", 0);
+			}
 			Response::redirect('admin/user');
 		}
 		$department_data = Model_Department::find('all', array('where' => array('condition' => 1)));
@@ -97,11 +101,22 @@ class Controller_Admin_User extends Controller_Admin
 
 			if ($user->save())
 			{
+				$log = Model_Log::forge(array(
+					'log_type' => 1,
+					'log_message' => $user->full_name."さんを新規登録しました。",
+					'log_condition' => 1,
+				));
+				$log->save();
 				Response::redirect('admin/user');
 			}
-
 			else
 			{
+				$log = Model_Log::forge(array(
+					'log_type' => 1,
+					'log_message' => $user->full_name."さんの新規登録に失敗しました。",
+					'log_condition' => 1,
+				));
+				$log->save();
 				Session::set_flash('error', 'Could not save event.');
 			}
 		}
