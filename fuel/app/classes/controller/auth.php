@@ -32,7 +32,11 @@ class Controller_Auth extends Controller
                     // ログイン成功時
                     $user = Model_User::find('first', array('where' => array('username' => Input::post('username'))));
                     Helper_Log::write_log(1, $user->full_name."さんが正常にログインしました。", 1);
-                    Response::redirect('main/index');
+                    if(Input::post('password') == "saposen"){
+                        Response::redirect('user/change_password');
+                    }else{
+                        Response::redirect('main/index');
+                    }
                 }
                 Helper_Log::write_log(1, Input::post('username')."さんがログインに失敗しました。", 0);
                 $error = 'ログイン失敗に失敗しました';

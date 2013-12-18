@@ -88,35 +88,31 @@ class Controller_Admin_User extends Controller_Admin
 			# 追加登録
 			$full_name = Input::post('frist_name') . ' ' . Input::post('last_name');
 			$user = Model_User::find('last', array('where' => array(array('username', Input::post('username')))));
+			if(Input::post('department_id')){
+				$cource_id = 1;
+			}else{
+				$cource_id = Input::post('cource_id');
+			}
 			$user->set(array(
 				'full_name' => $full_name,
 				'frist_name' => Input::post('frist_name'),
 				'last_name' => Input::post('last_name'),
 				'year' => Input::post('year'),
 				'department_id' => Input::post('department_id'),
-				'cource_id' => Input::post('cource_id'),
+				'cource_id' => $cource_id,
 				'group_id' => Input::post('group_id'),
 				'condition' => 1,
 			));
 
 			if ($user->save())
 			{
-				$log = Model_Log::forge(array(
-					'log_type' => 1,
-					'log_message' => $user->full_name."さんを新規登録しました。",
-					'log_condition' => 1,
-				));
-				$log->save();
+				Helper_Mail::send_new_user_mail(Input::post('email'), $user->full_name, Input::post('username'));
+				Helper_Log::write_log(1, $user->full_name."さんを新規登録しました。", 1);
 				Response::redirect('admin/user');
 			}
 			else
 			{
-				$log = Model_Log::forge(array(
-					'log_type' => 1,
-					'log_message' => $user->full_name."さんの新規登録に失敗しました。",
-					'log_condition' => 1,
-				));
-				$log->save();
+				Helper_Log::write_log(1, $user->full_name."さんの新規登録に失敗しました。", 0);
 				Session::set_flash('error', 'Could not save event.');
 			}
 		}
