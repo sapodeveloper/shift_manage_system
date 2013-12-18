@@ -9,7 +9,7 @@ class Helper_Mail {
 			$body .= "シフト管理システムへのユーザ登録がされました。\r";
 			$body .= "ログインID : ". $send_login_name ."\r";
 			$body .= "初期パスワード : saposen\r";
-			$body .= "URL : http://sapowork.cc.it-hiroshima.ac.jp/shift(予定) \r";
+			//$body .= "URL : http://sapowork.cc.it-hiroshima.ac.jp/shift(予定) \r";
 			$body .= "初回ログイン後にパスワード変更ページにリダイレクトするので、パスワードの変更をお願いします。";
 			$email->body($body);
 			try {
