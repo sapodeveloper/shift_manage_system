@@ -33,7 +33,7 @@ class Create_irregular
 		\DB::insert($table)->set(array('irregular_name' => 'テストイレギュラーシフト2', 
 																	 'irregular_enabledate' => $next_3week,
 																	 'irregular_limitdate' => $next_2week,
-																	 'irregular_condition' => 1))->execute();
+																	 'irregular_condition' => 3))->execute();
 	}
 
 	public function down()

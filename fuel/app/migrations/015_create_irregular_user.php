@@ -19,7 +19,6 @@ class Create_irregular_user
 
 		$table = 'irregular_user';
 		$rand_shift_type = array(1,2,3);
-		for ($irregular_shift = 1; $irregular_shift <= 2; $irregular_shift++){
 			for($loop = 1; $loop <= 10; $loop++){
 				for ($user_id=  2; $user_id <= 7; $user_id++) { 
 					\DB::insert($table)->set(array('user_id' => $user_id, 
@@ -29,7 +28,6 @@ class Create_irregular_user
 																		 'user_comment' => "test data"))->execute();
 				}
 			}
-		}
 	}
 
 	public function down()
