@@ -19,6 +19,7 @@
 <li class="uk-parent"><a href="#"><i class="fa fa-cogs"></i>&nbsp;内部項目</a>
 	<ul class="uk-nav-sub">
 		<li><?php echo Html::anchor('admin/user', '<i class="fa fa-sort-alpha-asc"></i>&nbsp;名簿管理'); ?></li>
+		<li><?php echo Html::anchor('admin/log', '<i class="fa fa-list-alt"></i>&nbsp;ログ管理'); ?></li>
 	</ul>
 </li>		
 

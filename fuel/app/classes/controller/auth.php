@@ -30,10 +30,14 @@ class Controller_Auth extends Controller
             if ($form->validation()->run()) {
                 if ($auth->login(Input::post('username'), Input::post('password'))) {
                     // ログイン成功時
+                    $user = Model_User::find('first', array('where' => array('username' => Input::post('username'))));
+                    Helper_Log::write_log(1, $user->full_name."さんが正常にログインしました。", 1);
                     Response::redirect('main/index');
                 }
+                Helper_Log::write_log(1, Input::post('username')."さんがログインに失敗しました。", 0);
                 $error = 'ログイン失敗に失敗しました';
             } else {
+                Helper_Log::write_log(1, Input::post('username')."さんがログインに失敗しました。", 0);
                 $error = 'ログイン失敗に失敗しました';
             }
         }
@@ -46,6 +50,9 @@ class Controller_Auth extends Controller
 
     public function action_logout()
     {
+        $user_id = Auth::get('id');
+        $user = Model_User::find($user_id);
+        Helper_Log::write_log(1, $user->full_name."さんがログアウトしました。", 1);
         Auth::logout();
         Response::redirect('/');
     }
