@@ -46,8 +46,8 @@
 				<td><?php echo count(${'irregular_shift_users'.$day_id}); ?>名</td>
 				<td colspan="2">合計勤務時間</td>
 				<td><?php echo $total_work_time ?>時間</td>
-				<td><?php echo $morining_work_staff_num; ?></td>
-				<td><?php echo $afternoon_work_staff_num; ?></td>
+				<td><?php Helper_Shift::irregular_work_staff_count($irregular_shift_day->id ,1); ?></td>
+				<td><?php Helper_Shift::irregular_work_staff_count($irregular_shift_day->id ,2); ?></td>
 			</tr>
 		</table>
 		<br />

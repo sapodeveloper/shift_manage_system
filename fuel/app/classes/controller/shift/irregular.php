@@ -14,13 +14,10 @@ class Controller_Shift_Irregular extends Controller
 		$data['irregular_shift_days'] = Model_Irregular_Day::find('all', array('where' => array('irregular_id' => $id)));
 		$data['irregular_shift_users'] = Model_Irregular_User::find('all', array('where' => array('irregular_day_id' => 1)));
 		$irregular_shift_days = Model_Irregular_Day::find('all', array('where' => array('irregular_id' => $id)));
+		$day_id = 1;
 		foreach ($irregular_shift_days as $irregular_shift_day) {
-			if($irregular_shift_day->id > 5){
-				$day_id = ($irregular_shift_day->id)%5+1;
-			}else{
-				$day_id = $irregular_shift_day->id;
-			}
-			$data["irregular_shift_users$day_id"] = Model_Irregular_User::find('all', array('where' => array('irregular_day_id' => $day_id)));
+			$data["irregular_shift_users$day_id"] = Model_Irregular_User::find('all', array('where' => array('irregular_day_id' => $irregular_shift_day->id)));
+			$day_id++;
 		}
 		$view = View::forge('layout/application');
 		$view->header = View::forge('layout/header');
@@ -45,7 +42,7 @@ class Controller_Shift_Irregular extends Controller
 			}else{
 				$day_id = $irregular_shift_day->id;
 			}
-			$irregular_shift_users{$day_id} = Model_Irregular_User::find('all', array('where' => array('irregular_day_id' => $day_id)));
+			$irregular_shift_users{$day_id} = Model_Irregular_User::find('all', array('where' => array('irregular_day_id' => $irregular_shift_day->id)));
 		}
 		$css = '<style> td.bg { background-color: #00bfff; } </style>';
 		$html = '<meta charset="utf-8"><h3>';
