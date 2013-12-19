@@ -33,14 +33,14 @@
 					<td>
 						<div class="uk-button-group" data-uk-button-checkbox>
 							<?php if($irregular_shift_user->edited_shift_type == 1): ?>
-								<button class="uk-button uk-button-primary uk-active"><i class="fa fa-sun-o"></i> 10時〜13時（午前）</button>
-								<button class="uk-button uk-button-primary"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</button>
+								<div class="uk-button uk-button-primary uk-active"><i class="fa fa-sun-o"></i> 10時〜13時（午前）</div>
+								<div class="uk-button uk-button-primary"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</div>
 							<?php elseif($irregular_shift_user->edited_shift_type == 2): ?>
-								<button class="uk-button uk-button-primary"><i class="fa fa-sun-o"></i> 10時〜13時（午前）</button>
-								<button class="uk-button uk-button-primary uk-active"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</button>
+								<div class="uk-button uk-button-primary"><i class="fa fa-sun-o"></i> 10時〜13時（午前）</div>
+								<div class="uk-button uk-button-primary uk-active"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</div>
 							<?php elseif($irregular_shift_user->edited_shift_type == 3): ?>
-								<button class="uk-button uk-button-primary uk-active"><i class="fa fa-sun-o"></i> 10時〜13時（午前）</button>
-								<button class="uk-button uk-button-primary uk-active"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</button>
+								<div class="uk-button uk-button-primary uk-active"><i class="fa fa-sun-o"></i> 10時〜13時（午前）</div>
+								<div class="uk-button uk-button-primary uk-active"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</div>
 							<?php endif; ?>
 						</div>
 					</td>
