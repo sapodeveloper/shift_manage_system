@@ -151,4 +151,12 @@ class Controller_Admin_User extends Controller_Admin
  		return $view;
 	}
 
+	public function action_reset_password($id = null)
+	{
+		$user = Model_User::find($id);
+		$new_password = Auth::reset_password($user->username);
+		Auth::change_password($new_password, "saposen", $user->username);
+		Helper_Mail::reset_password_mail($user->email, $user->full_name);
+	}
+
 }
