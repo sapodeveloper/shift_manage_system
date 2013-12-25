@@ -22,7 +22,7 @@
 				<tr>
 					<td>メールアドレス</td>
 					<td>
-						<?php echo Form::input('email', Input::post('email', isset($user) ? $user->email : ''), array('class' => '', 'placeholder'=>'メールアドレス')); ?>
+						<?php echo $user->email; ?>
 					</td>
 				</tr>
 				<tr id="department">

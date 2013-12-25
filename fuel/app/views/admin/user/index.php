@@ -39,7 +39,6 @@
 				<td>
 					<?php echo Html::anchor('admin/user/view/'.$user->id, '詳細', array('class' => 'uk-button')); ?>
 					<?php echo Html::anchor('admin/user/edit/'.$user->id, '編集', array('class' => 'uk-button')); ?>
-					<?php echo Html::anchor('admin/user/delete/'.$user->id, '削除', array('class' => 'uk-button', 'onclick' => "return confirm('削除します。よろしいですか？')")); ?>
 					<button class='uk-button' onclick="javascript:reset_password(<?php echo $user->id; ?>);">パスワードリセット</button>
 				</td>
 			</tr>

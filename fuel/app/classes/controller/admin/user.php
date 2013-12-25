@@ -30,7 +30,6 @@ class Controller_Admin_User extends Controller_Admin
 		if (Input::method() == 'POST')
 		{
 			$full_name = Input::post('frist_name') . ' ' . Input::post('last_name');
-			$email = Input::post('email');
 			$user = Model_User::find($id);
 			$user->username = Input::post('username');
 			$user->full_name = $full_name;
@@ -38,10 +37,6 @@ class Controller_Admin_User extends Controller_Admin
 			$user->last_name = Input::post('last_name');
 			$user->department_id = Input::post('department_id');
 			$user->cource_id = Input::post('cource_id');
-			if($user->email != $email)
-			{
-				$user->email = $email;
-			}
 			$user->year = Input::post('year');
 			$user->auth_id = Input::post('auth_id');
 			$user->condition = Input::post('condition');
@@ -84,14 +79,14 @@ class Controller_Admin_User extends Controller_Admin
 		if (Input::method() == 'POST')
 		{
 			# create_userによるセキュア登録
-			Auth::instance()->create_user(Input::post('username'), 'saposen', Input::post('email'));
+			Auth::instance()->create_user(Input::post('username'), 'saposen', Input::post('username'). '@cc.it-hiroshima.ac.jp');
 			# 追加登録
 			$full_name = Input::post('frist_name') . ' ' . Input::post('last_name');
 			$user = Model_User::find('last', array('where' => array(array('username', Input::post('username')))));
 			if(Input::post('department_id')){
-				$cource_id = 1;
-			}else{
 				$cource_id = Input::post('cource_id');
+			}else{
+				$cource_id = 1;
 			}
 			$user->set(array(
 				'full_name' => $full_name,
@@ -106,7 +101,7 @@ class Controller_Admin_User extends Controller_Admin
 
 			if ($user->save())
 			{
-				Helper_Mail::send_new_user_mail(Input::post('email'), $user->full_name, Input::post('username'));
+				Helper_Mail::send_new_user_mail(Input::post('username'). '@cc.it-hiroshima.ac.jp', $user->full_name, Input::post('username'));
 				Helper_Log::write_log(1, $user->full_name."さんを新規登録しました。", 1);
 				Response::redirect('admin/user');
 			}
