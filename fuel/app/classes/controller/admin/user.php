@@ -112,7 +112,6 @@ class Controller_Admin_User extends Controller_Admin
 			{
 				Helper_Log::write_log(1, $user->full_name."さんの新規登録に失敗しました。", 0);
 				Session::set_flash('error', $user->full_name."さんの新規登録に失敗しました");
-				Session::set_flash('error', 'Could not save event.');
 			}
 		}
 
@@ -156,6 +155,7 @@ class Controller_Admin_User extends Controller_Admin
 		$new_password = Auth::reset_password($user->username);
 		Auth::change_password($new_password, "saposen", $user->username);
 		Helper_Mail::reset_password_mail($user->email, $user->full_name);
+		Helper_Log::write_log(0, $user->full_name."さんのパスワードをリセットしました", 1);
 	}
 
 }

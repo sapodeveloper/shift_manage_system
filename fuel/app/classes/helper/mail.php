@@ -36,13 +36,13 @@ class Helper_Mail {
 			$email->body($body);
 			try {
 			    $email->send();
-			    Helper_Log::write_log(0, $send_mail_address."へ新規登録メールを正常に送信しました。", 1);
+			    Helper_Log::write_log(0, $send_mail_address."へパスワードリセットメールを正常に送信しました。", 1);
 			}
 			catch (\EmailValidationFailedException $e) {
-				Helper_Log::write_log(0, $send_mail_address."への新規登録メールの送信に失敗しました", 0);
+				Helper_Log::write_log(0, $send_mail_address."へのパスワードリセットメールの送信に失敗しました", 0);
 			}
 			catch (\EmailSendingFailedException $e) {
-			  Helper_Log::write_log(0, $send_mail_address."への新規登録メールの送信に失敗しました", 0);
+			  Helper_Log::write_log(0, $send_mail_address."へのパスワードリセットメールの送信に失敗しました", 0);
 			}
     }
 }
