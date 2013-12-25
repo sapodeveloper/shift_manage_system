@@ -22,7 +22,6 @@ class Controller_User extends Controller_Application
 		if (Input::method() == 'POST')
 		{
 			$full_name = Input::post('frist_name') . ' ' . Input::post('last_name');
-			$email = Input::post('email');
 			$user = Model_User::find($user_id);
 			$user->username = Input::post('username');
 			$user->full_name = $full_name;
@@ -30,10 +29,6 @@ class Controller_User extends Controller_Application
 			$user->last_name = Input::post('last_name');
 			$user->department_id = Input::post('department_id');
 			$user->cource_id = Input::post('cource_id');
-			if($user->email != $email)
-			{
-				$user->email = $email;
-			}
 			$user->year = Input::post('year');
 			if($user->save()){
 				Helper_Log::write_log(1, $user->full_name."さんの情報を正常に更新しました。", 1);
