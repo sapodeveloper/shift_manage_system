@@ -1,9 +1,12 @@
 <script type="text/javascript">
 	function reset_password(value){
-		confirm('パスワードをリセットします。よろしいですか？')
-		var url = 'user/reset_password/';
-		url += value
-		$.ajax(url);
+		if(confirm('パスワードをリセットします。よろしいですか？')){
+			var url = 'user/reset_password/';
+			url += value
+			$.ajax(url);
+		}else{
+			alert('キャンセルされました');
+		}
 	}
 </script>
 <h2>ユーザ情報</h2>
