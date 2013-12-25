@@ -33,6 +33,22 @@
 		<div class="tm-main uk-width-medium-4-5">
 			<div class="uk-grid">
 				<div class="uk-width-medium-10-10">
+					<?php if (Session::get_flash('success')): ?>
+						<div class="uk-alert uk-alert-success" data-uk-alert>
+							<a href="" class="uk-alert-close uk-close"></a>
+							<p>
+								<?php echo implode('</p><p>', e((array) Session::get_flash('success'))); ?>
+							</p>
+						</div>
+					<?php endif; ?>
+					<?php if (Session::get_flash('error')): ?>
+						<div class="uk-alert uk-alert-danger" data-uk-alert>
+							<a href="" class="uk-alert-close uk-close"></a>
+							<p>
+							<?php echo implode('</p><p>', e((array) Session::get_flash('error'))); ?>
+							</p>
+						</div>
+					<?php endif; ?>
 					<article class="uk-articleuk-panel uk-panel-box">
 						<?php echo $contents; ?>
 					</article>

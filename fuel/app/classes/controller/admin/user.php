@@ -42,8 +42,10 @@ class Controller_Admin_User extends Controller_Admin
 			$user->condition = Input::post('condition');
 			if($user->save()){
 				Helper_Log::write_log(1, $user->full_name."さんの情報を正常に更新しました。", 1);
+				Session::set_flash('success', $user->full_name."さんの情報を正常に更新しました。");
 			}else{
 				Helper_Log::write_log(1, $user->full_name."さんの情報の情報更新に失敗しました。", 0);
+				Session::set_flash('error', $user->full_name."さんの情報の情報更新に失敗しました。");
 			}
 			Response::redirect('admin/user');
 		}
@@ -103,12 +105,13 @@ class Controller_Admin_User extends Controller_Admin
 			{
 				Helper_Mail::send_new_user_mail(Input::post('username'). '@cc.it-hiroshima.ac.jp', $user->full_name, Input::post('username'));
 				Helper_Log::write_log(1, $user->full_name."さんを新規登録しました。", 1);
+				Session::set_flash('success', $user->full_name."さんを新規登録しました");
 				Response::redirect('admin/user');
 			}
 			else
 			{
 				Helper_Log::write_log(1, $user->full_name."さんの新規登録に失敗しました。", 0);
-				Session::set_flash('error', 'Could not save event.');
+				Session::set_flash('error', $user->full_name."さんの新規登録に失敗しました");
 			}
 		}
 
@@ -152,6 +155,7 @@ class Controller_Admin_User extends Controller_Admin
 		$new_password = Auth::reset_password($user->username);
 		Auth::change_password($new_password, "saposen", $user->username);
 		Helper_Mail::reset_password_mail($user->email, $user->full_name);
+		Helper_Log::write_log(0, $user->full_name."さんのパスワードをリセットしました", 1);
 	}
 
 }
