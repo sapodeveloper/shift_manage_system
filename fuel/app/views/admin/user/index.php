@@ -1,5 +1,6 @@
 <script type="text/javascript">
 	function reset_password(value){
+		confirm('パスワードをリセットします。よろしいですか？')
 		var url = 'user/reset_password/';
 		url += value
 		$.ajax(url);
