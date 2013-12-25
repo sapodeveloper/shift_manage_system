@@ -32,10 +32,10 @@ class Controller_User extends Controller_Application
 			$user->year = Input::post('year');
 			if($user->save()){
 				Helper_Log::write_log(1, $user->full_name."さんの情報を正常に更新しました。", 1);
-				Session::set_flash('success', 'ユーザ情報を更新しました');
+				Session::set_flash('success', $user->full_name."さんの情報を正常に更新しました。");
 			}else{
 				Helper_Log::write_log(1, $user->full_name."さんの情報の情報更新に失敗しました。", 0);
-				Session::set_flash('error', 'ユーザ情報の更新に失敗しました');
+				Session::set_flash('error', $user->full_name."さんの情報の情報更新に失敗しました。");
 			}
 			Response::redirect('user');
 		}
@@ -79,10 +79,10 @@ class Controller_User extends Controller_Application
 			{
 				if(Auth::change_password($old_password, $new_password, $user->username)){
 					Helper_Log::write_log(1, $user->full_name."さんのパスワードを正常に更新しました。", 1);
-					Session::set_flash('success', 'パスワードを変更しました');
+					Session::set_flash('success', $user->full_name."さんのパスワードを正常に更新しました。");
 				}else{
 					Helper_Log::write_log(1, $user->full_name."さんのパスワードの更新に失敗しました。", 0);
-					Session::set_flash('error', 'パスワードの更新に失敗しました。');
+					Session::set_flash('error', $user->full_name."さんのパスワードの更新に失敗しました。");
 				}
 				Response::redirect('user');
 			}
