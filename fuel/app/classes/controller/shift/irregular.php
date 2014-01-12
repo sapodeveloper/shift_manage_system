@@ -20,10 +20,7 @@ class Controller_Shift_Irregular extends Controller
 			$day_id++;
 		}
 		$view = View::forge('layout/application');
-		$view->header = View::forge('layout/header');
-		$view->left_side_menu = View::forge('layout/left_side_menu');
 		$view->contents = View::forge('shift/irregular/detail', $data);
-		$view->footer = View::forge('layout/footer');
 		return $view;
 	}
 

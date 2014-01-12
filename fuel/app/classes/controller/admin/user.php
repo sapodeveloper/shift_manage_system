@@ -7,10 +7,7 @@ class Controller_Admin_User extends Controller_Admin
 	{
 		$data['users'] = Model_User::find('all');
 		$view = View::forge('layout/application');
-		$view->header = View::forge('layout/header');
-		$view->left_side_menu = View::forge('layout/left_side_menu');
 		$view->contents = View::forge('admin/user/index', $data);
-		$view->footer = View::forge('layout/footer');
 		return $view;
 	}
 
@@ -18,10 +15,7 @@ class Controller_Admin_User extends Controller_Admin
 	{
 		$data['user'] = Model_User::find($id);
 		$view = View::forge('layout/application');
-		$view->header = View::forge('layout/header');
-		$view->left_side_menu = View::forge('layout/left_side_menu');
 		$view->contents = View::forge('admin/user/view', $data);
-		$view->footer = View::forge('layout/footer');
 		return $view;
 	}
 
@@ -69,10 +63,7 @@ class Controller_Admin_User extends Controller_Admin
 		}
 		$data['user'] = Model_User::find($id);
 		$view = View::forge('layout/application');
-		$view->header = View::forge('layout/header');
-		$view->left_side_menu = View::forge('layout/left_side_menu');
 		$view->contents = View::forge('admin/user/edit', $data);
-		$view->footer = View::forge('layout/footer');
 		return $view;
 	}
 
@@ -130,10 +121,7 @@ class Controller_Admin_User extends Controller_Admin
 		}
 
 		$view = View::forge('layout/application');
-		$view->header = View::forge('layout/header');
-		$view->left_side_menu = View::forge('layout/left_side_menu');
 		$view->contents = View::forge('admin/user/create', $select_data);
-		$view->footer = View::forge('layout/footer');
 		return $view;
 	}
 
