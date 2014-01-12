@@ -6,18 +6,15 @@
 	<?php echo Asset::css('uikit.gradient.css'); ?>
 	<?php echo Asset::css('font-awesome.css'); ?>
 	<?php echo Asset::css('base/jquery.ui.all.css'); ?>
-	<?php echo Asset::css('reset.css'); ?>
-	<?php echo Asset::css('style.css'); ?>
-	<?php echo Asset::css('tooltipster.css'); ?>
 	<?php echo Asset::js('jquery.js'); ?>
 	<?php echo Asset::js('uikit.js'); ?>
 	<?php echo Asset::js('ui/jquery-ui.js'); ?>
 	<?php echo Asset::js('ui/i18n/jquery.ui.datepicker-ja.js'); ?>
 	<?php echo Asset::js('jquery.tooltipster.js'); ?>
   <script>
-      $(document).ready(function() {
-           $('.org-tooltip').tooltipster({});
-      });
+    jQuery( function() {
+		  jQuery( '#jquery-ui-datepicker' ) . datepicker();
+		});
   </script>
 </head>
 <body class="tm-background">
@@ -72,7 +69,7 @@
 	<br>
 	<!-- footer -->
 	<footer>
-		<div style="text-align: center; ">
+		<div style="text-align: center; font-size: small;">
 			<h6>Copyright ©<?php echo date('Y'); ?> HIT ISMC Support Center All Rights Reserved.</h6>
 		</div>
 	</footer>
