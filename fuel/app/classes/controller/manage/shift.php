@@ -12,6 +12,11 @@ class Controller_Manage_Shift extends Controller_Manage
 		$view = View::forge('layout/application');
 		$view->contents = View::forge('manage/shift/index', $data);
 		return $view;
+
+		if(Input::method() == 'POST')
+		{
+			$key= Input::post('key');
+		}
 	}
 
 	public function action_new()

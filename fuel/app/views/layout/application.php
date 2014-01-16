@@ -11,6 +11,7 @@
 			<?php echo Asset::js('ui/jquery-ui.js'); ?>
 			<?php echo Asset::js('ui/i18n/jquery.ui.datepicker-ja.js'); ?>
 			<?php echo Asset::js('jquery.tooltipster.js'); ?>
+			<?php echo Asset::js('datepicker.js'); ?>
 		  <script>
 		    jQuery( function() {
 				  jQuery( '#jquery-ui-datepicker' ) . datepicker();

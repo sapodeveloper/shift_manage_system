@@ -38,7 +38,8 @@
 			<tr>
 				<td><?php echo $r_irregular->irregular_name; ?></td>
 				<td><?php echo date( 'Y年m月d日 H時i分', strtotime($r_irregular->irregular_limitdate)); ?></td>
-				<td><?php echo Form::submit('submit', '削除', array('class' => '')); ?></td>
+				<td><input type="hidden" name="key" value="key">
+				<?php echo Form::submit('submit', '削除', array('class' => '')); ?></td>
 				<td><a href="#">確認</a></td>
 			</tr>
 		<?php endforeach; ?>
