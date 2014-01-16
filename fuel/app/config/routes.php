@@ -5,4 +5,5 @@ return array(
 	
 	'hello(/:name)?' => array('welcome/hello', 'name' => 'hello'),
 	'manage/shift/irregular/edit/edit_shift_day/:day_id' => 'manage/shift/irregular/edit_shift_day/:day_id',
+	'manage/shift/irregular/edit/edit_shift_user/:irregular_user_id' => 'manage/shift/irregular/edit_shift_user/:irregular_user_id',
 );
