@@ -1,3 +1,12 @@
+<script type="text/javascript">
+	function edit_shift_user(value){
+		
+			var url = 'edit_shift_user/';
+			url += value
+			$.ajax(url);
+		
+	}
+</script>
 <style type="text/css">
 	td {
 		vertical-align: middle !important;
@@ -11,7 +20,7 @@
 				<td></td>
 			</tr>
 			<?php foreach ($irregular_shift_users as $irregular_shift_user): ?>
-				<?php echo Form::open(array("action" => "manage/shift/irregular/edit_shift_user/".$irregular_shift_user->id)); ?>
+				
 				<tr>
 					<td rowspan="2"><?php echo $irregular_shift_user->users->full_name; ?></td>
 					<td>希望</td>
@@ -25,7 +34,7 @@
 							<?php endif; ?>
 					</td>
 					<td rowspan="2">
-						<button class="uk-button uk-button-success">更新</button>
+						<button class='uk-button uk-button-success' onclick="javascript:edit_shift_user(<?php echo $irregular_shift_user->id; ?>);">更新</button>
 					</td>
 				</tr>
 				<tr>
@@ -45,7 +54,7 @@
 						</div>
 					</td>
 				</tr>
-				<?php echo Form::close(); ?>
+				
 			<?php endforeach; ?>
 	</table>
 </div>
