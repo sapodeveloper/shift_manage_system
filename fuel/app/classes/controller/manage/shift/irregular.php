@@ -71,7 +71,7 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 
 	public function action_edit_shift_user($irregular_id = null)
 	{
-		Response::redirect('/main');
+		
 	}
 
 }
