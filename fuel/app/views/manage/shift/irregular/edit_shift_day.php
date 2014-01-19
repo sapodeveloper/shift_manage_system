@@ -1,5 +1,9 @@
 <script type="text/javascript">
 	function edit_shift_user(value){
+		var worker_id = 'work'+value
+		var edit = document.getElementsByName(worker_id);
+		var val1 = $(".check1", "#worker_id").hasClass("uk-active");
+		alert(val1);
 		
 			var url = 'edit_shift_user/';
 			url += value
@@ -22,7 +26,7 @@
 			<?php foreach ($irregular_shift_users as $irregular_shift_user): ?>
 				
 				<tr>
-					<td rowspan="2"><?php echo $irregular_shift_user->users->full_name; ?></td>
+					<td rowspan="3"><?php echo $irregular_shift_user->users->full_name; ?></td>
 					<td>希望</td>
 					<td>
 							<?php if($irregular_shift_user->request_shift_type == 1): ?>
@@ -33,23 +37,35 @@
 								フル勤務
 							<?php endif; ?>
 					</td>
-					<td rowspan="2">
+					<td rowspan="3">
 						<button class='uk-button uk-button-success' onclick="javascript:edit_shift_user(<?php echo $irregular_shift_user->id; ?>);">更新</button>
+					</td>
+				</tr>
+				<tr>
+					<td>編集後</td>
+					<td>
+							<?php if($irregular_shift_user->edited_shift_type == 1): ?>
+								午前勤務
+							<?php elseif($irregular_shift_user->edited_shift_type == 2): ?>
+								午後勤務
+							<?php elseif($irregular_shift_user->edited_shift_type == 3): ?>
+								フル勤務
+							<?php endif; ?>
 					</td>
 				</tr>
 				<tr>
 					<td>編集</td>
 					<td>
-						<div class="uk-button-group" data-uk-button-checkbox>
+						<div class="uk-button-group" id="work<?php echo $irregular_shift_user->id; ?>" data-uk-button-checkbox>
 							<?php if($irregular_shift_user->edited_shift_type == 1): ?>
-								<div class="uk-button uk-button-primary uk-active"><i class="fa fa-sun-o"></i> 10時〜13時（午前）</div>
-								<div class="uk-button uk-button-primary"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</div>
+								<button class="uk-button uk-button-primary uk-active check1"><i class="fa fa-sun-o"></i> 10時〜13時（午前）</button>
+								<button class="uk-button uk-button-primary check2"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</button>
 							<?php elseif($irregular_shift_user->edited_shift_type == 2): ?>
-								<div class="uk-button uk-button-primary"><i class="fa fa-sun-o"></i> 10時〜13時（午前）</div>
-								<div class="uk-button uk-button-primary uk-active"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</div>
+								<button class="uk-button uk-button-primary check1"><i class="fa fa-sun-o"></i> 10時〜13時（午前）</button>
+								<button class="uk-button uk-button-primary uk-active check2"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</button>
 							<?php elseif($irregular_shift_user->edited_shift_type == 3): ?>
-								<div class="uk-button uk-button-primary uk-active"><i class="fa fa-sun-o"></i> 10時〜13時（午前）</div>
-								<div class="uk-button uk-button-primary uk-active"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</div>
+								<button class="uk-button uk-button-primary uk-active check1"><i class="fa fa-sun-o"></i> 10時〜13時（午前）</button>
+								<button class="uk-button uk-button-primary uk-active check2"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</button>
 							<?php endif; ?>
 						</div>
 					</td>
