@@ -36,10 +36,7 @@
 			url += "/"
 			url += irregular_id;
 			$.ajax(url, {"complete": function(){
-				$.ajax('../entry_list', {"complete": function(xhr,status){
-					window.xhr = xhr;
-					$("#entry_list").html($(xhr.responseText));
-				}})
+				location.reload();
 			}});
 	});
 		$(".unlock_button").click(function(){
@@ -50,10 +47,7 @@
 			url += "/"
 			url += irregular_id;
 			$.ajax(url, {"complete": function(){
-				$.ajax('../entry_list', {"complete": function(xhr,status){
-					window.xhr = xhr;
-					$("#entry_list").html($(xhr.responseText));
-				}})
+				location.reload();
 			}})
 		})
 	});
