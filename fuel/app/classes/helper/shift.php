@@ -153,7 +153,23 @@ class Helper_Shift {
         ->and_where('edited_shift_type', 3)
         ->execute();
     echo count($morning)*3 + count($afternoon) * 4 + count($full) * 6;
-  }   
+  }
+
+  // 当該レギュラーシフトグループにおいて特定ユーザが編集ロックされているか調べる
+  public static function user_shifts_lock($irregular_id, $user_id){
+    $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
+    $query = DB::select('*')
+        ->from('irregular_user')
+        ->where('user_id', $user_id)
+        ->and_where('irregular_day_id', 'in', $irregular_day_id)
+        ->and_where('condition', 1)
+        ->execute();
+    if(count($query)>0){
+        return "true";
+    }else{
+        return "false";
+    }
+  }
 
 
 }

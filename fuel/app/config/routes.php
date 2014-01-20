@@ -6,6 +6,8 @@ return array(
 	//manageコントローラ以下イレギュラーシフト関係のルーティング		
 	'manage/shift/irregular/edit_shift/:id/info' => 'manage/shift/irregular/info/:id',
 	'manage/shift/irregular/edit_shift/:id/entry_list' => 'manage/shift/irregular/entry_list/:id',
+	'manage/shift/irregular/edit_shift/:id/lock_user_shifts/:user_id/:irregular_id' => 'manage/shift/irregular/lock_user_shifts/:user_id/:irregular_id',
+	'manage/shift/irregular/edit_shift/:id/unlock_user_shifts/:user_id/:irregular_id' => 'manage/shift/irregular/unlock_user_shifts/:user_id/:irregular_id',
 	'manage/shift/irregular/edit_shift/:id/edit_shift_day/:day_id' => 'manage/shift/irregular/edit_shift_day/:day_id',
 	'manage/shift/irregular/edit_shift/:id/edit_shift_user/:irregular_user_id' => 'manage/shift/irregular/edit_shift_user/:irregular_user_id',
 	'manage/shift/irregular/edit_shift/:id/edit_user_shift/:irregular_user_id/:irregular_type_id' => 'manage/shift/irregular/edit_user_shift/:irregular_user_id/:irregular_type_id',
