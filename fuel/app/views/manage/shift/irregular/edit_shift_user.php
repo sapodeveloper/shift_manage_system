@@ -2,13 +2,7 @@
 	<td rowspan="3"><?php echo $irregular_shift_user->users->full_name; ?></td>
 	<td>希望</td>
 	<td>
-			<?php if($irregular_shift_user->request_shift_type == 1): ?>
-				午前勤務
-			<?php elseif($irregular_shift_user->request_shift_type == 2): ?>
-				午後勤務
-			<?php elseif($irregular_shift_user->request_shift_type == 3): ?>
-				フル勤務
-			<?php endif; ?>
+			<?php Helper_Shift::irregular_work_type($irregular_shift_user->request_shift_type); ?>
 	</td>
 	<td rowspan="3">
 		<button class='uk-button uk-button-success' onclick="javascript:edit_shift_user(<?php echo $irregular_shift_user->id; ?>);">更新</button>
@@ -17,13 +11,7 @@
 <tr>
 	<td>編集後</td>
 	<td>
-			<?php if($irregular_shift_user->edited_shift_type == 1): ?>
-				午前勤務
-			<?php elseif($irregular_shift_user->edited_shift_type == 2): ?>
-				午後勤務
-			<?php elseif($irregular_shift_user->edited_shift_type == 3): ?>
-				フル勤務
-			<?php endif; ?>
+			<?php Helper_Shift::irregular_work_type($irregular_shift_user->edited_shift_type); ?>
 	</td>
 </tr>
 <tr>
