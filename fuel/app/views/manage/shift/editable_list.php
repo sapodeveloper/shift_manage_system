@@ -16,7 +16,7 @@
 				<td><?php echo $r_irregular->irregular_name; ?></td>
 				<td><?php echo date( 'Y年m月d日', strtotime($r_irregular->irregular_limitdate)); ?></td>
 				<td></td>
-				<td><?php echo Html::anchor('manage/shift/irregular/edit/'.$r_irregular->id, '編集', array('class' => 'uk-button')); ?></td>
+				<td><?php echo Html::anchor('manage/shift/irregular/edit/'.$r_irregular->id.'/info', '編集', array('class' => 'uk-button')); ?></td>
 				<td><a href="#">申請受付を終了する</a></td>
 			</tr>
 		<?php endforeach; ?>
