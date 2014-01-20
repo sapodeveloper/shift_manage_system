@@ -35,4 +35,17 @@ class Helper_Shift {
     	->execute();
 		echo count($morning)*3 + count($afternoon) * 4 + count($full) * 6;
   }
+
+  // 該当イレギュラーシフトの勤務形態を出力する
+  public static function irregular_work_type($irregular_work_type){
+    if ($irregular_work_type == 1) {
+        echo "午前勤務";
+    }elseif ($irregular_work_type == 2) {
+        echo "午後勤務";
+    }elseif ($irregular_work_type == 3) {
+        echo "フル勤務";
+    }elseif ($irregular_work_type == 4) {
+        echo "勤務無し";
+    }
+  }
 }
