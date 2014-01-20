@@ -90,6 +90,26 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 		return $view;
 	}
 
+	public function action_lock_user_shifts()
+	{
+		$irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $this->param('irregular_id'));
+		$update_query = DB::update('irregular_user')
+			->value('condition', 1)
+			->where('user_id', $this->param('user_id'))
+			->and_where('irregular_day_id', 'in', $irregular_day_id)
+			->execute();	
+	}
+
+	public function action_unlock_user_shifts()
+	{
+		$irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $this->param('irregular_id'));
+		$update_query = DB::update('irregular_user')
+			->value('condition', 0)
+			->where('user_id', $this->param('user_id'))
+			->and_where('irregular_day_id', 'in', $irregular_day_id)
+			->execute();	
+	}
+
 	public function action_info()
 	{
 		$data['irregular_shift'] = Model_Irregular::find($this->param('id'));

@@ -13,6 +13,7 @@ class Create_irregular_user
 			'request_shift_type' => array('constraint' => 11, 'type' => 'int'),
 			'edited_shift_type' => array('constraint' => 11, 'type' => 'int'),
 			'user_comment' => array('type' => 'text'),
+			'condition' => array('constraint' => 11, 'type' => 'int'),
 			'created_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
 			'updated_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
 		), array('id'));
@@ -25,6 +26,7 @@ class Create_irregular_user
 																		 'irregular_day_id' => $loop,
 																		 'request_shift_type' => $rand_shift_type[array_rand($rand_shift_type)],
 																		 'edited_shift_type' => $rand_shift_type[array_rand($rand_shift_type)],
+																		 'condition' => 0,
 																		 'user_comment' => "test data"))->execute();
 				}
 			}
