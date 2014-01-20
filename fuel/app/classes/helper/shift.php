@@ -113,5 +113,47 @@ class Helper_Shift {
     echo count($morning)*3 + count($afternoon) * 4 + count($full) * 6;
   }
 
+  // 当該イレギュラーシフトグループの希望勤務時間の合計を求める
+  public static function request_irregular_group_total_work_time($irregular_id){
+    $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
+    $morning = DB::select('*')
+        ->from('irregular_user')
+        ->where('irregular_day_id', 'in', $irregular_day_id)
+        ->and_where('request_shift_type', 1)
+        ->execute();
+    $afternoon = DB::select('*')
+        ->from('irregular_user')
+        ->where('irregular_day_id', 'in', $irregular_day_id)
+        ->and_where('request_shift_type', 2)
+        ->execute();
+    $full = DB::select('*')
+        ->from('irregular_user')
+        ->where('irregular_day_id', 'in', $irregular_day_id)
+        ->and_where('request_shift_type', 3)
+        ->execute();
+    echo count($morning)*3 + count($afternoon) * 4 + count($full) * 6;
+  }
+
+  // 当該イレギュラーシフトグループの確定勤務時間の合計を求める
+  public static function deside_irregular_group_total_work_time($irregular_id){
+    $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
+    $morning = DB::select('*')
+        ->from('irregular_user')
+        ->where('irregular_day_id', 'in', $irregular_day_id)
+        ->and_where('edited_shift_type', 1)
+        ->execute();
+    $afternoon = DB::select('*')
+        ->from('irregular_user')
+        ->where('irregular_day_id', 'in', $irregular_day_id)
+        ->and_where('edited_shift_type', 2)
+        ->execute();
+    $full = DB::select('*')
+        ->from('irregular_user')
+        ->where('irregular_day_id', 'in', $irregular_day_id)
+        ->and_where('edited_shift_type', 3)
+        ->execute();
+    echo count($morning)*3 + count($afternoon) * 4 + count($full) * 6;
+  }   
+
 
 }
