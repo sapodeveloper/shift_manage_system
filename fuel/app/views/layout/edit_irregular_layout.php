@@ -95,12 +95,7 @@
 							</p>
 						</div>
 					<?php endif; ?>
-					<article class="uk-articleuk-panel uk-panel-box">
-						<?php echo $contents; ?>
-					</article>
-				</div>
-				<div class="uk-width-medium-2-10">
-				</div>							
+					<?php echo $contents; ?>				
 			</div>	
 		</div>
 	</div>

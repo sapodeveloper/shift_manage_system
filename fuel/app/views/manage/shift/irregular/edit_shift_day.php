@@ -1,3 +1,4 @@
+<article class="uk-articleuk-panel uk-panel-box">
 [<?php echo $irregular_shift->irregular_name; ?>]の編集
 <br><br>
 <ul class="uk-tab uk-tab-grid uk-tab-bottom" id="tab">
@@ -13,8 +14,7 @@
 	<table border="1" class="uk-table uk-width-7-10">
 			<tr>
 				<td>スタッフ名</td>
-				<td colspan="2"></td>
-				<td></td>
+				<td colspan="4"></td>
 			</tr>
 			<?php foreach ($irregular_shift_users as $irregular_shift_user): ?>
 				<tbody id = "<?php echo $irregular_shift_user->id; ?>">
@@ -31,4 +31,15 @@
 				</tbody>
 			<?php endforeach; ?>
 	</table>
-	
+	</article>
+	</div>
+	<div class="uk-width-medium-2-10" id="entry_list">
+		<script type="text/javascript">
+			$(function() {
+				$.ajax("../entry_list/", {"complete": function(xhr,status){
+					window.xhr = xhr;
+					$("#entry_list").html($(xhr.responseText));
+				}});
+			});
+		</script>
+	</div>			
