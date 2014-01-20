@@ -37,6 +37,7 @@ class Controller_Irregular extends Controller_Application
 				$irregular_user->request_shift_type = $irregular_type_id[$i];
 				$irregular_user->edited_shift_type = $irregular_type_id[$i];
 				$irregular_user->user_comment = $user_comment[$i];
+				$irregular_user->condition = 0;
 				$irregular_user->save();
 				$i++;
 			}
@@ -52,6 +53,7 @@ class Controller_Irregular extends Controller_Application
 					'request_shift_type' => "4",
 					'edited_shift_type' => "4",
 					'user_comment' => "",
+					'condition' => "0",
 					'created_at' => "0",
 					'updated_at' => "0",
 				));
