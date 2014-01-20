@@ -48,4 +48,26 @@ class Helper_Shift {
         echo "勤務無し";
     }
   }
+
+  // 当該イレギュラーシフトグループの特定ユーザの希望勤務日数を求める
+  public static function request_work_day_count($irregular_id, $user_id){
+    $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
+    $work_day = DB::select('*')->from('irregular_user')
+        ->where('user_id', $user_id)
+        ->and_where('request_shift_type', 'in', array(1,2,3))
+        ->and_where('irregular_day_id', 'in', $irregular_day_id)
+        ->execute();
+    echo count($work_day);
+  }
+
+  // 当該イレギュラーシフトグループの特定ユーザの確定勤務日数を求める
+  public static function deside_work_day_count($irregular_id, $user_id){
+    $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
+    $work_day = DB::select('*')->from('irregular_user')
+        ->where('user_id', $user_id)
+        ->and_where('edited_shift_type', 'in', array(1,2,3))
+        ->and_where('irregular_day_id', 'in', $irregular_day_id)
+        ->execute();
+    echo count($work_day);
+  }
 }

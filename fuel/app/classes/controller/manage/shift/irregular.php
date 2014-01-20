@@ -85,6 +85,7 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 			where irregular_day_id in (SELECT id FROM irregular_day WHERE irregular_id = '.$this->param('id').')
 			order by irregular_user.user_id');
 		$data['irregular_shift_users'] = $query->as_object()->execute()->as_array();
+		$data['irregular_id'] = $this->param('id');
 		$view = View::forge('manage/shift/irregular/entry_list', $data);
 		return $view;
 	}
