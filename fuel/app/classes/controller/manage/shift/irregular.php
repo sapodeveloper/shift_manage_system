@@ -68,7 +68,13 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 		$data['irregular_shift_user'] = Model_Irregular_User::find($this->param('irregular_user_id'));
 		$view = View::forge('manage/shift/irregular/edit_shift_user', $data);
 		return $view;
-		
+	}
+
+	public function action_edit_user_shift()
+	{
+		$irregular_shift_user = Model_Irregular_User::find($this->param('irregular_user_id'));
+		$irregular_shift_user->edited_shift_type = $this->param('irregular_type_id');
+		$irregular_shift_user->save();
 	}
 
 	public function action_info()
