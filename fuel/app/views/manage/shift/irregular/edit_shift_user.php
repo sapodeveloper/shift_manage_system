@@ -17,7 +17,7 @@
 <tr>
 	<td>編集</td>
 	<td>
-		<div class="uk-button-group" id="work<?php echo $irregular_shift_user->id; ?>" data-uk-button-checkbox>
+		<div class="uk-button-group" id="workg<?php echo $irregular_shift_user->id; ?>" data-uk-button-checkbox>
 			<?php if($irregular_shift_user->edited_shift_type == 1): ?>
 				<button class="uk-button uk-button-primary uk-active check1"><i class="fa fa-sun-o"></i> 10時〜13時（午前）</button>
 				<button class="uk-button uk-button-primary check2"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</button>
