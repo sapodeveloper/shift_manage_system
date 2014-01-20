@@ -17,6 +17,12 @@
 				  jQuery( '#jquery-ui-datepicker' ) . datepicker();
 				});
 		  </script>
+		  <style type="text/css">
+				td {
+					text-align: center !important;
+					vertical-align: middle !important;
+				}
+			</style>
 	</head>
 	<body class="tm-background">
 

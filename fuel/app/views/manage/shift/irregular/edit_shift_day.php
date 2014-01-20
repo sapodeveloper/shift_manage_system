@@ -13,8 +13,7 @@
 	<table border="1" class="uk-table uk-width-7-10">
 			<tr>
 				<td>スタッフ名</td>
-				<td colspan="2"></td>
-				<td></td>
+				<td colspan="4"></td>
 			</tr>
 			<?php foreach ($irregular_shift_users as $irregular_shift_user): ?>
 				<tbody id = "<?php echo $irregular_shift_user->id; ?>">
