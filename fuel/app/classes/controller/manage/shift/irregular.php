@@ -52,15 +52,6 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 		return $view;
 	}
 
-	public function action_edit($id = null)
-	{
-		$data['irregular_shift'] = Model_Irregular::find($id);
-		$data['irregular_shift_days'] = Model_Irregular_Day::find('all', array('where' => array('irregular_id' => $id)));
-		$view = View::forge('layout/application');
-		$view->contents = View::forge('manage/shift/irregular/edit', $data);
-		return $view;
-	}
-
 	public function action_edit_shift_day()
 	{
 		$data['irregular_shift'] = Model_Irregular::find($this->param('id'));

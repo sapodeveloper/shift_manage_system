@@ -1,11 +1,10 @@
 <?php
 return array(
-	'_root_'  => 'auth/login',  // The default route
-	'_404_'   => 'welcome/404',    // The main 404 route
+	//標準を認証画面に
+	'_root_'  => 'auth/login',
 	
-	'hello(/:name)?' => array('welcome/hello', 'name' => 'hello'),
-	'manage/shift/irregular/edit/edit_shift_user/:irregular_user_id' => 'manage/shift/irregular/edit_shift_user/:irregular_user_id',
-	'manage/shift/irregular/edit/:id/info' => 'manage/shift/irregular/info/:id',
-	'manage/shift/irregular/edit/:id/edit_shift_day/:day_id' => 'manage/shift/irregular/edit_shift_day/:day_id',
-	'manage/shift/irregular/edit/:id/edit_shift_user/:irregular_user_id' => 'manage/shift/irregular/edit_shift_user/:irregular_user_id',
+	//manageコントローラ以下イレギュラーシフト関係のルーティング		
+	'manage/shift/irregular/edit_shift/:id/info' => 'manage/shift/irregular/info/:id',
+	'manage/shift/irregular/edit_shift/:id/edit_shift_day/:day_id' => 'manage/shift/irregular/edit_shift_day/:day_id',
+	'manage/shift/irregular/edit_shift/:id/edit_shift_user/:irregular_user_id' => 'manage/shift/irregular/edit_shift_user/:irregular_user_id',
 );
