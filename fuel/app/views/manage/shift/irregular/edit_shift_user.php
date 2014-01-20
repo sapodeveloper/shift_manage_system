@@ -27,6 +27,9 @@
 			<?php elseif($irregular_shift_user->edited_shift_type == 3): ?>
 				<button class="uk-button uk-button-primary uk-active check1-<?php echo $irregular_shift_user->id; ?>"><i class="fa fa-sun-o"></i> 10時〜13時（午前）</button>
 				<button class="uk-button uk-button-primary uk-active check2-<?php echo $irregular_shift_user->id; ?>"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</button>
+			<?php elseif($irregular_shift_user->edited_shift_type == 4): ?>
+				<button class="uk-button uk-button-primary check1-<?php echo $irregular_shift_user->id; ?>"><i class="fa fa-sun-o"></i> 10時〜13時（午前）</button>
+				<button class="uk-button uk-button-primary check2-<?php echo $irregular_shift_user->id; ?>"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</button>
 			<?php endif; ?>
 		</div>
 	</td>
@@ -48,8 +51,14 @@
 					url = "../edit_user_shift/<?php echo $irregular_shift_user->id; ?>/4"
 				}
 			}
-			$.ajax(url);
-			$("#<?php echo $irregular_shift_user->id; ?>").load();
+			$.ajax(url, {"complete": function(){
+				$("#<?php echo $irregular_shift_user->id; ?>").load(
+					$.ajax('../edit_shift_user/<?php echo $irregular_shift_user->id; ?>', {"complete": function(xhr,status){
+						window.xhr = xhr;
+						$("#<?php echo $irregular_shift_user->id; ?>").html($(xhr.responseText));
+					}})
+				);
+			}});
 		})
 	});
 </script>
