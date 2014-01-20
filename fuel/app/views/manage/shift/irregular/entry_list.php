@@ -15,5 +15,10 @@
 				<td ><?php Helper_Shift::deside_work_time_count($irregular_id, $irregular_shift_user->user_id); ?>:00</td>
 			</tr>
 		<?php endforeach; ?>
+		<tr>
+			<td colspan="2">合計</td>
+			<td colspan="2"><?php Helper_Shift::request_irregular_group_total_work_time($irregular_id); ?>:00</td>
+			<td colspan="2"><?php Helper_Shift::deside_irregular_group_total_work_time($irregular_id); ?>:00</td>
+		</tr>
 	</table>
 </article>
