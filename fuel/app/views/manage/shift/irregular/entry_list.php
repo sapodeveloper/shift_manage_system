@@ -9,10 +9,10 @@
 			<tr>
 				<td><?php echo $irregular_shift_user->frist_name; ?></td>
 				<td data-uk-tooltip  title="クリックでロックする"><i class="fa fa-unlock"></i></td>
-				<td style="background-color: #ffb6c1;">2</td>
-				<td >12:30</td>
-				<td style="background-color: #afecef;">1</td>
-				<td >2:15</td>
+				<td style="background-color: #ffb6c1;"><?php Helper_Shift::request_work_day_count($irregular_id, $irregular_shift_user->user_id); ?></td>
+				<td ><?php Helper_Shift::request_work_time_count($irregular_id, $irregular_shift_user->user_id); ?>:00</td>
+				<td style="background-color: #afecef;"><?php Helper_Shift::deside_work_day_count($irregular_id, $irregular_shift_user->user_id); ?></td>
+				<td ><?php Helper_Shift::deside_work_time_count($irregular_id, $irregular_shift_user->user_id); ?>:00</td>
 			</tr>
 		<?php endforeach; ?>
 	</table>

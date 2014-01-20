@@ -47,6 +47,10 @@
 					$.ajax('../edit_shift_user/<?php echo $irregular_shift_user->id; ?>', {"complete": function(xhr,status){
 						window.xhr = xhr;
 						$("#<?php echo $irregular_shift_user->id; ?>").html($(xhr.responseText));
+						$.ajax('../entry_list', {"complete": function(xhr,status){
+							window.xhr = xhr;
+							$("#entry_list").html($(xhr.responseText));
+						}})
 					}})
 				);
 			}});
