@@ -171,5 +171,15 @@ class Helper_Shift {
     }
   }
 
+  // 特定ユーザの申請が編集ロックされているか調べる
+  public static function user_shift_lock($irregular_user_id){
+    $irregular_user = Model_Irregular_User::find($irregular_user_id);
+    if($irregular_user->condition == "1"){
+        return "true";
+    }else{
+        return "false";
+    }
+  }
+
 
 }

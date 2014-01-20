@@ -7,7 +7,7 @@
 </tr>
 <tr>
 	<td colspan="4">
-		<div class="uk-button-group" id="workg<?php echo $irregular_shift_user->id; ?>" data-uk-button-checkbox>
+		<div class="uk-button-group" id="work<?php echo $irregular_shift_user->id; ?>" data-uk-button-checkbox>
 			<?php if($irregular_shift_user->edited_shift_type == 1): ?>
 				<button class="uk-button uk-button-primary uk-active check1-<?php echo $irregular_shift_user->id; ?>"><i class="fa fa-sun-o"></i> 10時〜13時（午前）</button>
 				<button class="uk-button uk-button-primary check2-<?php echo $irregular_shift_user->id; ?>"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</button>
@@ -22,7 +22,11 @@
 				<button class="uk-button uk-button-primary check2-<?php echo $irregular_shift_user->id; ?>"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</button>
 			<?php endif; ?>
 		</div>
-		<button class='uk-button uk-button-success update-<?php echo $irregular_shift_user->id; ?>'>更新</button>
+		<?php if(Helper_Shift::user_shift_lock($irregular_shift_user->id) == "true"): ?>
+			<button class='uk-button uk-button-success update-<?php echo $irregular_shift_user->id; ?>' disabled>更新</button>
+		<?php else: ?>
+			<button class='uk-button uk-button-success update-<?php echo $irregular_shift_user->id; ?>'>更新</button>
+		<?php endif; ?>
 	</td>
 </tr>
 

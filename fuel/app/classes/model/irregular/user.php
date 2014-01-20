@@ -11,6 +11,7 @@ class Model_Irregular_User extends \Orm\Model
 		'user_comment',
 		'created_at',
 		'updated_at',
+		'condition',
 	);
 
 	protected static $_observers = array(
