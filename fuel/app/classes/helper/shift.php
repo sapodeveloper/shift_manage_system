@@ -70,4 +70,48 @@ class Helper_Shift {
         ->execute();
     echo count($work_day);
   }
+
+  // 当該イレギュラーシフトグループの特定ユーザの希望勤務時間を求める
+  public static function request_work_time_count($irregular_id, $user_id){
+    $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
+    $morning = DB::select('*')->from('irregular_user')
+        ->where('user_id', $user_id)
+        ->and_where('request_shift_type', 1)
+        ->and_where('irregular_day_id', 'in', $irregular_day_id)
+        ->execute();
+    $afternoon = DB::select('*')->from('irregular_user')
+        ->where('user_id', $user_id)
+        ->and_where('request_shift_type', 2)
+        ->and_where('irregular_day_id', 'in', $irregular_day_id)
+        ->execute();
+    $full = DB::select('*')->from('irregular_user')
+        ->where('user_id', $user_id)
+        ->and_where('request_shift_type', 3)
+        ->and_where('irregular_day_id', 'in', $irregular_day_id)
+        ->execute();
+    echo count($morning)*3 + count($afternoon) * 4 + count($full) * 6;
+  }
+
+  // 当該イレギュラーシフトグループの特定ユーザの確定勤務時間を求める
+  public static function deside_work_time_count($irregular_id, $user_id){
+    $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
+    $morning = DB::select('*')->from('irregular_user')
+        ->where('user_id', $user_id)
+        ->and_where('edited_shift_type', 1)
+        ->and_where('irregular_day_id', 'in', $irregular_day_id)
+        ->execute();
+    $afternoon = DB::select('*')->from('irregular_user')
+        ->where('user_id', $user_id)
+        ->and_where('edited_shift_type', 2)
+        ->and_where('irregular_day_id', 'in', $irregular_day_id)
+        ->execute();
+    $full = DB::select('*')->from('irregular_user')
+        ->where('user_id', $user_id)
+        ->and_where('edited_shift_type', 3)
+        ->and_where('irregular_day_id', 'in', $irregular_day_id)
+        ->execute();
+    echo count($morning)*3 + count($afternoon) * 4 + count($full) * 6;
+  }
+
+
 }
