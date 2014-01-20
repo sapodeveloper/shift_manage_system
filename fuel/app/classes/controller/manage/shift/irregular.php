@@ -58,7 +58,7 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 		$data['irregular_shift_days'] = Model_Irregular_Day::find('all', array('where' => array('irregular_id' => $this->param('id'))));
 		$irregular_shift_day = Model_Irregular_Day::find($this->param('day_id'));
 		$data['irregular_shift_users'] = Model_Irregular_User::find('all', array('where' => array('irregular_day_id' => $irregular_shift_day->id)));
-		$view = View::forge('layout/application');
+		$view = View::forge('layout/edit_irregular_layout');
 		$view->contents = View::forge('manage/shift/irregular/edit_shift_day', $data);
 		return $view;
 	}
@@ -75,6 +75,12 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 		$irregular_shift_user = Model_Irregular_User::find($this->param('irregular_user_id'));
 		$irregular_shift_user->edited_shift_type = $this->param('irregular_type_id');
 		$irregular_shift_user->save();
+	}
+
+	public function action_entry_list()
+	{
+		$view = View::forge('manage/shift/irregular/entry_list');
+		return $view;
 	}
 
 	public function action_info()

@@ -1,3 +1,4 @@
+<article class="uk-articleuk-panel uk-panel-box">
 [<?php echo $irregular_shift->irregular_name; ?>]の編集
 <br><br>
 <ul class="uk-tab uk-tab-grid uk-tab-bottom" id="tab">
@@ -30,4 +31,15 @@
 				</tbody>
 			<?php endforeach; ?>
 	</table>
-	
+	</article>
+	</div>
+	<div class="uk-width-medium-2-10" id="entry_list">
+		<script type="text/javascript">
+			$(function() {
+				$.ajax("../entry_list/", {"complete": function(xhr,status){
+					window.xhr = xhr;
+					$("#entry_list").html($(xhr.responseText));
+				}});
+			});
+		</script>
+	</div>			
