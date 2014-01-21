@@ -15,15 +15,7 @@
 			<?php foreach (${'irregular_shift_users'.$day_id} as $irregular_shift_user): ?>
 				<tr>
 					<td><?php echo $irregular_shift_user->users->full_name; ?></td>
-					<?php
-						if($irregular_shift_user->edited_shift_type == 1){
-							echo "<td>午前勤務</td><td>10:00 ~ 13:00</td><td>3:00</td><td bgcolor = 'deepskyblue'></td><td></td><td></td>";
-						}elseif($irregular_shift_user->edited_shift_type == 2){
-							echo "<td>午後勤務</td><td>13:00 ~ 17:00</td><td>4:00</td><td></td><td bgcolor = 'deepskyblue'></td><td></td>";
-						}elseif($irregular_shift_user->edited_shift_type == 3){
-							echo "<td>フル勤務</td><td>10:00 ~ 17:00</td><td>6:00</td><td colspan='2' bgcolor = 'deepskyblue'></td>";
-						}
-					?>
+					<?php Helper_Shift::irregular_work_type_for_table($irregular_shift_user->edited_shift_type); ?>
 				</tr>
 			<?php endforeach; ?>
 			<tr>
