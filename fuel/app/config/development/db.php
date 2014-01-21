@@ -8,7 +8,7 @@ return array(
 		'connection'  => array(
 			'dsn'        => 'mysql:host=localhost;dbname=shift_manage_system_dev',
 			'username'   => 'root',
-			'password'   => ''
+			'password'   => 'Cypher4230'
 		),
 	),
 );

@@ -1,5 +1,4 @@
 <h3>シフト一覧</h3>
-<br>
 <?php if($decision_irregulars): ?>
 <h3>確定イレギュラーシフト</h3>
 <table class="uk-table uk-table-hover">
@@ -22,7 +21,6 @@
 		<?php endforeach; ?>
 	</tbody>
 </table>
-<br>
 <?php endif; ?>
 <?php if($receiving_irregulars): ?>
 <h3>申請受付中イレギュラーシフト</h3>
@@ -38,12 +36,10 @@
 			<tr>
 				<td><?php echo $r_irregular->irregular_name; ?></td>
 				<td><?php echo date( 'Y年m月d日 H時i分', strtotime($r_irregular->irregular_limitdate)); ?></td>
-				<td><input type="hidden" name="key" value="key">
-				<?php echo Form::submit('submit', '削除', array('class' => '')); ?></td>
-				<td><a href="#">確認</a></td>
+				<td><?php echo Html::anchor('manage/shift/delete/'.$r_irregular->id, '削除', array('class' => 'btn btn-danger', 'onclick' => "return confirm('削除します。よろしいですか？')")); ?></td>
+				<td><?php echo Html::anchor('shift/irregular/detail/'.$r_irregular->id, '確認'); ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>
 </table>
 <?php endif; ?>
-

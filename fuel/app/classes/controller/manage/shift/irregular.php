@@ -44,7 +44,7 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 				}
 			}
 
-			Response::redirect('shift/check'); 
+			Response::redirect('manage/shift/index'); 
 		}
 
 		$view = View::forge('layout/application');

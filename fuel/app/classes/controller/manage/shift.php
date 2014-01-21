@@ -13,10 +13,14 @@ class Controller_Manage_Shift extends Controller_Manage
 		$view->contents = View::forge('manage/shift/index', $data);
 		return $view;
 
-		if(Input::method() == 'POST')
-		{
-			$key= Input::post('key');
-		}
+	}
+
+	public function action_delete($id = null)
+	{
+		$r_irregular = Model_Irregular::find($id);
+		$query = DB::delete('irregular_day')->where('irregular_id', $id)->execute();
+		$r_irregular->delete();
+		Response::redirect('manage/shift/index');
 	}
 
 	public function action_new()
