@@ -21,7 +21,7 @@ class Create_irregular_day
 		// 今日の日付を取得
 		$dt = new \DateTime();
 		// 1週間後の日付を取得
-		$date = $dt->add(new \DateInterval('P7D'))->format('Y-m-d H:i:s:');
+		$date = $dt->add(new \DateInterval('P7D'))->format('Y-m-d');
 		$date_info = $dt->format('m月d日');
 		for ($irregular_shift = 1; $irregular_shift <= 2; $irregular_shift++){
 			for($loop = 0; $loop < 5; $loop++){
