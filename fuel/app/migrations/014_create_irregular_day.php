@@ -29,7 +29,7 @@ class Create_irregular_day
 																		 'irregular_day_date' => $date,
 																		 'irregular_day_name' => $date_info,
 																		 'irregular_day_condition' => 1))->execute();
-			$date = $dt->add(new \DateInterval('P1D'))->format('Y-m-d H:i:s:');
+			$date = $dt->add(new \DateInterval('P1D'))->format('Y-m-d');
 			$date_info = $dt->format('m月d日');
 			}
 		}
