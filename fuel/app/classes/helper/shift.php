@@ -49,6 +49,17 @@ class Helper_Shift {
     }
   }
 
+  //　当該イレギュラーシフトの勤務形態をテーブルタグで出力する
+  public static function irregular_work_type_for_table($irregular_work_type){
+    if ($irregular_work_type == 1) {
+        echo "<td>午前勤務</td><td>10:00 ~ 13:00</td><td>3:00</td><td bgcolor = 'deepskyblue'></td><td></td>";
+    }elseif ($irregular_work_type == 2) {
+        echo "<td>午後勤務</td><td>13:00 ~ 17:00</td><td>4:00</td><td></td><td bgcolor = 'deepskyblue'></td>";
+    }elseif ($irregular_work_type == 3) {
+        echo "<td>フル勤務</td><td>10:00 ~ 17:00</td><td>6:00</td><td colspan='2' bgcolor = 'deepskyblue'></td>";
+    }
+  }
+
   // 当該イレギュラーシフトグループの特定ユーザの希望勤務日数を求める
   public static function request_work_day_count($irregular_id, $user_id){
     $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
