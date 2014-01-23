@@ -19,7 +19,8 @@ DB環境構築
 作業開始前
 ```
   git checkout master
-  git pull origin master
+  git fetch
+  git pull
   ブランチを切って作業
 ```
 
