@@ -36,5 +36,5 @@
 </form>
 </div>
 </div>
-<?php echo Html::anchor('manage/shift/new', 'シフト作成選択'); ?>
+<?php echo Html::anchor('manage/shift/new', 'シフト作成選択',array('class'=>'uk-button')); ?>
 

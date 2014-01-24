@@ -55,4 +55,4 @@
 		<?php echo Form::close(); ?>	
 	</div>
 </div>
-<?php echo Html::anchor('admin/user/', 'ユーザ情報'); ?>
+<?php echo Html::anchor('admin/user/', 'ユーザ情報',array('class'=>'uk-button')); ?>

@@ -33,6 +33,12 @@ return array(
 		),
 		'package' => 
 		array(
+			'auth' => 
+			array(
+				0 => '001_auth_create_usertables',
+				1 => '002_auth_create_grouptables',
+				2 => '003_auth_create_roletables',
+			),
 		),
 	),
 	'folder' => 'migrations/',

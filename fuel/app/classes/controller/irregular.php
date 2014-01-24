@@ -16,7 +16,7 @@ class Controller_Irregular extends Controller_Application
 	public function action_request($id = null)
 	{
 		if(empty($id)){
-			Response::redirect('irregular');
+			Response::redirect('shift/request');
 		}
 		$data['id'] = $id;
 		$user_id = Auth::get('id');
@@ -41,7 +41,7 @@ class Controller_Irregular extends Controller_Application
 				$irregular_user->save();
 				$i++;
 			}
-			Response::redirect('irregular');
+			Response::redirect('shift/request');
 		}
 		$i = 1;
 		foreach($data['irregular_days'] as $irregular_day){

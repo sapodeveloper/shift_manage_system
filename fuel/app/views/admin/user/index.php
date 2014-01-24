@@ -46,4 +46,4 @@
 	</tbody>
 	
 </table>
-<?php echo Html::anchor('main', '戻る'); ?>
+<?php echo Html::anchor('main', '戻る',array('class'=>'uk-button')); ?>
