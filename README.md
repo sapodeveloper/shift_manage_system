@@ -9,6 +9,7 @@ DB環境構築
 ```
 	oil refine migrate:current
 ```
+テーブルの追加や変更があった場合は正確に最新のDBにするために一度DBをドロップしてから実行すること
 
 初期ユーザ
 ```
@@ -19,7 +20,8 @@ DB環境構築
 作業開始前
 ```
   git checkout master
-  git pull origin master
+  git fetch
+  git pull
   ブランチを切って作業
 ```
 
