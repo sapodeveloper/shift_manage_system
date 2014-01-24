@@ -40,6 +40,7 @@
 						</ul>
 					</div>
 			</li>
+			<?php if(Model_User::find(Auth::get('id'))->auth_id>=2): ?>
 			<li class="uk-parent" data-uk-dropdown>
 				<a href=""><i class="fa fa-pencil"></i>&nbsp;リーダ関連</a>
 					<div class="uk-dropdown uk-dropdown-navbar">
@@ -50,6 +51,8 @@
 						</ul>
 					</div>
 			</li>
+			<?php endif; ?>
+			<?php if(Model_User::find(Auth::get('id'))->auth_id==3): ?>
 			<li class="uk-parent" data-uk-dropdown>
 				<a href=""><i class="fa fa-cogs"></i>&nbsp;内部項目</a>
 					<div class="uk-dropdown uk-dropdown-navbar">
@@ -59,6 +62,7 @@
 						</ul>
 					</div>
 			</li>
+			<?php endif; ?>
 		</ul>
 		<div class="uk-navbar-flip">			
 			<ul class="uk-navbar-nav">
