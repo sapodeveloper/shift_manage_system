@@ -70,6 +70,16 @@ class Controller_Irregular extends Controller_Application
 		return $view; 
 	}
 
+	public function action_request_detail($id = null)
+	{
+		$data['irregular_shift'] = Model_Irregular::find($id);
+		$irregular_shift_days = DB::select('id')->from('irregular_day')->where('irregular_id', $id);
+		$data['requests'] = Model_Irregular_User::find('all', array('where' => array(array('user_id', Auth::get('id')),array('irregular_day_id', 'in', $irregular_shift_days))));
+		$view = View::forge('layout/application');
+		$view->contents = View::forge('irregular/request_detail' ,$data);
+		return $view;
+	}
+
 }
 
 ?>
