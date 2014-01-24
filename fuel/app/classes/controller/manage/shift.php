@@ -18,9 +18,9 @@ class Controller_Manage_Shift extends Controller_Manage
 	public function action_delete($id = null)
 	{
 		$irregular = Model_Irregular::find($id);
-		$irregular_day = Model_Irregular_day::find('all', array('where' => array(array('irregular_id' => $irregular->id)))); 
+		$irregular_days = DB::select('id')->from('irregular_day')->where('irregular_id', $id); 
 		$query1 = DB::delete('irregular_day')->where('irregular_id', $id)->execute();
-		$query2 = DB::delete('irregular_user')->where('irregular_day_id', $irregular_day)->execute();
+		$query2 = DB::delete('irregular_user')->where('irregular_day_id', 'in', $irregular_days)->execute();
 		$irregular->delete();
 		Response::redirect('manage/shift/index');
 	}
