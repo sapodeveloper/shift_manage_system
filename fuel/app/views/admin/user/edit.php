@@ -72,4 +72,4 @@
 </fieldset>
 <?php echo Form::close(); ?>	
 <br>
-<?php echo Html::anchor('admin/user/', 'ユーザ情報'); ?>
+<?php echo Html::anchor('admin/user/', 'ユーザ情報',array('class'=>'uk-button')); ?>

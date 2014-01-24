@@ -15,8 +15,8 @@
 			<tr>
 				<td><?php echo $irregular->irregular_name; ?></td>
 				<td><?php echo date( 'Y年m月d日', strtotime($irregular->irregular_enabledate)); ?></td>
-				<td><?php echo Html::anchor('shift/irregular/detail/'.$irregular->id, '確認'); ?></td>
-				<td><?php echo Html::anchor('shift/irregular/output_pdf/'.$irregular->id, 'PDF'); ?></td>
+				<td><?php echo Html::anchor('shift/irregular/detail/'.$irregular->id, '確認',array('class'=>'uk-button')); ?></td>
+				<td><?php echo Html::anchor('shift/irregular/output_pdf/'.$irregular->id, 'PDF',array('class'=>'uk-button')); ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>
@@ -36,8 +36,8 @@
 			<tr>
 				<td><?php echo $r_irregular->irregular_name; ?></td>
 				<td><?php echo date( 'Y年m月d日 H時i分', strtotime($r_irregular->irregular_limitdate)); ?></td>
-				<td><?php echo Html::anchor('manage/shift/delete/'.$r_irregular->id, '削除', array('class' => 'btn btn-danger', 'onclick' => "return confirm('削除します。よろしいですか？')")); ?></td>
-				<td><?php echo Html::anchor('shift/irregular/detail/'.$r_irregular->id, '確認'); ?></td>
+				<td><?php echo Html::anchor('shift/irregular/detail/'.$r_irregular->id, '確認', array('class' => 'uk-button')); ?></td>
+				<td><?php echo Html::anchor('manage/shift/delete/'.$r_irregular->id, '削除', array('class' => 'btn btn-danger uk-button', 'onclick' => "return confirm('削除します。よろしいですか？')")); ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>

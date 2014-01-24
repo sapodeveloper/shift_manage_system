@@ -15,7 +15,7 @@
 				<td><?php echo $r_irregular->irregular_name; ?></td>
 				<td><?php echo date( 'Y年m月d日 H時i分', strtotime($r_irregular->irregular_limitdate)); ?></td>
 				<td><?php echo Html::anchor('irregular/request/'.$r_irregular->id, '申請', array('class' => 'uk-button')); ?></td>
-				<td><a href="#">確認</a></td>
+				<td><?php echo Html::anchor('shift/irregular/detail/'.$r_irregular->id, '確認', array('class' => 'uk-button')); ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>

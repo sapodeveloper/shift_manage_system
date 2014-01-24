@@ -20,4 +20,4 @@
 	<?php echo Form::close(); ?>
 </center>
 
-<?php echo Html::anchor('user', '戻る'); ?>
+<?php echo Html::anchor('user', '戻る',array('class'=>'uk-button')); ?>
