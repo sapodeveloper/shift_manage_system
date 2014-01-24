@@ -192,5 +192,26 @@ class Helper_Shift {
     }
   }
 
+  // 当該シフトの状態を出力する
+  public static function shift_condition($condition) {
+    if ($condition == 1) {
+        echo "申請受付中";
+    }elseif ($condition == 2) {
+        echo "編成中";
+    }elseif ($condition == 3) {
+        echo "確定";
+    }
+  }
+
+  public static function shift_condition_color($condition) {
+    if ($condition == 1) {
+        echo "";
+    }elseif ($condition == 2) {
+        echo "uk-alert-danger";
+    }elseif ($condition == 3) {
+        echo "uk-alert-success";
+    }
+  }
+
 
 }
