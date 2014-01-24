@@ -12,15 +12,15 @@ class Controller_Shift_Irregular extends Controller
 		// 指定されたidのイレギュラーシフトを取得する	
 		$data['irregular_shift'] = Model_Irregular::find($id);
 		$data['irregular_shift_days'] = Model_Irregular_Day::find('all', array('where' => array('irregular_id' => $id)));
-		$data['irregular_shift_users'] = Model_Irregular_User::find('all', array('where' => array('irregular_day_id' => 1)));
-		$irregular_shift_days = Model_Irregular_Day::find('all', array('where' => array('irregular_id' => $id)));
-		$day_id = 1;
-		foreach ($irregular_shift_days as $irregular_shift_day) {
-			$data["irregular_shift_users$day_id"] = Model_Irregular_User::find('all', array('where' => array('irregular_day_id' => $irregular_shift_day->id)));
-			$day_id++;
-		}
 		$view = View::forge('layout/application');
 		$view->contents = View::forge('shift/irregular/detail', $data);
+		return $view;
+	}
+
+	public function action_shift_detail($id = null)
+	{
+		$data["irregular_shift_users"] = Model_Irregular_User::find('all', array('where' => array(array('irregular_day_id' => $id), array('edited_shift_type', '!=', 4))));
+		$view = View::forge('shift/irregular/shift_detail', $data);
 		return $view;
 	}
 
