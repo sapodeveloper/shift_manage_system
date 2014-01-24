@@ -22,7 +22,6 @@ class Controller_Shift_Irregular extends Controller
 		$data["irregular_shift_users"] = Model_Irregular_User::find('all', array('where' => array(array('irregular_day_id' => $id), array('edited_shift_type', '!=', 4))));
 		$view = View::forge('shift/irregular/shift_detail', $data);
 		return $view;
-
 	}
 
 	public function action_output_pdf($id = null){
