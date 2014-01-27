@@ -46,7 +46,6 @@
 						<ul class="uk-nav uk-nav-navbar">
 							<li><?php echo Html::anchor('manage/shift', '<i class="fa fa-list"></i>&nbsp;シフト一覧'); ?></li>
 							<li><?php echo Html::anchor('manage/shift/new', '<i class="fa fa-sun-o"></i>&nbsp;シフト作成'); ?></li>
-							<li><?php echo Html::anchor('manage/shift/editable_list', '<i class="fa fa-inbox"></i>&nbsp;シフト編成'); ?></li>
 						</ul>
 					</div>
 			</li>
