@@ -222,5 +222,29 @@ class Helper_Shift {
     }
   }
 
+  public static function shift_table($irregular_id, $user_id){
+    $irregular_day_ids = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id)->execute();
+    foreach ($irregular_day_ids as $irregular_day_id) {
+        $user_shift = DB::select('edited_shift_type')
+                        ->from('irregular_user')
+                        ->where('irregular_day_id', $irregular_day_id)
+                        ->and_where('user_id', $user_id)
+                        ->execute();
+        if($user_shift[0]["edited_shift_type"] == "1"){
+            echo "<td style=\"background-color: #a9f5a9;\"><i class=\"fa fa-sun-o\"></i></td>
+                <td><i class=\"fa fa-moon-o\"></i></td>";
+        }elseif($user_shift[0]["edited_shift_type"] == "2"){
+            echo "<td><i class=\"fa fa-sun-o\"></i></td>
+                <td style=\"background-color: #a9f5a9;\"><i class=\"fa fa-moon-o\"></i></td>";
+        }elseif($user_shift[0]["edited_shift_type"] == "3"){
+            echo "<td style=\"background-color: #a9f5a9;\"><i class=\"fa fa-sun-o\"></i></td>
+                <td style=\"background-color: #a9f5a9;\"><i class=\"fa fa-moon-o\"></i></td>";
+        }elseif($user_shift[0]["edited_shift_type"] == "4"){
+            echo "<td><i class=\"fa fa-sun-o\"></i></td>
+                <td><i class=\"fa fa-moon-o\"></i></td>";
+        }
+    }
+  }
+
 
 }
