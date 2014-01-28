@@ -8,6 +8,7 @@ class Model_Irregular extends \Orm\Model
 		'irregular_enabledate',
 		'irregular_limitdate',
 		'irregular_condition',
+		'irregular_entry_condition',
 		'created_at',
 		'updated_at',
 	);
