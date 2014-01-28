@@ -28,32 +28,12 @@
 					<td colspan="2"><?php echo $irregular_shift_day->irregular_day_name; ?></td>
 				<?php endforeach; ?>
 			</tr>
-			<tr>
-				<td>豊嶋駿仁</td>
-				<td><i class="fa fa-sun-o"></i></td>
-				<td><i class="fa fa-moon-o"></i></td>
-				<td><i class="fa fa-sun-o"></i></td>
-				<td><i class="fa fa-moon-o"></i></td>
-				<td><i class="fa fa-sun-o"></i></td>
-				<td><i class="fa fa-moon-o"></i></td>
-				<td><i class="fa fa-sun-o"></i></td>
-				<td><i class="fa fa-moon-o"></i></td>
-				<td><i class="fa fa-sun-o"></i></td>
-				<td><i class="fa fa-moon-o"></i></td>
-			</tr>
-			<tr>
-				<td>三澤湧樹</td>
-				<td style="background-color: #a9f5a9;"><i class="fa fa-sun-o"></i></td>
-				<td style="background-color: #a9f5a9;"><i class="fa fa-moon-o"></i></td>
-				<td style="background-color: #a9f5a9;"><i class="fa fa-sun-o"></i></td>
-				<td style="background-color: #a9f5a9;"><i class="fa fa-moon-o"></i></td>
-				<td style="background-color: #a9f5a9;"><i class="fa fa-sun-o"></i></td>
-				<td style="background-color: #a9f5a9;"><i class="fa fa-moon-o"></i></td>
-				<td style="background-color: #a9f5a9;"><i class="fa fa-sun-o"></i></td>
-				<td style="background-color: #a9f5a9;"><i class="fa fa-moon-o"></i></td>
-				<td style="background-color: #a9f5a9;"><i class="fa fa-sun-o"></i></td>
-				<td style="background-color: #a9f5a9;"><i class="fa fa-moon-o"></i></td>
-			<tr>
+			<?php foreach ($irregular_shift_users as $irregular_shift_user): ?>
+				<tr>
+					<td><?php echo $irregular_shift_user->full_name; ?></td>
+					<?php Helper_Shift::shift_table($irregular_shift->id, $irregular_shift_user->user_id); ?>
+				</tr>
+			<?php endforeach; ?>
 		</table>
 		<br>
 

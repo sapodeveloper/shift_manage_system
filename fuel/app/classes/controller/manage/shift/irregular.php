@@ -112,6 +112,12 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 	{
 		$data['irregular_shift'] = Model_Irregular::find($this->param('id'));
 		$data['irregular_shift_days'] = Model_Irregular_Day::find('all', array('where' => array('irregular_id' => $this->param('id'))));
+		$query = DB::query('SELECT distinct irregular_user.user_id, users.full_name 
+			from irregular_user 
+			inner join users on users.id = irregular_user.user_id
+			where irregular_day_id in (SELECT id FROM irregular_day WHERE irregular_id = '.$this->param('id').')
+			order by irregular_user.user_id');
+		$data['irregular_shift_users'] = $query->as_object()->execute()->as_array();
 		$view = View::forge('layout/application');
 		$view->contents = View::forge('manage/shift/irregular/info', $data);
 		return $view;
