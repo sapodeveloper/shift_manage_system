@@ -13,7 +13,7 @@
 <div class="uk-grid">
 	<div class="uk-width-medium-4-6">
 		<br>
-		<div> 前期レギュラーシフト</div>
+		<div><?php echo $irregular_shift->irregular_name; ?></div>
 		<div class="uk-alert uk-alert-success uk-text-center"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作成日&nbsp;&nbsp;<?php echo date( 'Y年m月d日', $irregular_shift->created_at); ?></div>
 		<div class="uk-alert uk-alert-danger uk-text-center"><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;入力期限&nbsp;&nbsp;<?php echo date( 'Y年m月d日', strtotime($irregular_shift->irregular_limitdate)); ?></div>
 		<div>エントリー状況</div>
