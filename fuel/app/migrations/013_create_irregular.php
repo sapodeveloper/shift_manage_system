@@ -12,7 +12,6 @@ class Create_irregular
 			'irregular_enabledate' => array('type' => 'date'),
 			'irregular_limitdate' => array('type' => 'date'),
 			'irregular_condition' => array('type' => 'boolean'),
-			'irregular_entry_condition' => array('type' => 'boolean'),
 			'created_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
 			'updated_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0, 'null' => true),
 
@@ -30,13 +29,11 @@ class Create_irregular
 		\DB::insert($table)->set(array('irregular_name' => 'テストイレギュラーシフト1', 
 																	 'irregular_enabledate' => $next_2week,
 																	 'irregular_limitdate' => $next_week,
-																	 'irregular_condition' => 1,
-																	 'irregular_entry_condition' => 2))->execute();
+																	 'irregular_condition' => 1))->execute();
 		\DB::insert($table)->set(array('irregular_name' => 'テストイレギュラーシフト2', 
 																	 'irregular_enabledate' => $next_3week,
 																	 'irregular_limitdate' => $next_2week,
-																	 'irregular_condition' => 3,
-																	 'irregular_entry_condition' => 1))->execute();
+																	 'irregular_condition' => 3))->execute();
 	}
 
 	public function down()

@@ -123,4 +123,15 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 		return $view;
 	}
 
+	public function action_change_entry_condition()
+	{
+		$irregular_shift = Model_Irregular::find($this->param('id'));
+		if($irregular_shift->irregular_condition == 1){
+			$irregular_shift->irregular_condition = 2;
+		}else{
+			$irregular_shift->irregular_condition = 1;
+		}
+		$irregular_shift->save();
+	}
+
 }
