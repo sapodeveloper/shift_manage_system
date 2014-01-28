@@ -25,7 +25,6 @@ class Controller_Admin_User extends Controller_Admin
 		{
 			$full_name = Input::post('frist_name') . ' ' . Input::post('last_name');
 			$user = Model_User::find($id);
-			$user->username = Input::post('username');
 			$user->full_name = $full_name;
 			$user->frist_name = Input::post('frist_name');
 			$user->last_name = Input::post('last_name');
