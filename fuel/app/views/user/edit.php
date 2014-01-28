@@ -8,7 +8,7 @@
 	<div class="uk-grid" data-uk-grid-match>
 		<div class="uk-width-medium-1-6">&nbsp;</div>
 		<div class="uk-width-medium-2-6"><i class="fa fa-tag"></i>&nbsp;ログイン名（学生番号）</div>
-		<div class="uk-width-medium-3-6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo Form::input('username', Input::post('username', isset($user) ? $user->username : ''), array('class' => '', 'placeholder'=>'学生番号')); ?></div>
+		<div class="uk-width-medium-3-6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $user->username; ?></div>
 	</div>
 	<HR noshade>
 	<div class="uk-grid" data-uk-grid-match>
