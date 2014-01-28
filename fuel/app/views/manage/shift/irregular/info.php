@@ -23,12 +23,10 @@
 		<div>個別勤務時間</div>
 		<table border="1" width=100% class="uk-text-center">
 			<tr>
-				<td colspan=1>名前</td>
-				<td colspan=2>1月1日(水)</td>
-				<td colspan=2>1月2日(木)</td>
-				<td colspan=2>1月3日(金)</td>
-				<td colspan=2>1月4日(土)</td>
-				<td colspan=2>1月5日(日)</td>
+				<td>名前</td>
+				<?php foreach ($irregular_shift_days as $irregular_shift_day): ?>
+					<td colspan="2"><?php echo $irregular_shift_day->irregular_day_name; ?></td>
+				<?php endforeach; ?>
 			</tr>
 			<tr>
 				<td>豊嶋駿仁</td>
