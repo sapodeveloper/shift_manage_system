@@ -60,16 +60,13 @@
 					<td>時間</td>
 					<td>日数</td>
 				</tr>
-				<tr>
-					<td>豊嶋駿仁</td>
-					<td>-</td>
-					<td>-</td>
-				</tr>
-				<tr>
-					<td>三澤湧樹</td>
-					<td>30:00</td>
-					<td>5</td>
-				</tr>
+				<?php foreach ($irregular_shift_users as $irregular_shift_user): ?>
+					<tr>
+						<td><?php echo $irregular_shift_user->full_name; ?></td>
+						<td><?php echo Helper_Shift::deside_work_time_count($irregular_shift->id, $irregular_shift_user->user_id); ?></td>
+						<td><?php echo Helper_Shift::deside_work_day_count($irregular_shift->id, $irregular_shift_user->user_id); ?></td>
+					</tr>
+				<?php endforeach; ?>
 			</tbody>
 		</table>
 	</div>
