@@ -3,7 +3,8 @@ return array(
 	//標準を認証画面に
 	'_root_'  => 'auth/login',
 	
-	//manageコントローラ以下イレギュラーシフト関係のルーティング		
+	//manageコントローラ以下イレギュラーシフト関係のルーティング
+	'manage/main/' => 'manage/main/index',
 	'manage/shift/irregular/edit_shift/:id/info' => 'manage/shift/irregular/info/:id',
 	'manage/shift/irregular/edit_shift/:id/entry_list' => 'manage/shift/irregular/entry_list/:id',
 	'manage/shift/irregular/edit_shift/:id/lock_user_shifts/:user_id/:irregular_id' => 'manage/shift/irregular/lock_user_shifts/:user_id/:irregular_id',

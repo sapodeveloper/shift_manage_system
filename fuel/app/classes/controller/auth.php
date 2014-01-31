@@ -21,7 +21,7 @@ class Controller_Auth extends Controller
                 if(Input::post('password') == "saposen"){
                     Response::redirect('user/change_password');
                 }else{
-                    Response::redirect('main/index');
+                    Response::redirect('main');
                 }
             }
             Helper_Log::write_log(1, Input::post('username')."さんがログインに失敗しました。", 0);
