@@ -15,9 +15,9 @@
 			<tr>
 				<td><?php echo $r_irregular->irregular_name; ?></td>
 				<td><?php echo date( 'Y年m月d日', strtotime($r_irregular->irregular_limitdate)); ?></td>
-				<td><?php echo Html::anchor('irregular/request/'.$r_irregular->id, '申請', array('class' => 'uk-button')); ?></td>
-				<td><?php echo Html::anchor('irregular/request_detail/'.$r_irregular->id, '申請確認', array('class' => 'uk-button')); ?></td>
-				<td><?php echo Html::anchor('shift/irregular/detail/'.$r_irregular->id, '全体確認', array('class' => 'uk-button')); ?></td>
+				<td><?php echo Html::anchor('irregular/request/'.$r_irregular->id, '申請', array('class' => 'uk-button uk-button-primary')); ?></td>
+				<td><?php echo Html::anchor('irregular/request_detail/'.$r_irregular->id, '申請確認', array('class' => 'uk-button uk-button-primary')); ?></td>
+				<td><?php echo Html::anchor('shift/irregular/detail/'.$r_irregular->id, '全体確認', array('class' => 'uk-button uk-button-success')); ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>
@@ -40,8 +40,8 @@
 		<?php foreach ($decision_irregulars as $irregular): ?>
 			<tr>
 				<td><?php echo $irregular->irregular_name; ?></td>
-				<td><?php echo Html::anchor('shift/irregular/detail/'.$irregular->id, '全体確認', array('class'=>'uk-button')); ?></td>
-				<td><?php echo Html::anchor('shift/irregular/output_pdf/'.$irregular->id, 'PDF', array('class'=>'uk-button')); ?></td>
+				<td><?php echo Html::anchor('shift/irregular/detail/'.$irregular->id, '全体確認', array('class'=>'uk-button uk-button-success')); ?></td>
+				<td><?php echo Html::anchor('shift/irregular/output_pdf/'.$irregular->id, 'PDF', array('class'=>'uk-button uk-button-danger', 'target'=>'_blank')); ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>
