@@ -18,7 +18,7 @@
 			<?php endforeach; ?>
 		</tbody>
 	</table>
-	<?php echo Html::anchor('irregular/request/'.$irregular_shift->id, '申請修正', array('class' => 'uk-button uk-button-primary uk-button-primary')); ?>
+	<?php echo Html::anchor('irregular/request/'.$irregular_shift->id, '申請修正', array('class' => 'uk-button uk-button-primary')); ?>
 <?php else: ?>
 	<p>申請していません</p>
 	<?php echo Html::anchor('irregular/request/'.$irregular_shift->id, '申請', array('class' => 'uk-button uk-button-primary')); ?>
