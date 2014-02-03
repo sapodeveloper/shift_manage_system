@@ -15,8 +15,8 @@
 			<tr>
 				<td><?php echo $irregular->irregular_name; ?></td>
 				<td><?php echo date( 'Y年m月d日', strtotime($irregular->irregular_enabledate)); ?></td>
-				<td><?php echo Html::anchor('shift/irregular/detail/'.$irregular->id, '確認',array('class'=>'uk-button')); ?></td>
-				<td><?php echo Html::anchor('shift/irregular/output_pdf/'.$irregular->id, 'PDF',array('class'=>'uk-button')); ?></td>
+				<td><?php echo Html::anchor('shift/irregular/detail/'.$irregular->id, '確認',array('class'=>'uk-button uk-button-success')); ?></td>
+				<td><?php echo Html::anchor('shift/irregular/output_pdf/'.$irregular->id, 'PDF',array('class'=>'uk-button uk-button-danger')); ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>
