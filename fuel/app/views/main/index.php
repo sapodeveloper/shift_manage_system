@@ -41,7 +41,7 @@
 			<tr>
 				<td><?php echo $irregular->irregular_name; ?></td>
 				<td><?php echo Html::anchor('shift/irregular/detail/'.$irregular->id, '<i class="fa fa-search"></i>&nbsp;全体確認', array('class'=>'uk-button uk-button-success')); ?></td>
-				<td><?php echo Html::anchor('shift/irregular/output_pdf/'.$irregular->id, '<i class="fa fa-picture-o"></i>&nbsp;PDF', array('class'=>'uk-button uk-button-danger', 'target'=>'_blank')); ?></td>
+				<td><?php echo Html::anchor('shift/irregular/output_pdf/'.$irregular->id, '<i class="fa fa-file-text-o"></i>&nbsp;PDF', array('class'=>'uk-button uk-button-danger', 'target'=>'_blank')); ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>
