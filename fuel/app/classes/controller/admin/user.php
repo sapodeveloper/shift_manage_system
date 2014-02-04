@@ -75,7 +75,7 @@ class Controller_Admin_User extends Controller_Admin
 			# 追加登録
 			$full_name = Input::post('frist_name') . ' ' . Input::post('last_name');
 			$user = Model_User::find('last', array('where' => array(array('username', Input::post('username')))));
-			if(Input::post('department_id')){
+			if(Input::post('department_id'==1)){
 				$cource_id = Input::post('cource_id');
 			}else{
 				$cource_id = 1;
