@@ -18,7 +18,7 @@
 		<div class="uk-grid" data-uk-grid-match>
 			<div class="uk-width-medium-1-6">&nbsp;</div>
 			<div class="uk-width-medium-2-6">
-				<i class="fa fa-tag"></i>&nbsp;ログイン名(学生番号)
+				<i class="fa fa-user"></i>&nbsp;ログイン名(学生番号)
 			</div>
 			<div class="uk-width-medium-3-6">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo Form::input('username', Input::post('username', isset($user) ? $user->username : ''), array('class' => '', 'placeholder'=>'学生番号','size'=>7)); ?>
@@ -28,7 +28,7 @@
 		<div class="uk-grid" data-uk-grid-match>
 			<div class="uk-width-medium-1-6">&nbsp;</div>
 			<div class="uk-width-medium-2-6">
-				<i class="fa fa-tag"></i>&nbsp;スタッフ名
+				<i class="fa fa-pagelines"></i>&nbsp;スタッフ名
 			</div>
 			<div class="uk-width-medium-3-6">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo Form::input('frist_name', Input::post('frist_name', isset($user) ? $user->frist_name : ''), array('class' => '', 'placeholder'=>'名字','size'=>5)); ?>
@@ -39,7 +39,7 @@
 		<div class="uk-grid" data-uk-grid-match>
 			<div class="uk-width-medium-1-6">&nbsp;</div>
 			<div class="uk-width-medium-2-6">
-				<i class="fa fa-tag"></i>&nbsp;入学年度
+				<i class="fa fa-male"></i>&nbsp;入学年度
 			</div>
 			<div class="uk-width-medium-3-6">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo Form::input('year', Input::post('year', isset($user) ? $user->year : ''), array('class' => '', 'placeholder'=>'入学年度','size'=>4)); ?>
@@ -59,7 +59,7 @@
 		<div class="uk-grid" data-uk-grid-match>
 			<div class="uk-width-medium-1-6">&nbsp;</div>
 			<div class="uk-width-medium-2-6">
-				<i class="fa fa-tag"></i>&nbsp;アクセス権限
+				<i class="fa fa-gamepad"></i>&nbsp;アクセス権限
 			</div>
 			<div class="uk-width-medium-3-6">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo Form::select('auth_id', null, $auth_data, array('class' => '', 'id' => 'auth_id')); ?>
@@ -76,4 +76,4 @@
 		</div>
 	</fieldset>
 <?php echo Form::close(); ?>	
-<?php echo Html::anchor('admin/user/', '<i class="fa fa-user"></i>&nbsp;ユーザ情報',array('class'=>'uk-button uk-button-success')); ?>
+<?php echo Html::anchor('admin/user/', '<i class="fa fa-users"></i>&nbsp;ユーザ情報',array('class'=>'uk-button uk-button-success')); ?>
