@@ -70,10 +70,10 @@
 			<div class="uk-width-1-3">&nbsp;</div>
 			<div class="uk-width-1-3">
 				<button class="uk-button uk-button-primary uk-button-expand uk-button-large" type="submit">
-					登録&nbsp;<i class="fa fa-sign-in"></i>
+					<i class="fa fa-upload"></i>&nbsp;登録
 				</button>
 			</div>
 		</div>
 	</fieldset>
 <?php echo Form::close(); ?>	
-<?php echo Html::anchor('admin/user/', 'ユーザ情報',array('class'=>'uk-button')); ?>
+<?php echo Html::anchor('admin/user/', '<i class="fa fa-user"></i>&nbsp;ユーザ情報',array('class'=>'uk-button uk-button-success')); ?>

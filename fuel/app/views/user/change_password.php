@@ -12,12 +12,12 @@
 				<br>
 				<br>
 			<div style="text-align:">
-				<button style="text-align: center;" class="uk-button-primary uk-h3" type="submit">パスワードを変更する
-					<i class="fa fa-external-link"></i>
+				<button style="text-align: center;" class="uk-button uk-button-primary uk-h3" type="submit">
+					<i class="fa fa-pencil-square-o"></i>&nbsp;パスワードを変更する
 				</button>
 			</div>
 		</fieldset>
 	<?php echo Form::close(); ?>
 </center>
 
-<?php echo Html::anchor('user', '戻る',array('class'=>'uk-button')); ?>
+<?php echo Html::anchor('user', '<i class="fa fa-undo"></i>&nbsp;戻る',array('class'=>'uk-button uk-button-primary')); ?>
