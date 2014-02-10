@@ -1,6 +1,6 @@
 <h3>シフト一覧</h3>
 <h4>イレギュラーシフト一覧</h4>
-<table>
+<table class="uk-table" >
 	<thead>
 		<tr>
 			<td>シフト名</td>
@@ -15,7 +15,7 @@
 				<td><?php Helper_Shift::shift_condition($irregular_shift->irregular_condition); ?></td>
 				<td><?php echo Html::anchor('shift/irregular/detail/'.$irregular_shift->id, '<i class="fa fa-search">&nbsp;確認',array('class'=>'uk-button uk-button-success')); ?></td>
 				<td><?php echo Html::anchor('manage/shift/irregular/edit_shift/'.$irregular_shift->id.'/info', '<i class="fa fa-pencil-square-o">&nbsp;シフト編集',array('class'=>'uk-button uk-button-primary')); ?></td>
-				<td><?php echo Html::anchor('shift/irregularoutput_pdf/'.$irregular_shift->id, '<i class="fa fa-file-text-o"></i>&nbsp;PDF',array('class'=>'uk-button uk-button-danger')) ?></td>
+				<td><?php echo Html::anchor('shift/irregular/output_pdf/'.$irregular_shift->id, '<i class="fa fa-file-text-o"></i>&nbsp;PDF',array('class'=>'uk-button uk-button-danger')) ?></td>
 				<td><?php echo Html::anchor('manage/shift/delete/'.$irregular_shift->id, '削除', array('class' => 'btn btn-danger', 'onclick' => "return confirm('削除します。よろしいですか？')")); ?></td>
 			</tr>
 		<?php endforeach; ?>
