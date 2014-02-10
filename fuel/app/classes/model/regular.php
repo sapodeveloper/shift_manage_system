@@ -30,8 +30,8 @@ class Model_Regular extends \Orm\Model
 			'key_from' => 'id',
 			'key_to' => 'regular_id',
 			'cascade_save' => true,
-			'cascade_delete' => false
-		},
+			'cascade_delete' => false,
+		),
 	);
 
 }
