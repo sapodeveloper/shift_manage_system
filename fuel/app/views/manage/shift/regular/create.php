@@ -24,7 +24,7 @@
 		<td><input type="text" data-uk-datepicker="{ weekstart:0, format:'YYYY/MM/DD', i18n: { months:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'], weekdays:['日','月','火','水','木','金','土'] }}" size=10 placeholder="終了" readonly name="regular_end_date" value=""></td>
 	</tr>
 </table>
-
+<hidden></hidden>
 <table class="uk-table" width="600">
 	<tr>
 		<td colspan="7"><?php echo Form::submit('submit', 'シフト作成', array('class' => '')); ?></td>
