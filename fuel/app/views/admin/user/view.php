@@ -44,5 +44,5 @@
 	</tr>
 </table>
 
-<?php echo Html::anchor('admin/user/edit/'.$user->id, '編集', array('class' => 'uk-button')); ?><br>
-<i class="fa fa-users"></i> <?php echo Html::anchor('admin/user/', '戻る'); ?><br>
+<?php echo Html::anchor('admin/user/edit/'.$user->id, '<i class="fa fa-pencil-square-o"></i>&nbsp;編集', array('class' => 'uk-button uk-button-success')); ?><br><br>
+<?php echo Html::anchor('admin/user/', '<i class="fa fa-undo"></i>&nbsp;戻る', array('class' => 'uk-button uk-button-primary')); ?><br>

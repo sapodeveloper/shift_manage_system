@@ -12,6 +12,7 @@
 			<?php echo Asset::js('ui/i18n/jquery.ui.datepicker-ja.js'); ?>
 			<?php echo Asset::js('jquery.tooltipster.js'); ?>
 			<?php echo Asset::js('datepicker.js'); ?>
+			<?php echo Asset::css('datepicker.gradient.css'); ?>
 		  <script>
 		    jQuery( function() {
 				  jQuery( '#jquery-ui-datepicker' ) . datepicker();
@@ -40,16 +41,18 @@
 						</ul>
 					</div>
 			</li>
+			<?php if(Model_User::find(Auth::get('id'))->auth_id>=2): ?>
 			<li class="uk-parent" data-uk-dropdown>
 				<a href=""><i class="fa fa-pencil"></i>&nbsp;リーダ関連</a>
 					<div class="uk-dropdown uk-dropdown-navbar">
 						<ul class="uk-nav uk-nav-navbar">
 							<li><?php echo Html::anchor('manage/shift', '<i class="fa fa-list"></i>&nbsp;シフト一覧'); ?></li>
 							<li><?php echo Html::anchor('manage/shift/new', '<i class="fa fa-sun-o"></i>&nbsp;シフト作成'); ?></li>
-							<li><?php echo Html::anchor('manage/shift/editable_list', '<i class="fa fa-inbox"></i>&nbsp;シフト編成'); ?></li>
 						</ul>
 					</div>
 			</li>
+			<?php endif; ?>
+			<?php if(Model_User::find(Auth::get('id'))->auth_id==3): ?>
 			<li class="uk-parent" data-uk-dropdown>
 				<a href=""><i class="fa fa-cogs"></i>&nbsp;内部項目</a>
 					<div class="uk-dropdown uk-dropdown-navbar">
@@ -59,6 +62,7 @@
 						</ul>
 					</div>
 			</li>
+			<?php endif; ?>
 		</ul>
 		<div class="uk-navbar-flip">			
 			<ul class="uk-navbar-nav">

@@ -10,7 +10,7 @@
 	}
 </script>
 <h2>ユーザ情報</h2>
-<i class="fa fa-user"></i> <?php echo Html::anchor('admin/user/create', '新規スタッフ登録'); ?><br>
+<?php echo Html::anchor('admin/user/create', '<i class="fa fa-user"></i>&nbsp;新規スタッフ登録' , array('class' => 'uk-button uk-button-primary')); ?><br>
 <table class="uk-table uk-table-hover">
 	<thead>
 		<tr>
@@ -37,13 +37,13 @@
 					<?php endif; ?>
 				</td>
 				<td>
-					<?php echo Html::anchor('admin/user/view/'.$user->id, '詳細', array('class' => 'uk-button')); ?>
-					<?php echo Html::anchor('admin/user/edit/'.$user->id, '編集', array('class' => 'uk-button')); ?>
-					<button class='uk-button' onclick="javascript:reset_password(<?php echo $user->id; ?>);">パスワードリセット</button>
+					<?php echo Html::anchor('admin/user/view/'.$user->id, '<i class="fa fa-search"></i>&nbsp;詳細', array('class' => 'uk-button uk-button-success')); ?>
+					<?php echo Html::anchor('admin/user/edit/'.$user->id, '<i class="fa fa-pencil-square-o"></i>&nbsp;編集', array('class' => 'uk-button uk-button-primary')); ?>
+					<button class='uk-button uk-button-danger' onclick="javascript:reset_password(<?php echo $user->id; ?>);"><i class="fa fa-clock-o"></i>&nbsp;パスワードReset</button>
 				</td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>
 	
 </table>
-<?php echo Html::anchor('main', '戻る'); ?>
+<?php echo Html::anchor('main', '<i class="fa fa-undo"></i>&nbsp;戻る',array('class'=>'uk-button uk-button-primary')); ?>

@@ -20,7 +20,6 @@ class Controller_User extends Controller_Application
 		{
 			$full_name = Input::post('frist_name') . ' ' . Input::post('last_name');
 			$user = Model_User::find($user_id);
-			$user->username = Input::post('username');
 			$user->full_name = $full_name;
 			$user->frist_name = Input::post('frist_name');
 			$user->last_name = Input::post('last_name');

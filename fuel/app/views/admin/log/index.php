@@ -18,7 +18,7 @@
 				<td><?php echo $log->id; ?></td>
 				<td><?php echo $log->log_type; ?></td>
 				<td><?php echo $log->log_message; ?></td>
-				<td><?php echo date( 'Y年m月d日H時m分', strtotime($log->created_at)); ?></td>
+				<td><?php echo date( 'Y年m月d日H時i分', $log->created_at); ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>

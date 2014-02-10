@@ -65,8 +65,5 @@
 					});
 					//-->
 				</script>
-<button style="text-align: center;" class="uk-button uk-button-primary uk-h3" type="submit">&nbsp;&nbsp;この内容で<?php echo $set; ?>する&nbsp;<i class="fa fa-share"></i>&nbsp;&nbsp;</button>
+<button style="text-align: center;" class="uk-button uk-button-primary uk-h3" type="submit">&nbsp;<i class="fa fa-refresh"></i>&nbsp;この内容で<?php echo $set; ?>する&nbsp;&nbsp;&nbsp;</button>
 <?php echo Form::close(); ?>
-<pre>
-<?php //print_r($irregular_user[1]); ?>
-</pre>
