@@ -16,7 +16,7 @@
 				<td><?php echo Html::anchor('shift/irregular/detial/'.$irregular_shift->id, '<i class="fa fa-search">&nbsp;確認',array('class'=>'uk-button uk-button-success')); ?></td>
 				<td><?php echo Html::anchor('manage/shift/irregular/edit_shift/'.$irregular_shift->id.'/info', '<i class="fa fa-pencil-square-o">&nbsp;シフト編集',array('class'=>'uk-button uk-button-primary')); ?></td>
 				<td><?php echo Html::anchor('shift/irregularoutput_pdf/'.$irregular_shift->id, '<i class="fa fa-file-text-o"></i>&nbsp;PDF',array('class'=>'uk-button uk-button-danger')) ?></td>
-				<td><button class='uk-button uk-button-danger' onclick="javascript:delete(<?php echo $irregular_shift->id; ?>);"><i class="fa fa-trash-o"></i>&nbsp;削除</button></td>
+				<td><?php echo Html::anchor('manage/shift/delete/'.$irregular_shift->id, '削除', array('class' => 'btn btn-danger', 'onclick' => "return confirm('削除します。よろしいですか？')")); ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>
