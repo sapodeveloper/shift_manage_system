@@ -24,13 +24,12 @@ class Controller_Manage_Shift_Regular extends Controller_Manage_Shift
 				}
 
 			$regular_id = Model_Regular::find('last');
-			$regular_day_date = Input::post('regular_date');
+			$regular_day_date = Input::post('regular_name');
 
-			foreach($regular_day_date as $date){
+			foreach($regular_name as $name){
 					$regular_date = Model_Regular_Day::forge(array(
 						'regular_id' => $regular_id->id,
-						'regular_day_date' => $date,
-						'regular_day_name' => date("n月j日",strtotime("$")),
+						'regular_day_name' => $name,
 						'regular_day_condition' => 1,
 						'updated_at' => 0,
 					));
