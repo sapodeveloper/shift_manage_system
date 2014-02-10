@@ -14,6 +14,7 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 				'irregular_limitdate' => date("Y-m-d 23:59:59",strtotime("$limitdate")),
 				'irregular_enabledate' => $today,
 				'irregular_condition' => 1,
+				'updated_at' => 0,
 			));
 
 			if ($irregular->save())
@@ -32,6 +33,7 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 						'irregular_day_date' => $date,
 						'irregular_day_name' => date("n月j日",strtotime("$date")),
 						'irregular_day_condition' => 1,
+						'updated_at' => 0,
 					));
 
 			if ($irregular_date->save())
