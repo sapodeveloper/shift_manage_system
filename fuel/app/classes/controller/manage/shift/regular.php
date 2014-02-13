@@ -12,11 +12,10 @@ class Controller_Manage_Shift_Regular extends Controller_Manage_Shift
 			$regular = Model_Regular::forge(array(
 				'regular_name' => Input::post('regular_name'),
 				'regular_limitdate' => date("Y-m-d 23:59:59",strtotime("$limitdate")),
-				'regular_enabledate' => $today,
-				'regular_condition' => 1,
-				'updated_at' => 1,
+				'regular_condition' => 0,
+				'updated_at' => 0,
 			));
-			if ($regular_date->save())
+			if ($regular->save())
 				{}
 				else
 				{
@@ -24,17 +23,17 @@ class Controller_Manage_Shift_Regular extends Controller_Manage_Shift
 				}
 
 			$regular_id = Model_Regular::find('last');
-			$regular_day_date = Input::post('regular_name');
+			$regular_name = Input::post('regular_name');
 
 			foreach($regular_name as $name){
 					$regular_date = Model_Regular_Day::forge(array(
 						'regular_id' => $regular_id->id,
 						'regular_day_name' => $name,
-						'regular_day_condition' => 1,
+						'created_at' => 0,
 						'updated_at' => 0,
 					));
 
-			if ($irregular_date->save())
+			if ($regular_date->save())
 				{}
 				else
 				{
