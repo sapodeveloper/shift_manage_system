@@ -12,7 +12,7 @@
 			<?php foreach ($requests as $request): ?>
 				<tr>
 					<td><?php echo $request->irregular_day->irregular_day_name; ?></td>
-					<td><?php Helper_Shift::irregular_work_type($request->request_shift_type); ?></td>
+					<td><?php Helper_Shift_Irregular::irregular_work_type($request->request_shift_type); ?></td>
 					<td><?php echo $request->user_comment; ?></td>
 				</tr>
 			<?php endforeach; ?>

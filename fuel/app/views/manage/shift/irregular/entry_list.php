@@ -8,21 +8,21 @@
 		<?php foreach ($irregular_shift_users as $irregular_shift_user): ?>
 			<tr>
 				<td><?php echo $irregular_shift_user->frist_name; ?></td>
-				<?php if(Helper_Shift::user_shifts_lock($irregular_id, $irregular_shift_user->user_id) == "true"): ?>
+				<?php if(Helper_Shift_Irregular::user_shifts_lock($irregular_id, $irregular_shift_user->user_id) == "true"): ?>
 					<td data-uk-tooltip  title="クリックでアンロックする" class="unlock_button" id="<?php echo $irregular_shift_user->user_id; ?>" value="<?php echo $irregular_id; ?>"><i class="fa fa-lock"></i></td>
 				<?php else: ?>
 					<td data-uk-tooltip  title="クリックでロックする" class="lock_button" id="<?php echo $irregular_shift_user->user_id; ?>" value="<?php echo $irregular_id; ?>"><i class="fa fa-unlock"></i></td>
 				<?php endif; ?>
-				<td style="background-color: #ffb6c1;"><?php Helper_Shift::request_work_day_count($irregular_id, $irregular_shift_user->user_id); ?></td>
-				<td ><?php Helper_Shift::request_work_time_count($irregular_id, $irregular_shift_user->user_id); ?>:00</td>
-				<td style="background-color: #afecef;"><?php Helper_Shift::deside_work_day_count($irregular_id, $irregular_shift_user->user_id); ?></td>
-				<td ><?php Helper_Shift::deside_work_time_count($irregular_id, $irregular_shift_user->user_id); ?>:00</td>
+				<td style="background-color: #ffb6c1;"><?php Helper_Shift_Irregular::request_work_day_count($irregular_id, $irregular_shift_user->user_id); ?></td>
+				<td ><?php Helper_Shift_Irregular::request_work_time_count($irregular_id, $irregular_shift_user->user_id); ?>:00</td>
+				<td style="background-color: #afecef;"><?php Helper_Shift_Irregular::deside_work_day_count($irregular_id, $irregular_shift_user->user_id); ?></td>
+				<td ><?php Helper_Shift_Irregular::deside_work_time_count($irregular_id, $irregular_shift_user->user_id); ?>:00</td>
 			</tr>
 		<?php endforeach; ?>
 		<tr>
 			<td colspan="2">合計</td>
-			<td colspan="2"><?php Helper_Shift::request_irregular_group_total_work_time($irregular_id); ?>:00</td>
-			<td colspan="2"><?php Helper_Shift::deside_irregular_group_total_work_time($irregular_id); ?>:00</td>
+			<td colspan="2"><?php Helper_Shift_Irregular::request_irregular_group_total_work_time($irregular_id); ?>:00</td>
+			<td colspan="2"><?php Helper_Shift_Irregular::deside_irregular_group_total_work_time($irregular_id); ?>:00</td>
 		</tr>
 	</table>
 </article>

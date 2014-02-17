@@ -25,11 +25,11 @@
 			</script>
 		</tbody>
 		<tr>
-			<td><?php Helper_Shift::irregular_work_staff_count($irregular_shift_day->id, 0); ?>名</td>
+			<td><?php Helper_Shift_Irregular::irregular_work_staff_count($irregular_shift_day->id, 0); ?>名</td>
 			<td colspan="2">合計勤務時間</td>
-			<td><?php Helper_Shift::irregular_work_time_count($irregular_shift_day->id); ?>時間</td>
-			<td><?php Helper_Shift::irregular_work_staff_count($irregular_shift_day->id ,1); ?></td>
-			<td><?php Helper_Shift::irregular_work_staff_count($irregular_shift_day->id ,2); ?></td>
+			<td><?php Helper_Shift_Irregular::irregular_work_time_count($irregular_shift_day->id); ?>時間</td>
+			<td><?php Helper_Shift_Irregular::irregular_work_staff_count($irregular_shift_day->id ,1); ?></td>
+			<td><?php Helper_Shift_Irregular::irregular_work_staff_count($irregular_shift_day->id ,2); ?></td>
 		</tr>
 	</table>
 <?php endforeach; ?>

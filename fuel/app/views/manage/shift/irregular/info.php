@@ -31,7 +31,7 @@
 			<?php foreach ($irregular_shift_users as $irregular_shift_user): ?>
 				<tr>
 					<td><?php echo $irregular_shift_user->full_name; ?></td>
-					<?php Helper_Shift::shift_table($irregular_shift->id, $irregular_shift_user->user_id); ?>
+					<?php Helper_Shift_Irregular::shift_table($irregular_shift->id, $irregular_shift_user->user_id); ?>
 				</tr>
 			<?php endforeach; ?>
 		</table>
@@ -63,8 +63,8 @@
 				<?php foreach ($irregular_shift_users as $irregular_shift_user): ?>
 					<tr>
 						<td><?php echo $irregular_shift_user->full_name; ?></td>
-						<td><?php echo Helper_Shift::deside_work_time_count($irregular_shift->id, $irregular_shift_user->user_id); ?></td>
-						<td><?php echo Helper_Shift::deside_work_day_count($irregular_shift->id, $irregular_shift_user->user_id); ?></td>
+						<td><?php echo Helper_Shift_Irregular::deside_work_time_count($irregular_shift->id, $irregular_shift_user->user_id); ?></td>
+						<td><?php echo Helper_Shift_Irregular::deside_work_day_count($irregular_shift->id, $irregular_shift_user->user_id); ?></td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>
