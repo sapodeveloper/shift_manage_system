@@ -4,7 +4,6 @@ class Model_Regular extends \Orm\Model
 {
 	protected static $_properties = array(
 		'id',
-		'regular_id',
 		'regular_name',
 		'regular_limitdate',
 		'regular_condition',
@@ -22,7 +21,7 @@ class Model_Regular extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 	);
-	protected static $_table_name = 'regulars';
+	protected static $_table_name = 'regular';
 
 	protected static $_has_many = array(
 		'regular_day' => array(
