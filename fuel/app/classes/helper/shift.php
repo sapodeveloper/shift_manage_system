@@ -246,5 +246,14 @@ class Helper_Shift {
     }
   }
 
+  public static function lock_or_unlock($mode, $irregular_id, $user_id){
+    $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
+    $update_query = DB::update('irregular_user')
+        ->value('condition', $mode)
+        ->where('user_id', $user_id)
+        ->and_where('irregular_day_id', 'in', $irregular_day_id)
+        ->execute();
+  }
+
 
 }
