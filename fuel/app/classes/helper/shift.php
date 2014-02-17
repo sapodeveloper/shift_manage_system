@@ -206,8 +206,10 @@ class Helper_Shift {
     if ($condition == 1) {
         echo "申請受付中";
     }elseif ($condition == 2) {
-        echo "編成中";
+        echo "再申請受付中";
     }elseif ($condition == 3) {
+        echo "編成中";
+    }elseif ($condition == 4) {
         echo "確定";
     }
   }
@@ -216,8 +218,10 @@ class Helper_Shift {
     if ($condition == 1) {
         echo "";
     }elseif ($condition == 2) {
-        echo "uk-alert-danger";
+        echo "uk-alert-warning";
     }elseif ($condition == 3) {
+        echo "uk-alert-danger";
+    }elseif ($condition == 4) {
         echo "uk-alert-success";
     }
   }
