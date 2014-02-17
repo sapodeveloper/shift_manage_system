@@ -44,4 +44,13 @@ class Model_Irregular extends \Orm\Model
 							->as_array();
 	}
 
+	public static function get_decision_irregulars($date){
+		return DB::select('*')->from('irregular')
+							->where('irregular_limitdate', '>', $date)
+							->where('irregular_condition', 3)
+							->as_object()
+							->execute()
+							->as_array();
+	}
+
 }
