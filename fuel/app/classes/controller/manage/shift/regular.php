@@ -13,8 +13,10 @@ class Controller_Manage_Shift_Regular extends Controller_Manage_Shift
 				'regular_name' => Input::post('regular_name'),
 				'regular_limitdate' => date("Y-m-d 23:59:59",strtotime("$limitdate")),
 				'regular_condition' => 0,
+				'created_at' => 0,
 				'updated_at' => 0,
 			));
+
 			if ($regular->save())
 				{}
 				else
@@ -22,13 +24,13 @@ class Controller_Manage_Shift_Regular extends Controller_Manage_Shift
 					Session::set_flash('error', '失敗');
 				}
 
-			$regular_id = Model_Regular::find('last');
-			$regular_name = Input::post('regular_name');
 
-			foreach($regular_name as $name){
+			$regular_id = Model_Regular::find('last');
+
+			for($i = 0; $i < 5; $i++){
 					$regular_date = Model_Regular_Day::forge(array(
 						'regular_id' => $regular_id->id,
-						'regular_day_name' => $name,
+						'regular_day_name' => Input::post('regular_name'),
 						'created_at' => 0,
 						'updated_at' => 0,
 					));
