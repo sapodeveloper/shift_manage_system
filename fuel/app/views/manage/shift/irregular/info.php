@@ -16,6 +16,15 @@
 		<div><?php echo $irregular_shift->irregular_name; ?></div>
 		<div class="uk-alert uk-alert-success uk-text-center"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作成日&nbsp;&nbsp;<?php echo date( 'Y年m月d日', $irregular_shift->created_at); ?></div>
 		<div class="uk-alert uk-alert-danger uk-text-center"><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;入力期限&nbsp;&nbsp;<?php echo date( 'Y年m月d日', strtotime($irregular_shift->irregular_limitdate)); ?></div>
+		<?php if($irregular_shift->irregular_condition == 1): ?>
+			<div class="uk-alert uk-text-center"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;申請受付中</div>
+		<?php elseif($irregular_shift->irregular_condition == 2): ?>
+			<div class="uk-alert uk-alert-danger uk-text-center"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;再申請受付中</div>
+		<?php elseif($irregular_shift->irregular_condition == 3): ?>
+			<div class="uk-alert uk-alert-success uk-text-center"><i class="fa fa-minus-circle"></i>&nbsp;&nbsp;編集中</div>
+		<?php else: ?>
+			<div class="uk-alert uk-alert-primary uk-text-center"><i class="fa fa-cloud-upload"></i>&nbsp;&nbsp;公開中</div>
+		<?php endif; ?>
 		<div>エントリー状況</div>
 		<div class="uk-progress uk-progress-striped uk-progress-mini uk-progress-success ">
 		<div class="uk-progress-bar  uk-progress-mini uk-progress-success " data-uk-tooltip title="40人中、10人がエントリー済みです。" style="width: 30%;"></div>
@@ -39,15 +48,15 @@
 
 		<div class="uk-button-group">
 			<?php echo Html::anchor('shift/irregular/output_pdf/'.$irregular_shift->id, '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-text"></i>&nbsp;PDF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',array('class'=>'uk-button uk-button-primary', 'target'=>'_blank')); ?>
-			<?php if($irregular_shift->irregular_condition == 3): ?>
-				<button class="uk-button uk-button-success condition" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>&nbsp;公開&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			<?php if($irregular_shift->irregular_condition <= 3): ?>
+				<button class="uk-button uk-button-success condition" id="<?php echo $irregular_shift->id; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>&nbsp;公開する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				<?php if($irregular_shift->irregular_condition <= 2): ?>
+					<button class="uk-button uk-button-danger public" id="<?php echo $irregular_shift->id; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-minus-circle"></i>&nbsp;募集停止する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				<?php else: ?>
+					<button class="uk-button uk-button-success public" id="<?php echo $irregular_shift->id; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-plus-circle"></i>&nbsp;募集再開する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				<?php endif; ?>
 			<?php else: ?>
-				<button class="uk-button uk-button-warning condition" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>&nbsp;非公開&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-			<?php endif; ?>
-			<?php if($irregular_shift->irregular_condition == 1): ?>
-				<button class="uk-button uk-button-danger public" id="<?php echo $irregular_shift->id; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-minus-circle"></i>&nbsp;募集停止&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-			<?php else: ?>
-				<button class="uk-button uk-button-success public" id="<?php echo $irregular_shift->id; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-plus-circle"></i>&nbsp;募集再開&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				<button class="uk-button uk-button-warning condition" id="<?php echo $irregular_shift->id; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>&nbsp;非公開にする&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 			<?php endif; ?>
 		</div>
 	</div>
@@ -80,7 +89,7 @@
 			}});
 		});
 
-		$(".conditon").click(function(){
+		$(".condition").click(function(){
 			url = "change_condition/";
 			$.ajax(url, {"complete": function(){
 				location.reload();
