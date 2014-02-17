@@ -5,9 +5,7 @@ class Controller_Irregular extends Controller_Application
 
 	public function action_index()
 	{
-		$datetime = new \DateTime();
-		$today = $datetime->format('Y-m-d H:i:s:');
-		$data['receiving_irregulars'] = Model_Irregular::find('all', array('where' => array(array('irregular_limitdate', '>', $today), array('irregular_condition' => 1))));
+		$data['receiving_irregulars'] = Model_Irregular::get_receiving_irregulars(Helper_Application::get_today());
 		$view = View::forge('layout/application');
 		$view->contents = View::forge('irregular/index', $data);
 		return $view;

@@ -16,7 +16,7 @@ class Controller_Shift extends Controller_Application
 
 	public function action_request()
 	{
-		$data['receiving_irregulars'] = Model_Irregular::get_receving_irregulars(Helper_Application::get_today());
+		$data['receiving_irregulars'] = Model_Irregular::get_receiving_irregulars(Helper_Application::get_today());
 		$view = View::forge('layout/application');
 		$view->contents = View::forge('shift/request', $data);
 		return $view;
