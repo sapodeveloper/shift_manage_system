@@ -34,4 +34,13 @@ class Model_Irregular extends \Orm\Model
 		),
 	);
 
+	# model function
+	public static function get_receiving_irregulars($date){
+		$results = DB::select('*')->from('irregular')
+									->where('irregular_limitdate', '>', $date)
+									->where('irregular_condition', 1)
+									->execute();
+    return $results->as_array();
+	}
+
 }
