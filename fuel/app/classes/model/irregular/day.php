@@ -43,4 +43,5 @@ class Model_Irregular_Day extends \Orm\Model
 		),
 	);
 
+
 }

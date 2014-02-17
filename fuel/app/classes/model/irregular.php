@@ -44,8 +44,4 @@ class Model_Irregular extends \Orm\Model
 							->as_array();
 	}
 
-	public static function get_irregular_day_ids_as_array($irregular_id){
-		return DB::select('id')->from('regular_day')->where('regular_id', $irregular_id);
-	}
-
 }
