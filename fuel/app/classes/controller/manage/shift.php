@@ -16,7 +16,7 @@ class Controller_Manage_Shift extends Controller_Manage
 
 	}
 
-	public function action_delete1($id = null)
+	public function action_delete_regular($id = null)
 	{
 		$regular = Model_Regular::find($id);
 		$regular_days = DB::select('id')->from('regular_day')->where('regular_id', $id); 
@@ -26,7 +26,7 @@ class Controller_Manage_Shift extends Controller_Manage
 		Response::redirect('manage/shift/index');
 	}
 
-	public function action_delete2($id = null)
+	public function action_delete_irregular($id = null)
 	{
 		$irregular = Model_Irregular::find($id);
 		$irregular_days = DB::select('id')->from('irregular_day')->where('irregular_id', $id); 
