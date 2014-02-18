@@ -7,6 +7,9 @@ class Controller_Manage_Shift extends Controller_Manage
 		// 今日の日付を取得
 		$datetime = new \DateTime();
 		$today = $datetime->format('Y-m-d H:i:s:');
+		$data['decision_regulars'] = Model_Regular::find('all', array('where' => array(array('regular_condition' => 3))));
+		$data['receiving_regulars'] = Model_Regular::find('all', array('where' => array(array('regular_limitdate', '>', $today), array('regular_condition' => 1))));
+		$data['regular_shifts'] = Model_Regular::find('all', array('order_by' => array('id' => 'desc')));
 		$data['decision_irregulars'] = Model_Irregular::find('all', array('where' => array(array('irregular_condition' => 3), array('irregular_enabledate', '>', $today))));
 		$data['receiving_irregulars'] = Model_Irregular::find('all', array('where' => array(array('irregular_limitdate', '>', $today), array('irregular_condition' => 1))));
 		$data['irregular_shifts'] = Model_Irregular::find('all', array('order_by' => array('id' => 'desc')));

@@ -12,7 +12,7 @@ class Controller_Manage_Shift_Regular extends Controller_Manage_Shift
 			$regular = Model_Regular::forge(array(
 				'regular_name' => Input::post('regular_name'),
 				'regular_limitdate' => date("Y-m-d 23:59:59",strtotime("$limitdate")),
-				'regular_condition' => 0,
+				'regular_condition' => 1,
 				'created_at' => 0,
 				'updated_at' => 0,
 			));
