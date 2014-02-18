@@ -12,6 +12,8 @@ class Controller_Manage_Shift extends Controller_Manage
 		$data['regular_shifts'] = Model_Regular::find('all', array('order_by' => array('id' => 'desc')));
 		$data['decision_irregulars'] = Model_Irregular::find('all', array('where' => array(array('irregular_condition' => 3), array('irregular_enabledate', '>', $today))));
 		$data['receiving_irregulars'] = Model_Irregular::find('all', array('where' => array(array('irregular_limitdate', '>', $today), array('irregular_condition' => 1))));
+		$data['decision_irregulars'] = Model_Irregular::get_decision_irregulars(Helper_Application::get_today());
+		$data['receiving_irregulars'] = Model_Irregular::get_receiving_irregulars(Helper_Application::get_today());
 		$data['irregular_shifts'] = Model_Irregular::find('all', array('order_by' => array('id' => 'desc')));
 		$view = View::forge('layout/application');
 		$view->contents = View::forge('manage/shift/index', $data);
