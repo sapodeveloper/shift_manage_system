@@ -1,8 +1,8 @@
 <tr>
-	<td rowspan="2"><?php echo $regular_shift_user->users->full_name; ?></td>
-	<td>希望 : <?php Helper_Shift_Irregular::regular_work_type($regular_shift_user->request_shift_type); ?>
+	<td rowspan="2"><?php echo $irregular_shift_user->users->full_name; ?></td>
+	<td>希望 : <?php Helper_Shift_Irregular::irregular_work_type($irregular_shift_user->request_shift_type); ?>
 	</td>
-	<td>編集後 : <?php Helper_Shift_Irregular::regular_work_type($regular_shift_user->edited_shift_type); ?>
+	<td>編集後 : <?php Helper_Shift_Irregular::irregular_work_type($irregular_shift_user->edited_shift_type); ?>
 	<td rowspan="2"><?php echo $irregular_shift_user->users->full_name; ?></td>
 	<td>希望 : <?php Helper_Shift::irregular_work_type($irregular_shift_user->request_shift_type); ?>
 	</td>
@@ -26,8 +26,6 @@
 				<button class="uk-button uk-button-primary check2-<?php echo $irregular_shift_user->id; ?>"><i class="fa fa-moon-o"></i> 13時〜17時（午後）</button>
 			<?php endif; ?>
 		</div>
-		<?php if(Helper_Shift_Irregular::user_shift_lock($regular_shift_user->id) == "true"): ?>
-			<button class='uk-button uk-button-success update-<?php echo $regular_shift_user->id; ?>' disabled>更新</button>
 		<?php if(Helper_Shift::user_shift_lock($irregular_shift_user->id) == "true"): ?>
 			<button class='uk-button uk-button-success update-<?php echo $irregular_shift_user->id; ?>' disabled>更新</button>
 		<?php else: ?>
