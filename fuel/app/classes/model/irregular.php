@@ -44,10 +44,18 @@ class Model_Irregular extends \Orm\Model
 							->as_array();
 	}
 
+	public static function get_re_receiving_irregulars($date){
+		return DB::select('*')->from('irregular')
+							->where('irregular_condition', 2)
+							->as_object()
+							->execute()
+							->as_array();
+	}
+
 	public static function get_decision_irregulars($date){
 		return DB::select('*')->from('irregular')
 							->where('irregular_enabledate', '>', $date)
-							->where('irregular_condition', 3)
+							->where('irregular_condition', 4)
 							->as_object()
 							->execute()
 							->as_array();
