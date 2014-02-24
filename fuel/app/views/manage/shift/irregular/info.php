@@ -26,7 +26,7 @@
 			<div class="uk-alert uk-alert-primary uk-text-center"><i class="fa fa-cloud-upload"></i>&nbsp;&nbsp;公開中</div>
 		<?php endif; ?>
 		<div>エントリー状況</div>
-		<div class="uk-text-center"><i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class="uk-text-center"><i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php Helper_Shift::request_shift_distinct_staff_count(0, $irregular_shift->id); ?>&nbsp;&nbsp;</div>
 		<div></div>
 		<div>個別勤務時間</div>
 		<table border="1" width=100% class="uk-text-center">
