@@ -1,5 +1,28 @@
 <?php
 class Helper_Shift {
+
+    // 任意のシフトのグループの申請人数を重複無しでカウントする
+    // shift_type = 0 イレギュラー
+    // shift_type = 1 レギュラー
+    // shift_id はカウントしたいシフトのグループのid
+    public static function request_shift_distinct_staff_count($shift_type, $shift_id){
+        if($shift_type == 0){
+            $shift_group_ids = DB::select('id')->from('irregular_day')->where('irregular_id', $shift_id);
+            $result = DB::select('user_id')
+                                ->from('irregular_user')
+                                ->where('irregular_day_id', $shift_group_ids)
+                                ->distinct(true)
+                                ->execute();
+        }elseif($shift_type == 1){
+            $shift_group_ids = DB::select('id')->from('regular_day')->where('regular_id', $shift_id);
+            $result = DB::select('user_id')
+                                ->from('regular_user')
+                                ->where('regular_day_id', $shift_group_ids)
+                                ->distinct(true)
+                                ->execute();
+        }
+        echo count($result);
+    }
 	// 該当時間の勤務スタッフ数を求める
   public static function irregular_work_staff_count($irregular_shift_day_id ,$shift_type) {
     if($shift_type == 0){
