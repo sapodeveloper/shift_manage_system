@@ -16,7 +16,7 @@
 		<div><?php echo $regular_shift->regular_name; ?></div>
 		<div class="uk-alert uk-alert-success uk-text-center"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作成日&nbsp;&nbsp;<?php echo date( 'Y年m月d日', $regular_shift->created_at); ?></div>
 		<div class="uk-alert uk-alert-danger uk-text-center"><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;入力期限&nbsp;&nbsp;<?php echo date( 'Y年m月d日', strtotime($regular_shift->regular_limitdate)); ?></div>
-		<?php if(rregular_shift->regular_condition == 1): ?>
+		<?php if($regular_shift->regular_condition == 1): ?>
 			<div class="uk-alert uk-text-center"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;申請受付中</div>
 		<?php elseif($regular_shift->regular_condition == 2): ?>
 			<div class="uk-alert uk-alert-danger uk-text-center"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;再申請受付中</div>
@@ -50,7 +50,7 @@
 			<?php echo Html::anchor('shift/regular/output_pdf/'.$regular_shift->id, '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-text"></i>&nbsp;PDF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',array('class'=>'uk-button uk-button-primary', 'target'=>'_blank')); ?>
 			<?php if($regular_shift->regular_condition <= 3): ?>
 				<button class="uk-button uk-button-success condition" id="<?php echo $regular_shift->id; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-cloud-upload"></i>&nbsp;公開する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-				<?php if($irregular_shift->irregular_condition <= 2): ?>
+				<?php if($regular_shift->regular_condition <= 2): ?>
 					<button class="uk-button uk-button-danger public" id="<?php echo $regular_shift->id; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-minus-circle"></i>&nbsp;募集停止する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 				<?php else: ?>
 					<button class="uk-button uk-button-success public" id="<?php echo $regular_shift->id; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-plus-circle"></i>&nbsp;募集再開する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
