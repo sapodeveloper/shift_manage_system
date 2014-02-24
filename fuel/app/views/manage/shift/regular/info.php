@@ -26,9 +26,7 @@
 			<div class="uk-alert uk-alert-primary uk-text-center"><i class="fa fa-cloud-upload"></i>&nbsp;&nbsp;公開中</div>
 		<?php endif; ?>
 		<div>エントリー状況</div>
-		<div class="uk-progress uk-progress-striped uk-progress-mini uk-progress-success ">
-		<div class="uk-progress-bar  uk-progress-mini uk-progress-success " data-uk-tooltip title="40人中、10人がエントリー済みです。" style="width: 30%;"></div>
-		</div>
+		<div class="uk-text-center"><i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php Helper_Shift::request_shift_distinct_staff_count(1, $regular_shift->id); ?>&nbsp;&nbsp;</div>
 		<div>個別勤務時間</div>
 		<table border="1" width=100% class="uk-text-center">
 			<tr>
