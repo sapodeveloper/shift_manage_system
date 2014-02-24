@@ -3,11 +3,6 @@
 	<td>希望 : <?php Helper_Shift_Irregular::irregular_work_type($irregular_shift_user->request_shift_type); ?>
 	</td>
 	<td>編集後 : <?php Helper_Shift_Irregular::irregular_work_type($irregular_shift_user->edited_shift_type); ?>
-	<td rowspan="2"><?php echo $irregular_shift_user->users->full_name; ?></td>
-	<td>希望 : <?php Helper_Shift::irregular_work_type($irregular_shift_user->request_shift_type); ?>
-	</td>
-	<td>編集後 : <?php Helper_Shift::irregular_work_type($irregular_shift_user->edited_shift_type); ?>
-	</td>
 </tr>
 <tr>
 	<td colspan="4">
