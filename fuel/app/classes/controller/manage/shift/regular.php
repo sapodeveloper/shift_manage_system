@@ -126,7 +126,7 @@ class Controller_Manage_Shift_Regular extends Controller_Manage_Shift
 
 	public function action_change_entry_condition()
 	{
-		$regular_shift = Model_Irregular::find($this->param('id'));
+		$regular_shift = Model_Regular::find($this->param('id'));
 		if($regular_shift->regular_condition == 1){
 			$regular_shift->regular_condition = 2;
 		}else{

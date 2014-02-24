@@ -13,14 +13,6 @@
 			<td><i class="fa fa-clock-o"></i>&nbsp;申請締切日：</td>
 			<td><input type="text" data-uk-datepicker="{ weekstart:0, format:'YYYY/MM/DD', i18n: { months:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'], weekdays:['日','月','火','水','木','金','土'] }}" size=10 placeholder="入力期限" readonly name="limitdate" value=""></td>
 		</tr>
-		<tr>
-			<td><i class="fa fa-clock-o"></i>&nbsp;開始日</td>
-			<td><input type="text" data-uk-datepicker="{ weekstart:0, format:'YYYY/MM/DD', i18n: { months:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'], weekdays:['日','月','火','水','木','金','土'] }}" size=10 placeholder="開始日" readonly name="regular_date_str" value=""></td>
-		</tr>
-		<tr>
-			<td><i class="fa fa-clock-o"></i>&nbsp;終了日</td>
-			<td><input type="text" data-uk-datepicker="{ weekstart:0, format:'YYYY/MM/DD', i18n: { months:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'], weekdays:['日','月','火','水','木','金','土'] }}" size=10 placeholder="終了日" readonly name="regular_date_end" value=""></td>
-		</tr>
 			<td colspan="2">
 				<button class="uk-button uk-button-primary" type="submit">
 					<i class="fa fa-pencil"></i>&nbsp;シフト作成

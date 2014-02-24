@@ -49,7 +49,7 @@ class Controller_Shift_Regular extends Controller
 		foreach ($regular_shift_days as $regular_shift_day){
 			if($regular_shift_users{$day_id}){
 				$html .= '<h4>';
-				$html .= date( 'Y年m月d日', strtotime($regular_shift_day->irregular_day_date));
+				$html .= date( 'Y年m月d日', strtotime($regular_shift_day->regular_day_date));
 				$html .= '</h4><table border="1"><tr><td>スタッフ名</td><td>勤務形態</td><td>勤務時間</td><td>時間</td><td>午前勤務</td><td>午後勤務</td></tr>';
 				// 該当日の合計勤務時間
 				$total_work_time = 0;

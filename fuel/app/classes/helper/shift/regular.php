@@ -45,20 +45,7 @@ class Helper_Shift_Regular{
 		echo count($morning)*3 + count($afternoon) * 4 + count($full) * 6;
   }
 
-  // 該当イレギュラーシフトの勤務形態を出力する
-  public static function regular_work_type($regular_work_type){
-    if ($regular_work_type == 1) {
-        echo "午前勤務";
-    }elseif ($regular_work_type == 2) {
-        echo "午後勤務";
-    }elseif ($regular_work_type == 3) {
-        echo "フル勤務";
-    }elseif ($regular_work_type == 4) {
-        echo "勤務無し";
-    }
-  }
-
-  //　当該イレギュラーシフトの勤務形態をテーブルタグで出力する
+  //　当該レギュラーシフトの勤務形態をテーブルタグで出力する
   public static function regular_work_type_for_table($regular_work_type){
     if ($regular_work_type == 1) {
         echo "<td>午前勤務</td><td>10:00 ~ 13:00</td><td>3:00</td><td bgcolor = 'deepskyblue'></td><td></td>";
@@ -69,7 +56,7 @@ class Helper_Shift_Regular{
     }
   }
 
-  // 当該イレギュラーシフトグループの特定ユーザの希望勤務日数を求める
+  // 当該レギュラーシフトグループの特定ユーザの希望勤務日数を求める
   public static function request_work_day_count($regular_id, $user_id){
     $regular_day_id = DB::select('id')->from('regular_day')->where('regular_id', $regular_id);
     $work_day = DB::select('*')->from('regular_user')
@@ -80,7 +67,7 @@ class Helper_Shift_Regular{
     echo count($work_day);
   }
 
-  // 当該イレギュラーシフトグループの特定ユーザの確定勤務日数を求める
+  // 当該レギュラーシフトグループの特定ユーザの確定勤務日数を求める
   public static function deside_work_day_count($regular_id, $user_id){
     $regular_day_id = DB::select('id')->from('regular_day')->where('regular_id', $regular_id);
     $work_day = DB::select('*')->from('regular_user')
@@ -91,7 +78,7 @@ class Helper_Shift_Regular{
     echo count($work_day);
   }
 
-  // 当該イレギュラーシフトグループの特定ユーザの希望勤務時間を求める
+  // 当該レギュラーシフトグループの特定ユーザの希望勤務時間を求める
   public static function request_work_time_count($regular_id, $user_id){
     $regular_day_id = DB::select('id')->from('regular_day')->where('regular_id', $regular_id);
     $morning = DB::select('*')->from('regular_user')
@@ -112,7 +99,7 @@ class Helper_Shift_Regular{
     echo count($morning)*3 + count($afternoon) * 4 + count($full) * 6;
   }
 
-  // 当該イレギュラーシフトグループの特定ユーザの確定勤務時間を求める
+  // 当該レギュラーシフトグループの特定ユーザの確定勤務時間を求める
   public static function deside_work_time_count($regular_id, $user_id){
     $regular_day_id = DB::select('id')->from('regular_day')->where('regular_id', $regular_id);
     $morning = DB::select('*')->from('regular_user')
@@ -133,7 +120,7 @@ class Helper_Shift_Regular{
     echo count($morning)*3 + count($afternoon) * 4 + count($full) * 6;
   }
 
-  // 当該イレギュラーシフトグループの希望勤務時間の合計を求める
+  // 当該レギュラーシフトグループの希望勤務時間の合計を求める
   public static function request_regular_group_total_work_time($regular_id){
     $regular_day_id = DB::select('id')->from('regular_day')->where('regular_id', $regular_id);
     $morning = DB::select('*')
@@ -154,7 +141,7 @@ class Helper_Shift_Regular{
     echo count($morning)*3 + count($afternoon) * 4 + count($full) * 6;
   }
 
-  // 当該イレギュラーシフトグループの確定勤務時間の合計を求める
+  // 当該レギュラーシフトグループの確定勤務時間の合計を求める
   public static function deside_regular_group_total_work_time($regular_id){
     $regular_day_id = DB::select('id')->from('regular_day')->where('regular_id', $regular_id);
     $morning = DB::select('*')
