@@ -26,6 +26,7 @@ return array(
 				17 => '018_create_auths',
 				18 => '019_create_irregular_types',
 				19 => '020_create_logs',
+				20 => '021_create_regular_time',
 			),
 		),
 		'module' => 
