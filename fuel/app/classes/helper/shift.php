@@ -10,14 +10,14 @@ class Helper_Shift {
             $shift_group_ids = DB::select('id')->from('irregular_day')->where('irregular_id', $shift_id);
             $result = DB::select('user_id')
                                 ->from('irregular_user')
-                                ->where('irregular_day_id', $shift_group_ids)
+                                ->where('irregular_day_id', 'in', $shift_group_ids)
                                 ->distinct(true)
                                 ->execute();
         }elseif($shift_type == 1){
             $shift_group_ids = DB::select('id')->from('regular_day')->where('regular_id', $shift_id);
             $result = DB::select('user_id')
                                 ->from('regular_user')
-                                ->where('regular_day_id', $shift_group_ids)
+                                ->where('regular_day_id', 'in', $shift_group_ids)
                                 ->distinct(true)
                                 ->execute();
         }
