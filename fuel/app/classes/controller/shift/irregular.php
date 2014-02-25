@@ -19,7 +19,11 @@ class Controller_Shift_Irregular extends Controller
 
 	public function action_shift_detail($id = null)
 	{
-		$data["irregular_shift_users"] = Model_Irregular_User::find('all', array('where' => array(array('irregular_day_id' => $id), array('edited_shift_type', '!=', 4))));
+		$data["irregular_shift_users"] = DB::query('SELECT * from irregular_user 
+			inner join users on users.id = irregular_user.user_id
+			where irregular_day_id = '.$id.'
+			and edited_shift_type in (1,2,3)
+			order by users.year, users.username')->as_object()->execute()->as_array();
 		$view = View::forge('shift/irregular/shift_detail', $data);
 		return $view;
 	}
@@ -38,14 +42,19 @@ class Controller_Shift_Irregular extends Controller
 			}else{
 				$day_id = $irregular_shift_day->id;
 			}
-			$irregular_shift_users{$day_id} = Model_Irregular_User::find('all', array('where' => array(array('irregular_day_id' => $irregular_shift_day->id), array('edited_shift_type', 'in', array(1,2,3)))));
+			$irregular_shift_users{$day_id} = DB::query('SELECT * from irregular_user 
+			inner join users on users.id = irregular_user.user_id
+			where irregular_day_id = '.$irregular_shift_day->id.'
+			and edited_shift_type in (1,2,3)
+			order by users.year, users.username')->as_object()->execute()->as_array();
+			//Model_Irregular_User::find('all', array('where' => array(array('irregular_day_id' => $irregular_shift_day->id), array('edited_shift_type', 'in', array(1,2,3)))));
 		}
 		$query = DB::query('SELECT distinct irregular_user.user_id, users.full_name 
 			from irregular_user 
 			inner join users on users.id = irregular_user.user_id
 			where irregular_day_id in (SELECT id FROM irregular_day WHERE irregular_id = '.$id.')
 			and edited_shift_type in (1,2,3)
-			order by irregular_user.user_id');
+			order by users.year, users.username');
 		$irregular_users = $query->as_object()->execute()->as_array();
 		$css = '<style> td.bg { background-color: #00bfff; } </style>';
 		$html = '<meta charset="utf-8"><br><div><center><font size="15">';
@@ -66,7 +75,7 @@ class Controller_Shift_Irregular extends Controller
 					$afternoon_work_staff_num = 0;
 					foreach ($irregular_shift_users{$day_id} as $irregular_shift_user){
 						$html .= '<tr><td>';
-						$html .= $irregular_shift_user->users->full_name;
+						$html .= $irregular_shift_user->full_name;
 						$html .= '</td>';
 						if($irregular_shift_user->edited_shift_type == 1){
 							$html .= "<td>10:00 - 13:00</td><td>3:00</td><td class=\"bg\"></td><td></td>";
