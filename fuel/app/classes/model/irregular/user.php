@@ -56,4 +56,24 @@ class Model_Irregular_User extends \Orm\Model
 			'cascade_delete' => false
 		),
 	);
+
+	# model function
+	public static function get_order_users_data($irregular_shift_day_id){
+		return DB::query('SELECT * from irregular_user 
+			inner join users on users.id = irregular_user.user_id
+			where irregular_day_id = '.$irregular_shift_day_id.'
+			order by users.year, users.username')->as_object()->execute()->as_array();
+	}
+
+	public static function get_order_users_shift_group_data($irregular_shift_id){
+		return DB::query('SELECT distinct irregular_user.user_id, users.full_name,users.frist_name 
+			from irregular_user 
+			inner join users on users.id = irregular_user.user_id
+			where irregular_day_id in (SELECT id FROM irregular_day WHERE irregular_id = '.$irregular_shift_id.')
+			order by users.year, users.username')->as_object()->execute()->as_array();
+	}
+
+	public static function get_user_shift_data($irregular_day_id, $user_id){
+		return DB::select('*')->from('irregular_user')->where('irregular_day_id', $irregular_day_id)->where('user_id', $user_id)->execute();
+	}
 }

@@ -57,7 +57,7 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 		$data['irregular_shift'] = Model_Irregular::find($this->param('id'));
 		$data['irregular_shift_days'] = Model_Irregular_Day::find('all', array('where' => array('irregular_id' => $this->param('id'))));
 		$irregular_shift_day = Model_Irregular_Day::find($this->param('day_id'));
-		$data['irregular_shift_users'] = Model_Irregular_User::find('all', array('where' => array('irregular_day_id' => $irregular_shift_day->id)));
+		$data['irregular_shift_users'] = Model_Irregular_User::get_order_users_data($irregular_shift_day->id);
 		$view = View::forge('layout/edit_irregular_layout');
 		$view->contents = View::forge('manage/shift/irregular/edit_shift_day', $data);
 		return $view;
@@ -79,12 +79,7 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 
 	public function action_entry_list()
 	{
-		$query = DB::query('SELECT distinct irregular_user.user_id, users.frist_name 
-			from irregular_user 
-			inner join users on users.id = irregular_user.user_id
-			where irregular_day_id in (SELECT id FROM irregular_day WHERE irregular_id = '.$this->param('id').')
-			order by irregular_user.user_id');
-		$data['irregular_shift_users'] = $query->as_object()->execute()->as_array();
+		$data['irregular_shift_users'] = Model_Irregular_User::get_order_users_shift_group_data($this->param('id'));
 		$data['irregular_id'] = $this->param('id');
 		$view = View::forge('manage/shift/irregular/entry_list', $data);
 		return $view;
@@ -104,12 +99,7 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 	{
 		$data['irregular_shift'] = Model_Irregular::find($this->param('id'));
 		$data['irregular_shift_days'] = Model_Irregular_Day::find('all', array('where' => array('irregular_id' => $this->param('id'))));
-		$query = DB::query('SELECT distinct irregular_user.user_id, users.full_name 
-			from irregular_user 
-			inner join users on users.id = irregular_user.user_id
-			where irregular_day_id in (SELECT id FROM irregular_day WHERE irregular_id = '.$this->param('id').')
-			order by irregular_user.user_id');
-		$data['irregular_shift_users'] = $query->as_object()->execute()->as_array();
+		$data['irregular_shift_users'] = Model_Irregular_User::get_order_users_shift_group_data($this->param('id'));
 		$view = View::forge('layout/application');
 		$view->contents = View::forge('manage/shift/irregular/info', $data);
 		return $view;
