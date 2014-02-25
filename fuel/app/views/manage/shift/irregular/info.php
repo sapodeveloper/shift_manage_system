@@ -13,7 +13,7 @@
 <div class="uk-grid">
 	<div class="uk-width-medium-4-6">
 		<br>
-		<div><?php echo $irregular_shift->irregular_name; ?></div>
+		<blockquote><?php echo $irregular_shift->irregular_name; ?></blockquote>
 		<div class="uk-alert uk-alert-success uk-text-center"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作成日&nbsp;&nbsp;<?php echo date( 'Y年m月d日', $irregular_shift->created_at); ?></div>
 		<div class="uk-alert uk-alert-danger uk-text-center"><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;入力期限&nbsp;&nbsp;<?php echo date( 'Y年m月d日', strtotime($irregular_shift->irregular_limitdate)); ?></div>
 		<?php if($irregular_shift->irregular_condition == 1): ?>
@@ -25,10 +25,8 @@
 		<?php else: ?>
 			<div class="uk-alert uk-alert-primary uk-text-center"><i class="fa fa-cloud-upload"></i>&nbsp;&nbsp;公開中</div>
 		<?php endif; ?>
-		<div>エントリー状況</div>
-		<div class="uk-text-center"><i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php Helper_Shift::request_shift_distinct_staff_count(0, $irregular_shift->id); ?>&nbsp;&nbsp;</div>
-		<div></div>
-		<div>個別勤務時間</div>
+		<div class="uk-alert uk-text-center"><i class="fa fa-users"></i>&nbsp;&nbsp;申請状況&nbsp;&nbsp;<?php Helper_Shift::request_shift_distinct_staff_count(0, $irregular_shift->id); ?>人</div>
+		<blockquote>個別勤務時間</blockquote>
 		<table border="1" width=100% class="uk-text-center">
 			<tr>
 				<td>名前</td>
