@@ -37,7 +37,7 @@ class Model_Irregular extends \Orm\Model
 	# model function
 	public static function get_receiving_irregulars($date){
 		return DB::select('*')->from('irregular')
-							->where('irregular_limitdate', '>', $date)
+							->where('irregular_limitdate', '>=', $date)
 							->where('irregular_condition', 1)
 							->as_object()
 							->execute()
@@ -54,7 +54,7 @@ class Model_Irregular extends \Orm\Model
 
 	public static function get_decision_irregulars($date){
 		return DB::select('*')->from('irregular')
-							->where('irregular_enabledate', '>', $date)
+							->where('irregular_enabledate', '>=', $date)
 							->where('irregular_condition', 4)
 							->as_object()
 							->execute()
