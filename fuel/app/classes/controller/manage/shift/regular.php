@@ -27,13 +27,12 @@ class Controller_Manage_Shift_Regular extends Controller_Manage_Shift
 
 			$regular_id = Model_Regular::find('last');
 
-			for($i = 0; $i < 5; $i++){
-					$regular_date = Model_Regular_Day::forge(array(
-						'regular_id' => $regular_id->id,
-						'regular_day_name' => Input::post('regular_name'),
-						'created_at' => 0,
-						'updated_at' => 0,
-					));
+			$regular_date = Model_Regular_Day::forge(array(
+				'regular_id' => $regular_id->id,
+				'regular_day_name' => '月',
+				'created_at' => 0,
+				'updated_at' => 0,
+			));
 
 			if ($regular_date->save())
 				{}
@@ -41,7 +40,62 @@ class Controller_Manage_Shift_Regular extends Controller_Manage_Shift
 				{
 					Session::set_flash('error', '失敗');
 				}
-			}
+
+			$regular_date = Model_Regular_Day::forge(array(
+				'regular_id' => $regular_id->id,
+				'regular_day_name' => '火',
+				'created_at' => 0,
+				'updated_at' => 0,
+			));
+
+			if ($regular_date->save())
+				{}
+				else
+				{
+					Session::set_flash('error', '失敗');
+				}
+
+			$regular_date = Model_Regular_Day::forge(array(
+				'regular_id' => $regular_id->id,
+				'regular_day_name' => '水',
+				'created_at' => 0,
+				'updated_at' => 0,
+			));
+
+			if ($regular_date->save())
+				{}
+				else
+				{
+					Session::set_flash('error', '失敗');
+				}
+
+			$regular_date = Model_Regular_Day::forge(array(
+				'regular_id' => $regular_id->id,
+				'regular_day_name' => '木',
+				'created_at' => 0,
+				'updated_at' => 0,
+			));
+
+			if ($regular_date->save())
+				{}
+				else
+				{
+					Session::set_flash('error', '失敗');
+				}
+
+			$regular_date = Model_Regular_Day::forge(array(
+				'regular_id' => $regular_id->id,
+				'regular_day_name' => '金',
+				'created_at' => 0,
+				'updated_at' => 0,
+			));
+
+			if ($regular_date->save())
+				{}
+				else
+				{
+					Session::set_flash('error', '失敗');
+				}
 
 			Response::redirect('manage/shift/index'); 
 		}
