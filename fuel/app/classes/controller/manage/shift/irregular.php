@@ -28,6 +28,7 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 			$irregular_day_date = Input::post('irregular_date');
 
 			foreach($irregular_day_date as $date){
+				if($date != null){
 					$irregular_date = Model_Irregular_Day::forge(array(
 						'irregular_id' => $irregular_id->id,
 						'irregular_day_date' => $date,
@@ -41,6 +42,7 @@ class Controller_Manage_Shift_Irregular extends Controller_Manage_Shift
 				else
 				{
 					Session::set_flash('error', '失敗');
+				}
 				}
 			}
 
