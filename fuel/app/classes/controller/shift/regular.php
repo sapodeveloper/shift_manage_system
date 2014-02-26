@@ -9,7 +9,7 @@ class Controller_Shift_Regular extends Controller
 		if($id == null){
 			Response::redirect('shift/check');
 		}
-		// 指定されたidのイレギュラーシフトを取得する	
+		// 指定されたidのレギュラーシフトを取得する	
 		$data['regular_shift'] = Model_Regular::find($id);
 		$data['regular_shift_days'] = Model_Regular_Day::find('all', array('where' => array('regular_id' => $id)));
 		$view = View::forge('layout/application');
@@ -29,10 +29,10 @@ class Controller_Shift_Regular extends Controller
 		if($id == null){
 			Response::redirect('shift/check');
 		}
-		// 指定されたidのイレギュラーシフトを取得する	
-		$irregular_shift = Model_Regular::find($id);
-		$irregular_shift_days = Model_Regular_Day::find('all', array('where' => array('regular_id' => $id)));
-		$irregular_shift_users = Model_Regular_User::find('all', array('where' => array('regular_day_id' => 1)));
+		// 指定されたidのレギュラーシフトを取得する	
+		$regular_shift = Model_Regular::find($id);
+		$regular_shift_days = Model_Regular_Day::find('all', array('where' => array('regular_id' => $id)));
+		$regular_shift_users = Model_Regular_User::find('all', array('where' => array('regular_day_id' => 1)));
 		foreach ($regular_shift_days as $regular_shift_day) {
 			if($regular_shift_day->id > 5){
 				$day_id = ($regular_shift_day->id)%5+1;
@@ -49,7 +49,7 @@ class Controller_Shift_Regular extends Controller
 		foreach ($regular_shift_days as $regular_shift_day){
 			if($regular_shift_users{$day_id}){
 				$html .= '<h4>';
-				$html .= date( 'Y年m月d日', strtotime($regular_shift_day->regular_day_date));
+				$html .= $regular_shift_day->regular_day_name;
 				$html .= '</h4><table border="1"><tr><td>スタッフ名</td><td>勤務形態</td><td>勤務時間</td><td>時間</td><td>午前勤務</td><td>午後勤務</td></tr>';
 				// 該当日の合計勤務時間
 				$total_work_time = 0;
@@ -97,7 +97,7 @@ class Controller_Shift_Regular extends Controller
     $pdf->AddPage();
     $pdf->SetFont('kozminproregular', '', 12);
     $pdf->writeHTML($css.$html, false, false, false, false, 'C');
-    $pdf->Output("Irregular_Shift_No".$irregular_shift->id.".pdf", "I");
+    $pdf->Output("Regular_Shift_No".$regular_shift->id.".pdf", "I");
 	}
 
 }

@@ -1,6 +1,6 @@
 <h3><?php echo $regular_shift->regular_name; ?></h3>
 <?php foreach ($regular_shift_days as $regular_shift_day): ?>
-	<h4><?php echo date( 'Y年m月d日', strtotime($regular_shift_day->regular_day_date)); ?></h4>
+	<h4><?php echo($regular_shift_day->regular_day_name); ?></h4>
 	<table border="1" class="uk-table uk-width-7-10">
 		<thead>
 			<tr>
