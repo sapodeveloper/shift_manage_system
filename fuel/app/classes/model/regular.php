@@ -36,7 +36,7 @@ class Model_Regular extends \Orm\Model
 	# model function
 	public static function get_receiving_regulars($date){
 		return DB::select('*')->from('regular')
-							->where('regular_limitdate', '>', $date)
+							->where('regular_limitdate', '>=', $date)
 							->where('regular_condition', 1)
 							->as_object()
 							->execute()
