@@ -4,7 +4,6 @@ class Model_Regular_User extends \Orm\Model
 {
 	protected static $_properties = array(
 		'id',
-		'regular_user_id',
 		'user_id',
 		'regular_day_id',
 		'request_start',
@@ -26,7 +25,7 @@ class Model_Regular_User extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 	);
-	protected static $_table_name = 'regular_users';
+	protected static $_table_name = 'regular_user';
 
 	protected static $_belongs_to = array(
 		'users' => array(

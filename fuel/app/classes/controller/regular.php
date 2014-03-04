@@ -19,7 +19,7 @@ class Controller_Regular extends Controller_Application
 		$data['id'] = $id;
 		$user_id = Auth::get('id');
 		$data['regular_shift'] = Model_Regular::find($id);
-		$data['regular_days'] = Model_Regular_Day::find('all', array('where' => array(array('regular_id' => $id), array('regular_day_condition' => 1))));
+		$data['regular_days'] = Model_Regular_Day::find('all', array('where' => array(array('regular_id' => $id))));
 		if (Input::method() == 'POST')
 		{
 			$i=1;
@@ -28,7 +28,6 @@ class Controller_Regular extends Controller_Application
 				$request_start[$i] = Input::post('request_start'.$i);
 				$request_end[$i] = Input::post('request_end'.$i);
 				$user_comment[$i] = Input::post('user_comment'.$i);
-
 				$regular_user->user_id = $user_id;
 				$regular_user->regular_day_id = $regular_day->id;
 				$regular_user->request_start = $request_start[$i];
@@ -36,12 +35,17 @@ class Controller_Regular extends Controller_Application
 				$regular_user->edited_start = $request_start[$i];
 				$regular_user->edited_end = $request_end[$i];
 				$regular_user->user_comment = $user_comment[$i];
-				$regular_user->condition = 0;
+				$regular_user->updated_at = 0;
 				$regular_user->save();
 				$i++;
 			}
 			Response::redirect('shift/request');
 		}
+
+		$regular_time = Model_Regular_Time::find('all', array('where' => array('regular_time' => true)));
+		if($regular_time){
+		}
+
 		$i = 1;
 		foreach($data['regular_days'] as $regular_day){
 			$regular_user = Model_Regular_User::find('last', array('where' => array(array('regular_day_id' => $regular_day->id),array('user_id' => $user_id))));
@@ -54,7 +58,7 @@ class Controller_Regular extends Controller_Application
 					'edited_start' => "00:00:00",
 					'edited_end' => "00:00:00",
 					'user_comment' => "",
-					'condition' => "0",
+					'updated_at' => "0",
 				));
 				$regular_user->save();
 				$data['set'] = "申請";
