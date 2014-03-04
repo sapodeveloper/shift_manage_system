@@ -24,13 +24,6 @@
 				});
 			</script>
 		</tbody>
-		<tr>
-			<td><?php Helper_Shift_Regular::regular_work_staff_count($regular_shift_day->id, 0); ?>名</td>
-			<td colspan="2">合計勤務時間</td>
-			<td><?php Helper_Shift_Regular::regular_work_time_count($regular_shift_day->id); ?>時間</td>
-			<td><?php Helper_Shift_Regular::regular_work_staff_count($regular_shift_day->id ,1); ?></td>
-			<td><?php Helper_Shift_Regular::regular_work_staff_count($regular_shift_day->id ,2); ?></td>
-		</tr>
 	</table>
 <?php endforeach; ?>
 

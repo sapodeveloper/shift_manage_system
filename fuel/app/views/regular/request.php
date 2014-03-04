@@ -8,8 +8,12 @@
 <table class="uk-table uk-table-striped uk-text-bold uk-text-large">
 	<thead>
 		<tr>
-			<td class="uk-text-center" colspan="2">
-				<blockquote>勤務可能な時間を入力してください。</blockquote>
+			<td></td>
+			<td class="uk-text-center">
+				<blockquote>勤務開始時刻</blockquote>
+			</td>
+			<td class="uk-text-center">
+				<blockquote>勤務終了時刻</blockquote>
 			</td>
 			<td class="uk-text-center">
 				<blockquote>備考</blockquote>
@@ -22,8 +26,12 @@
 			<td class="uk-text-center"><?php echo $regular_day->regular_day_name; ?></td>
 			<td class="uk-text-center">
 				<div class="uk-button-group" >
-					<?php echo Form::input('request_start', Input::post('request_start', isset($regular_user) ? $regular_user->request_start : ''), array('class' => '', 'placeholder'=>'勤務開始時刻')); ?>
-					<?php echo Form::input('request_end', Input::post('request_end', isset($regular_user) ? $regular_user->request_end : ''), array('class' => '', 'placeholder'=>'勤務終了時刻')); ?>
+					<?php echo Form::select('request_start', null, $regular_time, array('class' => '', 'id' => 'request_start')); ?>
+				</div>
+			</td>
+			<td class="uk-text-center">
+				<div class="uk-button-group" >
+					<?php echo Form::select('request_end', null, $regular_time, array('class' => '', 'id' => 'request_end')); ?>
 				</div>
 			</td>
 			<td class="uk-text-center">
