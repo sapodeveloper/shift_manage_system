@@ -41,11 +41,6 @@ class Controller_Regular extends Controller_Application
 			}
 			Response::redirect('shift/request');
 		}
-
-		$regular_time = Model_Regular_Time::find('all', array('where' => array('regular_time' => true)));
-		if($regular_time){
-		}
-
 		$i = 1;
 		foreach($data['regular_days'] as $regular_day){
 			$regular_user = Model_Regular_User::find('last', array('where' => array(array('regular_day_id' => $regular_day->id),array('user_id' => $user_id))));
@@ -53,10 +48,10 @@ class Controller_Regular extends Controller_Application
 				$regular_user=Model_Regular_User::forge()->set(array(
 					'user_id' => $user_id,
 					'regular_day_id' => $regular_day->id,
-					'request_start' => "00:00:00",
-					'request_end' => "00:00:00",
-					'edited_start' => "00:00:00",
-					'edited_end' => "00:00:00",
+					'request_start' => 31,
+					'request_end' => 31,
+					'edited_start' => 31,
+					'edited_end' => 31,
 					'user_comment' => "",
 					'updated_at' => "0",
 				));

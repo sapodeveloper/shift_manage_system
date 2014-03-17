@@ -70,8 +70,7 @@
 				<?php foreach ($regular_shift_users as $regular_shift_user): ?>
 					<tr>
 						<td><?php echo $regular_shift_user->full_name; ?></td>
-						<td><?php echo Helper_Shift_Regular::deside_work_time_count($regular_shift->id, $regular_shift_user->user_id); ?></td>
-						<td><?php echo Helper_Shift_Regular::deside_work_day_count($regular_shift->id, $regular_shift_user->user_id); ?></td>
+						
 					</tr>
 				<?php endforeach; ?>
 			</tbody>

@@ -111,7 +111,7 @@ class Controller_Manage_Shift_Regular extends Controller_Manage_Shift
 		$data['regular_shift_days'] = Model_Regular_Day::find('all', array('where' => array('regular_id' => $this->param('id'))));
 		$regular_shift_day = Model_Regular_Day::find($this->param('day_id'));
 		$data['regular_shift_users'] = Model_Regular_User::find('all', array('where' => array('regular_day_id' => $regular_shift_day->id)));
-		$view = View::forge('layout/edit_regular_layout');
+		$view = View::forge('layout/edit_irregular_layout');
 		$view->contents = View::forge('manage/shift/regular/edit_shift_day', $data);
 		return $view;
 	}
@@ -126,7 +126,7 @@ class Controller_Manage_Shift_Regular extends Controller_Manage_Shift
 	public function action_edit_user_shift()
 	{
 		$regular_shift_user = Model_Regular_User::find($this->param('regular_user_id'));
-		$regular_shift_user->edited_shift_type = $this->param('regular_type_id');
+		
 		$regular_shift_user->save();
 	}
 
