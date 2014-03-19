@@ -35,19 +35,16 @@ class Controller_Shift_Irregular extends Controller
 		}
 		// 指定されたidのイレギュラーシフトを取得する	
 		$irregular_shift = Model_Irregular::find($id);
-		$irregular_shift_days = Model_Irregular_Day::find('all', array('where' => array('irregular_id' => $id)));
+		$irregular_shift_days = Model_Irregular_Day::find('all', array('where' => array('irregular_id' => $id), 'order_by' => array('irregular_day_date' => 'ASC')));
+		$day_id = 1;
 		foreach ($irregular_shift_days as $irregular_shift_day) {
-			if($irregular_shift_day->id > 5){
-				$day_id = ($irregular_shift_day->id)%5+1;
-			}else{
-				$day_id = $irregular_shift_day->id;
-			}
 			$irregular_shift_users{$day_id} = DB::query('SELECT * from irregular_user 
 			inner join users on users.id = irregular_user.user_id
 			where irregular_day_id = '.$irregular_shift_day->id.'
 			and edited_shift_type in (1,2,3)
 			order by users.year, users.username')->as_object()->execute()->as_array();
 			//Model_Irregular_User::find('all', array('where' => array(array('irregular_day_id' => $irregular_shift_day->id), array('edited_shift_type', 'in', array(1,2,3)))));
+			$day_id++;
 		}
 		$query = DB::query('SELECT distinct irregular_user.user_id, users.full_name 
 			from irregular_user 
