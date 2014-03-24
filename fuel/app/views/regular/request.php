@@ -8,12 +8,8 @@
 <table class="uk-table uk-table-striped uk-text-bold uk-text-large">
 	<thead>
 		<tr>
-			<td></td>
-			<td class="uk-text-center">
-				<blockquote>勤務開始時刻</blockquote>
-			</td>
-			<td class="uk-text-center">
-				<blockquote>勤務終了時刻</blockquote>
+			<td class="uk-text-center" colspan="2">
+				<blockquote>勤務可能な時間を入力してください。</blockquote>
 			</td>
 			<td class="uk-text-center">
 				<blockquote>備考</blockquote>
@@ -24,16 +20,17 @@
 <?php foreach($regular_days as $regular_day): ?>
 		<tr>
 			<td class="uk-text-center"><?php echo $regular_day->regular_day_name; ?></td>
-			<td class="uk-text-center">
-				<div class="uk-button-group" >
-					<?php echo Form::select('request_start', null, $regular_time, array('class' => '', 'id' => 'request_start')); ?>
-				</div>
-			</td>
-			<td class="uk-text-center">
-				<div class="uk-button-group" >
-					<?php echo Form::select('request_end', null, $regular_time, array('class' => '', 'id' => 'request_end')); ?>
-				</div>
-			</td>
+			<td>
+				<div class="uk-button-group">
+					<button class="uk-button shift_button" type="button" value="1" name="repuest_day[]">一時限目</button>
+					<button class="uk-button shift_button" type="button" value="2" name="repuest_day[]">二時限目</button>
+					<button class="uk-button shift_button" type="button" value="3" name="repuest_day[]">三時限目</button>
+					<button class="uk-button shift_button" type="button" value="4" name="repuest_day[]">四時限目</button>
+					<button class="uk-button shift_button" type="button" value="5" name="repuest_day[]">五時限目</button>
+				<div>
+				<?php echo Form::hidden('request_start'.$i,$regular_user[$i]->request_start,array('class'=>'')); ?>
+				<?php echo Form::hidden('request_end'.$i,$regular_user[$i]->request_end,array('class'=>'')); ?>
+			</td>	
 			<td class="uk-text-center">
 				<?php echo Form::input('user_comment'.$i,$regular_user[$i]->user_comment,array('class'=>''))."\n"; ?>
 			</td>
