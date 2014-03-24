@@ -1,6 +1,6 @@
 <tr>
 	<td rowspan="2"><?php echo $regular_shift_user->users->full_name; ?></td>
-	<td>希望 : <?php Helper_Shift::regular_work_type($regular_shift_user->request_shift_type); ?>
+	<td>希望 : 
 	</td>
 	<td>編集後 : <?php Helper_Shift::regular_work_type($regular_shift_user->edited_shift_type); ?>
 	</td>

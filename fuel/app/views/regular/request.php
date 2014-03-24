@@ -22,13 +22,15 @@
 			<td class="uk-text-center"><?php echo $regular_day->regular_day_name; ?></td>
 			<td>
 				<div class="uk-button-group">
-					<button class="uk-button shift_button" type="button" value="1">一時限目</button>
-					<button class="uk-button shift_button" type="button" value="2">二時限目</button>
-					<button class="uk-button shift_button" type="button" value="3">三時限目</button>
-					<button class="uk-button shift_button" type="button" value="4">四時限目</button>
-					<button class="uk-button shift_button" type="button" value="5">五時限目</button>
-				<div>		
-			</td>			
+					<button class="uk-button shift_button" type="button" value="1" name="repuest_day[]">一時限目</button>
+					<button class="uk-button shift_button" type="button" value="2" name="repuest_day[]">二時限目</button>
+					<button class="uk-button shift_button" type="button" value="3" name="repuest_day[]">三時限目</button>
+					<button class="uk-button shift_button" type="button" value="4" name="repuest_day[]">四時限目</button>
+					<button class="uk-button shift_button" type="button" value="5" name="repuest_day[]">五時限目</button>
+				<div>
+				<?php echo Form::hidden('request_start'.$i,$regular_user[$i]->request_start,array('class'=>'')); ?>
+				<?php echo Form::hidden('request_end'.$i,$regular_user[$i]->request_end,array('class'=>'')); ?>
+			</td>	
 			<td class="uk-text-center">
 				<?php echo Form::input('user_comment'.$i,$regular_user[$i]->user_comment,array('class'=>''))."\n"; ?>
 			</td>

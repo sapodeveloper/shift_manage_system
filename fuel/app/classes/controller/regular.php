@@ -48,10 +48,10 @@ class Controller_Regular extends Controller_Application
 				$regular_user=Model_Regular_User::forge()->set(array(
 					'user_id' => $user_id,
 					'regular_day_id' => $regular_day->id,
-					'request_start' => 31,
-					'request_end' => 31,
-					'edited_start' => 31,
-					'edited_end' => 31,
+					'request_start' => 6,
+					'request_end' => 6,
+					'edited_start' => 6,
+					'edited_end' => 6,
 					'user_comment' => "",
 					'updated_at' => "0",
 				));

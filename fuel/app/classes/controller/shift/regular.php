@@ -19,7 +19,7 @@ class Controller_Shift_Regular extends Controller
 
 	public function action_shift_detail($id = null)
 	{
-		$data["regular_shift_users"] = Model_Regular_User::find('all', array('where' => array(array('regular_day_id' => $id), array('edited_shift_type', '!=', 4))));
+		$data["regular_shift_users"] = Model_Regular_User::find('all', array('where' => array(array('regular_day_id' => $id), array('edited_start', '!=', 6), array('edited_end', '!=', 6))));
 		$view = View::forge('shift/regular/shift_detail', $data);
 		return $view;
 	}
