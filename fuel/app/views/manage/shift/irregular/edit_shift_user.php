@@ -1,12 +1,11 @@
-<tr>
+<tr data-uk-tooltip="{pos:'top-left'}"  title="<?php echo $irregular_shift_user->user_comment; ?>">
 	<td rowspan="2"><?php echo $irregular_shift_user->users->full_name; ?></td>
 	<td>希望 : <?php Helper_Shift_Irregular::irregular_work_type($irregular_shift_user->request_shift_type); ?>
 	</td>
 	<td>編集後 : <?php Helper_Shift_Irregular::irregular_work_type($irregular_shift_user->edited_shift_type); ?>
 	</td>
-	<td>備考欄</td>
 </tr>
-<tr>
+<tr data-uk-tooltip="{pos:'top-left'}"  title="<?php echo $irregular_shift_user->user_comment; ?>">
 	<td colspan="2">
 		<div class="uk-button-group" id="work<?php echo $irregular_shift_user->id; ?>" data-uk-button-checkbox>
 			<?php if($irregular_shift_user->edited_shift_type == 1): ?>
@@ -29,7 +28,6 @@
 			<button class='uk-button uk-button-success update-<?php echo $irregular_shift_user->id; ?>'>更新</button>
 		<?php endif; ?>
 	</td>
-	<td><?php echo $irregular_shift_user->user_comment; ?></td>
 </tr>
 
 <script type="text/javascript">
