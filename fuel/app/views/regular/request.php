@@ -22,11 +22,16 @@
 			<td class="uk-text-center"><?php echo $regular_day->regular_day_name; ?></td>
 			<td>
 				<div class="uk-button-group">
-					<button class="uk-button shift_button" type="button" value="1" name="repuest_day[]">一時限目</button>
-					<button class="uk-button shift_button" type="button" value="2" name="repuest_day[]">二時限目</button>
-					<button class="uk-button shift_button" type="button" value="3" name="repuest_day[]">三時限目</button>
-					<button class="uk-button shift_button" type="button" value="4" name="repuest_day[]">四時限目</button>
-					<button class="uk-button shift_button" type="button" value="5" name="repuest_day[]">五時限目</button>
+					<button class="uk-button shift_button" type="button" value="1" name="repuest_day[]">一時限目
+					<br>9:00~10:30</button>
+					<button class="uk-button shift_button" type="button" value="2" name="repuest_day[]">二時限目
+					<br>10:45~12:15</button>
+					<button class="uk-button shift_button" type="button" value="3" name="repuest_day[]">三時限目
+					<br>13:15~14:45</button>
+					<button class="uk-button shift_button" type="button" value="4" name="repuest_day[]">四時限目
+					<br>15:00~16:30</button>
+					<button class="uk-button shift_button" type="button" value="5" name="repuest_day[]">五時限目以降
+					<br>16:45~18:15</button>
 				<div>
 				<?php echo Form::hidden('request_start'.$i,$regular_user[$i]->request_start,array('class'=>'')); ?>
 				<?php echo Form::hidden('request_end'.$i,$regular_user[$i]->request_end,array('class'=>'')); ?>
