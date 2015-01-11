@@ -1,10 +1,10 @@
 <?php
 class Helper_Shift {
-
-    // 任意のシフトのグループの申請人数を重複無しでカウントする
-    // shift_type = 0 イレギュラー
-    // shift_type = 1 レギュラー
-    // shift_id はカウントしたいシフトのグループのid
+    /*
+        引数：シフトグループ種別(0=イレギュラー,1=レギュラー),シフトグループID
+        戻り値：指定シフトグループに存在しているユーザ数
+        用途：指定したシフトグループに申請しているユーザ数を重複なしでカウントする
+    */
     public static function request_shift_distinct_staff_count($shift_type, $shift_id){
         if($shift_type == 0){
             $shift_group_ids = DB::select('id')->from('irregular_day')->where('irregular_id', $shift_id);
@@ -23,7 +23,12 @@ class Helper_Shift {
         }
         echo count($result);
     }
-	// 該当時間の勤務スタッフ数を求める
+
+    /*
+        引数：イレギュラーシフトグループの任意日ID、勤務形態(1=AM,2=PM,3=FULL)
+        戻り値：イレギュラーシフトグループの任意日IDの勤務時間帯別スタッフ数を返す
+        用途：任意のイレギュラー任意日の勤務時間別スタッフ数を返す
+    */
   public static function irregular_work_staff_count($irregular_shift_day_id ,$shift_type) {
     if($shift_type == 0){
         $result = DB::select('*')
@@ -48,7 +53,12 @@ class Helper_Shift {
     }
   }
 
-  // 該当勤務日の合計勤務時間を求める
+    /*
+        引数：イレギュラーシフトグループの任意日ID
+        戻り値：イレギュラーシフトグループの任意日IDの全フタッフの稼働時間を返す
+        用途：イレギュラーシフトグループの任意日IDの稼働数を合計して返す
+        備考：最後のecho部分は対応要検討
+    */
   public static function irregular_work_time_count($irregular_shift_day_id) {
     $morning = DB::select('*')
     	->from('irregular_user')
@@ -68,7 +78,11 @@ class Helper_Shift {
 		echo count($morning)*3 + count($afternoon) * 4 + count($full) * 6;
   }
 
-  // 該当イレギュラーシフトの勤務形態を出力する
+    /*
+        引数：イレギュラー勤務形態
+        戻り値：勤務形態に応じた勤務名を返す
+        用途：イレギュラー勤務形態IDを取得して該当する勤務形態名を返す
+    */
   public static function irregular_work_type($irregular_work_type){
     if ($irregular_work_type == 1) {
         echo "午前勤務";
@@ -81,7 +95,11 @@ class Helper_Shift {
     }
   }
 
-  //　当該イレギュラーシフトの勤務形態をテーブルタグで出力する
+    /*
+        引数：イレギュラー勤務形態
+        戻り値：勤務形態に応じた勤務名をHTML形式で返す
+        用途：イレギュラー勤務形態IDを取得して該当する勤務形態名をHTML形式で返す
+    */
   public static function irregular_work_type_for_table($irregular_work_type){
     if ($irregular_work_type == 1) {
         echo "<td>午前勤務</td><td>10:00 ~ 13:00</td><td>3:00</td><td bgcolor = 'deepskyblue'></td><td></td>";
@@ -92,7 +110,12 @@ class Helper_Shift {
     }
   }
 
-  // 当該イレギュラーシフトグループの特定ユーザの希望勤務日数を求める
+    /*
+        引数：イレギュラーシフトグループの任意日ID、ユーザID
+        戻り値：任意のイレギュラーシフトグループの任意のユーザの勤務日数を返す 
+        用途：イレギュラーシフト編集時に該当イレギュラーシフトの任意ユーザの勤務日数を返す
+        備考：未確定イレギュラーシフトにおけるカウント処理(request_shift_typeを確認する)
+    */
   public static function request_work_day_count($irregular_id, $user_id){
     $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
     $work_day = DB::select('*')->from('irregular_user')
@@ -103,7 +126,12 @@ class Helper_Shift {
     echo count($work_day);
   }
 
-  // 当該イレギュラーシフトグループの特定ユーザの確定勤務日数を求める
+    /*
+        引数：イレギュラーシフトグループの任意日ID、ユーザID
+        戻り値：任意のイレギュラーシフトグループの任意のユーザの勤務日数を返す 
+        用途：イレギュラーシフト確認時に該当イレギュラーシフトの任意ユーザの勤務日数を返す
+        備考：確定イレギュラーシフトにおけるカウント処理(edited_shift_typeを確認する)
+    */
   public static function deside_work_day_count($irregular_id, $user_id){
     $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
     $work_day = DB::select('*')->from('irregular_user')
@@ -114,7 +142,12 @@ class Helper_Shift {
     echo count($work_day);
   }
 
-  // 当該イレギュラーシフトグループの特定ユーザの希望勤務時間を求める
+    /*
+        引数：イレギュラーシフトグループの任意日ID、ユーザID
+        戻り値：任意のイレギュラーシフトグループの任意のユーザの勤務時間を返す
+        用途：イレギュラーシフト編集時に該当イレギュラーシフトの任意ユーザの勤務時間を返す
+        備考：未確定イレギュラーシフトにおけるカウント処理(request_shift_typeを確認する)
+    */
   public static function request_work_time_count($irregular_id, $user_id){
     $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
     $morning = DB::select('*')->from('irregular_user')
@@ -135,7 +168,12 @@ class Helper_Shift {
     echo count($morning)*3 + count($afternoon) * 4 + count($full) * 6;
   }
 
-  // 当該イレギュラーシフトグループの特定ユーザの確定勤務時間を求める
+    /*
+        引数：イレギュラーシフトグループの任意日ID、ユーザID
+        戻り値：任意のイレギュラーシフトグループの任意のユーザの勤務時間を返す
+        用途：イレギュラーシフト確認時に該当イレギュラーシフトの任意ユーザの勤務時間を返す
+        備考：確定イレギュラーシフトにおけるカウント処理(edited_shift_typeを確認する)
+    */
   public static function deside_work_time_count($irregular_id, $user_id){
     $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
     $morning = DB::select('*')->from('irregular_user')
@@ -156,7 +194,12 @@ class Helper_Shift {
     echo count($morning)*3 + count($afternoon) * 4 + count($full) * 6;
   }
 
-  // 当該イレギュラーシフトグループの希望勤務時間の合計を求める
+    /*
+        引数：イレギュラーシフトグループの任意日ID
+        戻り値：任意のイレギュラーシフトグループの申請されているユーザの合計勤務時間を返す
+        用途：イレギュラーシフト編集時に該当イレギュラーシフトの合計勤務時間を返す
+        備考：未確定イレギュラーシフトにおけるカウント処理(request_shift_typeを確認する)
+    */
   public static function request_irregular_group_total_work_time($irregular_id){
     $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
     $morning = DB::select('*')
@@ -177,7 +220,12 @@ class Helper_Shift {
     echo count($morning)*3 + count($afternoon) * 4 + count($full) * 6;
   }
 
-  // 当該イレギュラーシフトグループの確定勤務時間の合計を求める
+    /*
+        引数：イレギュラーシフトグループの任意日ID
+        戻り値：任意のイレギュラーシフトグループの申請されているユーザの合計勤務時間を返す
+        用途：イレギュラーシフト確認時に該当イレギュラーシフトの合計勤務時間を返す
+        備考：確定イレギュラーシフトにおけるカウント処理(edited_shift_typeを確認する)
+    */
   public static function deside_irregular_group_total_work_time($irregular_id){
     $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
     $morning = DB::select('*')
@@ -198,7 +246,12 @@ class Helper_Shift {
     echo count($morning)*3 + count($afternoon) * 4 + count($full) * 6;
   }
 
-  // 当該レギュラーシフトグループにおいて特定ユーザが編集ロックされているか調べる
+    /*
+        引数：イレギュラーシフトグループの任意日ID、任意のユーザID
+        戻り値：Bool
+        用途：任意のイレギュラーシフトグループにおいて任意のユーザの編集がロックされているか確認する
+        備考：返り値をもとにViewで別処理
+    */
   public static function user_shifts_lock($irregular_id, $user_id){
     $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
     $query = DB::select('*')
@@ -214,7 +267,12 @@ class Helper_Shift {
     }
   }
 
-  // 特定ユーザの申請が編集ロックされているか調べる
+    /*
+        引数：イレギュラーシフトグループの任意のユーザID
+        戻り値：Bool
+        用途：任意のイレギュラーシフトグループにおいて任意のユーザの編集がロックされているか確認する
+        備考：返り値をもとにViewで別処理
+    */
   public static function user_shift_lock($irregular_user_id){
     $irregular_user = Model_Irregular_User::find($irregular_user_id);
     if($irregular_user->condition == "1"){
@@ -224,7 +282,11 @@ class Helper_Shift {
     }
   }
 
-  // 当該シフトの状態を出力する
+    /*
+        引数：任意のシフトグループの状態
+        戻り値：状態IDにおける状態名を返す
+        用途：任意のシフトグループの状態をユーザに見せるように返す
+    */
   public static function shift_condition($condition) {
     if ($condition == 1) {
         echo "申請受付中";
@@ -237,6 +299,11 @@ class Helper_Shift {
     }
   }
 
+    /*
+        引数：任意のシフトグループの状態
+        戻り値：状態IDにおける状態におうじたCSS Classを返す
+        用途：任意のシフトグループの状態をユーザに色で見せるように返す
+    */
   public static function shift_condition_color($condition) {
     if ($condition == 1) {
         echo "";
@@ -249,6 +316,11 @@ class Helper_Shift {
     }
   }
 
+    /*
+        引数：イレギュラーシフトグループの任意日ID、任意のユーザID
+        戻り値：HTMLテーブルの内容を返す
+        用途：任意のイレギュラーシフトグループのユーザIDにおける勤務形態をHTML形式で返す
+    */
   public static function shift_table($irregular_id, $user_id){
     $irregular_day_ids = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id)->execute();
     foreach ($irregular_day_ids as $irregular_day_id) {
@@ -273,6 +345,11 @@ class Helper_Shift {
     }
   }
 
+    /*
+        引数：状態値(ロックorアンロック)、イレギュラーシフトグループの任意日ID、任意のユーザID
+        戻り値：なし(query実行)
+        用途：任意のイレギュラーシフトグループのユーザIDの編集可否を入れ替える
+    */
   public static function lock_or_unlock($mode, $irregular_id, $user_id){
     $irregular_day_id = DB::select('id')->from('irregular_day')->where('irregular_id', $irregular_id);
     $update_query = DB::update('irregular_user')
